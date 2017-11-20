@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+    <data>
+        
+        <variable
+            name="viewModel"
+            type="com.innso.mobile.ui.viewModels.NewUserViewModel"/>
+    </data>
+
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/activity_create_user"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingBottom="@dimen/spacing_standard"
+        android:paddingLeft="@dimen/spacing_standard"
+        android:paddingRight="@dimen/spacing_standard"
+        android:paddingTop="@dimen/spacing_standard"
+        android:background="@color/colorPrimary"
+        tools:context="com.innso.mobile.ui.activities.CreateUserActivity">
+
+        <TextView
+            android:id="@+id/textView_title"
+            style="@style/TextHuge.White.Bold"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/spacing_xlarge"
+            android:text="@string/title.new_user"/>
+
+        <EditText
+            android:id="@+id/editText_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textPersonName"
+            android:padding="@dimen/spacing_large"
+            android:background="@drawable/box_round_borders_white"
+            android:layout_alignLeft="@id/textView_title"
+            android:layout_marginEnd="@dimen/spacing_xlarge"
+            android:layout_marginStart="@dimen/font_small"
+            android:layout_marginLeft="@dimen/spacing_small"
+            android:layout_marginRight="@dimen/spacing_xlarge"
+            android:hint="@string/copy.name"
+            android:text="@={viewModel.name}"
+            android:layout_below="@id/textView_title"/>
+
+        <EditText
+            android:id="@+id/editText_email"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textWebEmailAddress"
+            android:padding="@dimen/spacing_large"
+            android:background="@drawable/box_round_borders_white"
+            android:layout_marginTop="@dimen/spacing_standard"
+            android:layout_alignLeft="@id/editText_name"
+            android:layout_alignRight="@id/editText_name"
+            android:text="@={viewModel.email}"
+            android:hint="@string/copy.email"
+            android:layout_below="@id/editText_name"/>
+
+        <EditText
+            android:id="@+id/editText_phone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="phone"
+            android:padding="@dimen/spacing_large"
+            android:background="@drawable/box_round_borders_white"
+            android:layout_marginTop="@dimen/spacing_standard"
+            android:layout_alignLeft="@id/editText_name"
+            android:layout_alignRight="@id/editText_name"
+            android:text="@={viewModel.phone}"
+            android:hint="@string/copy.phone_number"
+            android:layout_below="@id/editText_email"/>
+        
+        <Button
+            android:id="@+id/button_finalize"
+            style="@style/Button.Dark_Blue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="@dimen/spacing_standard"
+            android:onClick="@{viewModel::onFinaliceClick}"
+            android:text="@string/copy.finalize"/>
+
+    </RelativeLayout>
+
+</layout>
+

@@ -1,0 +1,123 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:windowContentTransitions">true</item>
+    </style>
+
+
+    <style name="AppThemeFullScreen" parent="AppTheme">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+
+    <style name="TextMicro">
+        <item name="android:textSize">@dimen/font_xmicro</item>
+    </style>
+
+    <style name="TextSmall">
+        <item name="android:textSize">@dimen/font_small</item>
+    </style>
+
+    <style name="TextNormal">
+        <item name="android:textSize">@dimen/font_normal</item>
+    </style>
+
+    <style name="TextBig">
+        <item name="android:textSize">@dimen/font_large</item>
+    </style>
+
+    <style name="TextHuge">
+        <item name="android:textSize">@dimen/font_xlarge</item>
+    </style>
+
+    <style name="TextMicro.White" parent="TextMicro">
+        <item name="android:textColor">@android:color/white</item>
+    </style>
+
+    <style name="TextSmall.White" parent="TextSmall">
+        <item name="android:textColor">@android:color/white</item>
+    </style>
+
+    <style name="TextNormal.White" parent="TextNormal">
+        <item name="android:textColor">@android:color/white</item>
+    </style>
+
+    <style name="TextBig.White" parent="TextBig">
+        <item name="android:textColor">@android:color/white</item>
+    </style>
+
+    <style name="TextHuge.White" parent="TextHuge">
+        <item name="android:textColor">@android:color/white</item>
+    </style>
+
+    <style name="TextHuge.White.Bold" parent="TextHuge.White">
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="TextSmall.Gray" parent="TextSmall">
+        <item name="android:textColor">@android:color/darker_gray</item>
+    </style>
+
+    <style name="TextSmall.Black" parent="TextSmall">
+        <item name="android:textColor">@android:color/black</item>
+    </style>
+
+    <style name="TextNormal.Black" parent="TextNormal">
+        <item name="android:textColor">@android:color/black</item>
+    </style>
+
+    <style name="TextBig.Black" parent="TextBig">
+        <item name="android:textColor">@android:color/black</item>
+    </style>
+
+    <style name="TextHuge.Black" parent="TextHuge">
+        <item name="android:textColor">@android:color/black</item>
+    </style>
+
+    <style name="TextSmall.Blue.Light" parent="TextSmall">
+        <item name="android:textColor">@color/colorPrimary</item>
+    </style>
+
+    <style name="TextNormal.White.Bold" parent="TextNormal.White">
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="TextSmall.Black.Bold" parent="TextSmall.Black">
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="TextNormal.Black.Bold" parent="TextNormal.Black">
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="TextBig.Black.Bold" parent="TextBig.Black">
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="TextHuge.Black.Bold" parent="TextHuge.Black">
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="TextSmall.Gray.Bold" parent="TextSmall.Gray">
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="Button" parent="Widget.AppCompat.Button.Colored">
+        <item name="android:paddingTop">@dimen/spacing_xxlarge</item>
+        <item name="android:paddingBottom">@dimen/spacing_xxlarge</item>
+        <item name="android:paddingLeft">@dimen/spacing_xhuge</item>
+        <item name="android:paddingRight">@dimen/spacing_xhuge</item>
+    </style>
+
+    <style name="Button.Dark_Blue" parent="Button">
+        <item name="colorButtonNormal">@color/colorPrimaryDark</item>
+        <item name="android:textColor">@android:color/white</item>
+    </style>
+
+
+</resources>
