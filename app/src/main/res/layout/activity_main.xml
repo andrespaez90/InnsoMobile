@@ -10,86 +10,13 @@
         android:paddingTop="@dimen/activity_vertical_margin"
         tools:context="com.innso.mobile.ui.activities.MainActivity">
 
-        <android.support.v7.widget.CardView
-            android:id="@+id/cardView_chart_sales"
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recyclerView_sales"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/font_large"
-            android:layout_marginLeft="@dimen/spacing_standard"
-            android:layout_marginRight="@dimen/spacing_standard"
-            android:layout_marginTop="@dimen/font_large">
+            android:layout_height="match_parent"
+            android:background="@color/background"
+            android:padding="@dimen/spacing_standard" />
 
-            <com.innso.mobile.ui.adapters.CustomLineChart
-                android:id="@+id/chart_sales"
-                android:layout_width="match_parent"
-                android:layout_height="180dp" />
-
-        </android.support.v7.widget.CardView>
-
-
-        <android.support.v7.widget.CardView
-            android:id="@+id/cardView_secondary_info"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/cardView_chart_sales"
-            android:layout_marginEnd="@dimen/spacing_standard"
-            android:layout_marginLeft="@dimen/spacing_standard"
-            android:layout_marginRight="@dimen/spacing_standard"
-            android:layout_marginStart="@dimen/spacing_standard"
-            app:cardBackgroundColor="@android:color/white"
-            app:cardCornerRadius="@dimen/radius_medium">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="@dimen/spacing_small"
-                android:layout_marginTop="@dimen/spacing_small"
-                android:paddingBottom="@dimen/spacing_small"
-                android:paddingTop="@dimen/spacing_small">
-
-                <TextView
-                    android:id="@+id/textView_delivered_label"
-                    style="@style/TextSmall.Black"
-                    android:layout_width="@dimen/spacing_empty"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:text="10k\nVentas" />
-
-                <View
-                    android:layout_width="@dimen/spacing_xmicro"
-                    android:layout_height="match_parent"
-                    android:layout_marginTop="@dimen/spacing_small"
-                    android:background="@android:color/darker_gray" />
-
-                <TextView
-                    android:id="@+id/textView_canceled_label"
-                    style="@style/TextSmall.Black"
-                    android:layout_width="@dimen/spacing_empty"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:text=" 5k\nCostos" />
-
-                <View
-                    android:layout_width="@dimen/spacing_xmicro"
-                    android:layout_height="match_parent"
-                    android:layout_marginTop="@dimen/spacing_small"
-                    android:background="@android:color/darker_gray" />
-
-
-                <TextView
-                    android:id="@+id/textView_samplings_label"
-                    style="@style/TextSmall.Black"
-                    android:layout_width="@dimen/spacing_empty"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:text="1k\nOtros" />
-
-            </LinearLayout>
-
-        </android.support.v7.widget.CardView>
 
         <android.support.design.widget.BottomNavigationView
             android:id="@+id/navigation_view"

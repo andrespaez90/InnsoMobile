@@ -11,17 +11,14 @@ public class CustomLineChart extends LineChart {
 
     public CustomLineChart(Context context) {
         super(context);
-        init();
     }
 
     public CustomLineChart(Context context, AttributeSet attrs) {
         super(context, attrs);
-        init();
     }
 
     public CustomLineChart(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
-        init();
     }
 
 
