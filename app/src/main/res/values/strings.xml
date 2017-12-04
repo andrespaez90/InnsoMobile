@@ -4,11 +4,18 @@
     <string name="copy.name">Nombre</string>
     <string name="copy.phone_number">Número Telefonico</string>
     <string name="copy.email">Correo Electronico</string>
-    <string name="title.new_user">Acceso a\nNuevo Usuario</string>
-    <string name="copy.finalize">Finalizar</string>
-    <string name="error.empty_fields">Campos vacios</string>
-    <string name="error.incorrect_fields">Campos incorrectos</string>
+
+
     <string name="copy.password">Contraseña</string>
     <string name="copy.login">Ingresar</string>
     <string name="copy.forgot_my_password">Olvide mi contraseña</string>
+    <string name="copy.finalize">Finalizar</string>
+    <string name="copy.dashboard">Dashboard</string>
+    <string name="copy.customers">Clientes</string>
+    <string name="copy.company">Compañia</string>
+    <string name="copy.profile">Perfil</string>
+
+    <string name="title.new_user">Acceso a\nNuevo Usuario</string>
+    <string name="error.empty_fields">Campos vacios</string>
+    <string name="error.incorrect_fields">Campos incorrectos</string>
 </resources>

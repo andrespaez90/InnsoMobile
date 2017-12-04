@@ -14,7 +14,7 @@ apply plugin: 'me.tatarka.retrolambda'
 
 android {
     compileSdkVersion 25
-    buildToolsVersion "25.0.2"
+    buildToolsVersion '26.0.2'
 
     defaultConfig {
         applicationId "com.innso.mobile"
@@ -61,6 +61,7 @@ dependencies {
     annotationProcessor 'com.google.dagger:dagger-compiler:2.9'
 
     compile 'com.android.support:design:25.3.1'
+    compile 'com.android.support:cardview-v7:25.3.1'
     compile 'com.android.support:appcompat-v7:25.3.1'
 
     compile 'io.reactivex.rxjava2:rxandroid:2.0.1'
@@ -73,6 +74,9 @@ dependencies {
     compile 'com.google.dagger:dagger:2.9'
 
     compile 'com.google.firebase:firebase-auth:10.0.1'
+
+
+    implementation 'com.github.PhilJay:MPAndroidChart:v3.0.3'
 
     testCompile 'junit:junit:4.12'
 }

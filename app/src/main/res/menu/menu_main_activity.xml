@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/action_map"
+        android:enabled="true"
+        android:icon="@drawable/icon_footer_charts"
+        android:title="@string/copy.dashboard"
+        app:showAsAction="withText" />
+
+    <item
+        android:id="@+id/action_petrol_station"
+        android:enabled="true"
+        android:icon="@drawable/icon_footer_customers"
+        android:title="@string/copy.customers"
+        app:showAsAction="withText" />
+
+    <item
+        android:id="@+id/action_music"
+        android:enabled="true"
+        android:icon="@drawable/icon_footer_company"
+        android:title="@string/copy.company"
+        app:showAsAction="withText" />
+
+    <item
+        android:id="@+id/action_other_places"
+        android:enabled="true"
+        android:icon="@drawable/icon_footer_profile"
+        android:title="@string/copy.profile"
+        app:showAsAction="withText" />
+</menu>
