@@ -13,13 +13,12 @@ import com.github.mikephil.charting.data.LineData;
 import com.github.mikephil.charting.data.LineDataSet;
 import com.innso.mobile.R;
 import com.innso.mobile.ui.adapters.CustomLineChart;
-import com.innso.mobile.ui.interfaces.GenericItemView;
 import com.innso.mobile.utils.DateUtils;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class LineChartItem extends CardView implements GenericItemView<Object> {
+public class LineChartItem extends CardView {
 
     private CustomLineChart customLineChart;
 
@@ -39,13 +38,10 @@ public class LineChartItem extends CardView implements GenericItemView<Object> {
     }
 
     private void init() {
-        LayoutParams params = new LayoutParams(LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-        int margin = getResources().getDimensionPixelSize(R.dimen.spacing_standard);
-        params.setMargins(margin, margin, margin, margin);
-        setLayoutParams(params);
         setElevation(getResources().getDimensionPixelSize(R.dimen.cardview_default_elevation));
         initChart();
         addView(customLineChart, new LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, getResources().getDimensionPixelSize(R.dimen.size_chart)));
+        addChartInformation();
     }
 
     private void initChart() {
@@ -67,11 +63,6 @@ public class LineChartItem extends CardView implements GenericItemView<Object> {
         customLineChart.getAxisRight().setGranularity(5f);
         customLineChart.getAxisLeft().setGranularity(5f);
         customLineChart.setScaleEnabled(false);
-    }
-
-    @Override
-    public void bind(Object var1) {
-        addChartInformation();
     }
 
     private void addChartInformation() {
@@ -108,8 +99,4 @@ public class LineChartItem extends CardView implements GenericItemView<Object> {
         customLineChart.invalidate();
     }
 
-    @Override
-    public Object getData() {
-        return null;
-    }
 }

@@ -59,5 +59,6 @@
     <dimen name="radius_huge">15dp</dimen>
 
     <dimen name="size_chart">180dp</dimen>
+    <dimen name="size_profile_image">100dp</dimen>
 
 </resources>
