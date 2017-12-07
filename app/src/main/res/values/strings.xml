@@ -14,6 +14,11 @@
     <string name="copy.customers">Clientes</string>
     <string name="copy.company">Compañia</string>
     <string name="copy.profile">Perfil</string>
+    <string name="copy.documents">Documentos</string>
+    <string name="copy.information">Información</string>
+    <string name="copy.taxes_return">Impuestos Presentados</string>
+    <string name="copy.banks">Bancos</string>
+    <string name="copy.bank_accounts">Cuentas Bancarias</string>
 
     <string name="title.new_user">Acceso a\nNuevo Usuario</string>
     <string name="error.empty_fields">Campos vacios</string>
@@ -22,7 +27,12 @@
 
     <string name="accounting.revenue">%s\nIngresos</string>
     <string name="accounting.expenditure">%s\nExpenditure</string>
-    <string name="copy.company_name">Innso SAS\nInnovating Software SAS</string>
-    <string name="copy.company_nit">Nit: 900548400-0</string>
+
+    <string name="company.name">Innso SAS\nInnovating Software SAS</string>
+    <string name="company.nit">Nit: 900548400-0</string>
+    <string name="copy.rut">RUT</string>
+    <string name="copy.camara_Comercio">Camara de Comercio</string>
+    <string name="copy.products">Productos</string>
+    <string name="copy.bill_resolution">Resolución Facturación</string>
 
 </resources>

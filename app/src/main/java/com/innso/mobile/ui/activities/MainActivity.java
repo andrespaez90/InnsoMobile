@@ -8,7 +8,6 @@ import android.view.MenuItem;
 
 import com.innso.mobile.R;
 import com.innso.mobile.databinding.ActivityMainBinding;
-import com.innso.mobile.ui.BaseFragment;
 import com.innso.mobile.ui.fragments.CompanyFragment;
 import com.innso.mobile.ui.helpers.NavigationViewHelper;
 import com.innso.mobile.ui.itemViews.ItemDetailMonth;
@@ -17,7 +16,7 @@ public class MainActivity extends BaseActivity implements BottomNavigationView.O
 
     private ActivityMainBinding binding;
 
-    private BaseFragment lastFragment;
+    private CompanyFragment companyFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,7 +47,7 @@ public class MainActivity extends BaseActivity implements BottomNavigationView.O
         int id = item.getItemId();
         switch (id) {
             case R.id.action_company:
-                replaceFragment(new CompanyFragment());
+                replaceFragment(getCompanyFragment());
                 break;
             case R.id.action_main:
                 binding.container.removeAllViews();
@@ -57,5 +56,13 @@ public class MainActivity extends BaseActivity implements BottomNavigationView.O
         }
         return true;
     }
+
+    private CompanyFragment getCompanyFragment() {
+        if (companyFragment == null) {
+            companyFragment = new CompanyFragment()
+        }
+        return companyFragment;
+    }
+
 }
 
