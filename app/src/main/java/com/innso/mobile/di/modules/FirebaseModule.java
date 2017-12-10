@@ -7,6 +7,8 @@ import com.google.firebase.FirebaseApp;
 import com.google.firebase.FirebaseOptions;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
 import com.innso.mobile.R;
 import com.innso.mobile.api.config.ApiConfig;
 import com.innso.mobile.providers.ResourceProvider;
@@ -31,6 +33,20 @@ public class FirebaseModule {
     FirebaseAuth authManager() {
         return FirebaseAuth.getInstance();
     }
+
+
+    @Provides
+    @Singleton
+    FirebaseStorage firebaseStorage(){
+        return FirebaseStorage.getInstance();
+    }
+
+    @Provides
+    @Singleton
+    StorageReference firebaseStorageReference(FirebaseStorage firebaseStorage){
+        return firebaseStorage.getReference();
+    }
+
 
     @Provides
     @Singleton
