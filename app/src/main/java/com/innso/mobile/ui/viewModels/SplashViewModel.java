@@ -7,6 +7,7 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.auth.GetTokenResult;
 import com.innso.mobile.BuildConfig;
 import com.innso.mobile.api.controllers.AppControllerApi;
 import com.innso.mobile.api.models.app.GeneralInformation;
@@ -45,7 +46,15 @@ public class SplashViewModel extends BaseViewModel {
 
     private void checkAppVersion(@NonNull FirebaseUser currentUser) {
         currentUser.getToken(true)
-                .addOnCompleteListener(result -> checkVersion(result.getResult().getToken()));
+                .addOnCompleteListener(this::validateSession);
+    }
+
+    private void validateSession(Task<GetTokenResult> result){
+        if(result.isSuccessful()){
+            checkVersion(result.getResult().getToken());
+        } else {
+            showSnackBarError("Verifica tu conexion a internet");
+        }
     }
 
     private void anonymosSigIn(@NonNull Task<AuthResult> resultTask) {

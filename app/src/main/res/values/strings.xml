@@ -1,11 +1,10 @@
 <resources>
     <string name="app_name">Innso Mobile</string>
+
     <string name="copy.check_version">Verificando Actualizaciones</string>
     <string name="copy.name">Nombre</string>
     <string name="copy.phone_number">Número Telefonico</string>
     <string name="copy.email">Correo Electronico</string>
-
-
     <string name="copy.password">Contraseña</string>
     <string name="copy.login">Ingresar</string>
     <string name="copy.forgot_my_password">Olvide mi contraseña</string>
@@ -19,20 +18,26 @@
     <string name="copy.taxes_return">Impuestos Presentados</string>
     <string name="copy.banks">Bancos</string>
     <string name="copy.bank_accounts">Cuentas Bancarias</string>
+    <string name="copy.rut">RUT</string>
+    <string name="copy.camara_Comercio">Camara de Comercio</string>
+    <string name="copy.products">Productos</string>
+    <string name="copy.bill_resolution">Resolución Facturación</string>
+    <string name="copy.options">Opciones</string>
+    <string name="copy.add_user">Nuevo Usuario</string>
+    <string name="copy.add_back_account">Agregar cuenta Bacaria</string>
+    <string name="copy.close_session">Cerrar sesion</string>
+    <string name="copy.add_costumer">Nuevo Cliente</string>
 
     <string name="title.new_user">Acceso a\nNuevo Usuario</string>
+    <string name="title.flow_accounting">Flujo Contable</string>
+
     <string name="error.empty_fields">Campos vacios</string>
     <string name="error.incorrect_fields">Campos incorrectos</string>
-    <string name="copy.flow_accounting">Flujo Contable</string>
 
     <string name="accounting.revenue">%s\nIngresos</string>
     <string name="accounting.expenditure">%s\nExpenditure</string>
 
     <string name="company.name">Innso SAS\nInnovating Software SAS</string>
-    <string name="company.nit">Nit: 900548400-0</string>
-    <string name="copy.rut">RUT</string>
-    <string name="copy.camara_Comercio">Camara de Comercio</string>
-    <string name="copy.products">Productos</string>
-    <string name="copy.bill_resolution">Resolución Facturación</string>
+    <string name="company.nit">Nit: 900.548.400&#8211;0</string>
 
 </resources>

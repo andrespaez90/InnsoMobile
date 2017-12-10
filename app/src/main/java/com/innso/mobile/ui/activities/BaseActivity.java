@@ -179,6 +179,8 @@ public class BaseActivity extends AppCompatActivity {
 
             ft.replace(fragment.getContainer(), fragment, fragment.getName());
 
+            findViewById(fragment.getContainer()).setVisibility(View.VISIBLE);
+
             ft.commit();
         }
     }

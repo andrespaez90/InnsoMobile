@@ -6,6 +6,7 @@ import com.google.gson.GsonBuilder;
 import com.innso.mobile.api.config.ApiConfig;
 import com.innso.mobile.api.config.AuthenticatorService;
 import com.innso.mobile.api.services.ApplicationApi;
+import com.innso.mobile.api.services.CustomerApi;
 import com.innso.mobile.managers.preferences.PrefsManager;
 
 import java.util.concurrent.TimeUnit;
@@ -30,6 +31,13 @@ public class ApiModule {
     @Singleton
     public ApplicationApi applicationApi( Retrofit retrofit) {
         return retrofit.create(ApplicationApi.class);
+    }
+
+
+    @Provides
+    @Singleton
+    public CustomerApi customerApi(Retrofit retrofit) {
+        return retrofit.create(CustomerApi.class);
     }
 
     @Provides

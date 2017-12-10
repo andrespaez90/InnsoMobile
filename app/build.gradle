@@ -77,7 +77,7 @@ dependencies {
     compile 'com.google.firebase:firebase-storage:10.0.1'
 
 
-    implementation 'com.github.PhilJay:MPAndroidChart:v3.0.3'
+    compile 'com.github.PhilJay:MPAndroidChart:v3.0.3'
 
     testCompile 'junit:junit:4.12'
 }

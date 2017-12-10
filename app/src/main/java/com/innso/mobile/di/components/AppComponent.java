@@ -45,8 +45,6 @@ public interface AppComponent {
 
     FirebaseAuth firebaseAuth();
 
-    FirebaseUser firebaseUser();
-
     @Named("firebaseUserAdmin")
     FirebaseAuth firebaseAdmin();
 

@@ -5,10 +5,12 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.view.MenuItem;
+import android.view.View;
 
 import com.innso.mobile.R;
 import com.innso.mobile.databinding.ActivityMainBinding;
 import com.innso.mobile.ui.fragments.CompanyFragment;
+import com.innso.mobile.ui.fragments.ProfileFragment;
 import com.innso.mobile.ui.helpers.NavigationViewHelper;
 import com.innso.mobile.ui.itemViews.ItemDetailMonth;
 
@@ -17,6 +19,8 @@ public class MainActivity extends BaseActivity implements BottomNavigationView.O
     private ActivityMainBinding binding;
 
     private CompanyFragment companyFragment;
+
+    private ProfileFragment profileFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,8 +53,11 @@ public class MainActivity extends BaseActivity implements BottomNavigationView.O
             case R.id.action_company:
                 replaceFragment(getCompanyFragment());
                 break;
+            case R.id.action_profile:
+                replaceFragment(getProfileFragment());
+                break;
             case R.id.action_main:
-                binding.container.removeAllViews();
+                binding.container.setVisibility(View.GONE);
                 break;
 
         }
@@ -59,9 +66,16 @@ public class MainActivity extends BaseActivity implements BottomNavigationView.O
 
     private CompanyFragment getCompanyFragment() {
         if (companyFragment == null) {
-            companyFragment = new CompanyFragment()
+            companyFragment = new CompanyFragment();
         }
         return companyFragment;
+    }
+
+    private ProfileFragment getProfileFragment() {
+        if (profileFragment == null) {
+            profileFragment = new ProfileFragment();
+        }
+        return profileFragment;
     }
 
 }

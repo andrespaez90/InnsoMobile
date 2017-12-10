@@ -24,12 +24,6 @@ public class FirebaseModule {
 
     @Provides
     @Singleton
-    FirebaseUser userManager(FirebaseAuth firebaseAuth) {
-        return firebaseAuth.getCurrentUser();
-    }
-
-    @Provides
-    @Singleton
     FirebaseAuth authManager() {
         return FirebaseAuth.getInstance();
     }

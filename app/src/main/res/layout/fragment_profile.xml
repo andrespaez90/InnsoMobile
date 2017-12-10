@@ -3,14 +3,20 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <data>
+        <variable
+            name="viewModel"
+            type="com.innso.mobile.ui.viewModels.ProfileViewModel"/>
+    </data>
+
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="@color/background">
 
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/background"
             android:padding="@dimen/spacing_standard">
 
             <ImageView
@@ -30,20 +36,10 @@
                 android:layout_marginRight="@dimen/spacing_large"
                 android:layout_toEndOf="@+id/imageView_logo"
                 android:layout_toRightOf="@id/imageView_logo"
-                android:paddingTop="@dimen/spacing_medium"
+                android:layout_alignBottom="@id/imageView_logo"
+                android:gravity="center_vertical"
                 tools:text="@string/company.name" />
 
-            <TextView
-                android:id="@+id/textView_company_nit"
-                style="@style/TextNormal"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_alignEnd="@id/textView_company_name"
-                android:layout_alignLeft="@id/textView_company_name"
-                android:layout_alignRight="@id/textView_company_name"
-                android:layout_alignStart="@id/textView_company_name"
-                android:layout_below="@id/textView_company_name"
-                tools:text="@string/company.nit" />
 
             <android.support.v7.widget.CardView
                 android:id="@+id/cardView_information_container"
@@ -52,7 +48,8 @@
                 android:layout_below="@id/imageView_logo"
                 android:layout_marginLeft="@dimen/spacing_standard"
                 android:layout_marginRight="@dimen/spacing_standard"
-                android:layout_marginTop="@dimen/spacing_xlarge">
+                android:layout_marginTop="@dimen/spacing_xlarge"
+                android:layout_marginBottom="@dimen/spacing_xlarge">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -63,7 +60,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_margin="@dimen/spacing_large"
-                        android:text="@string/copy.information"
+                        android:text="@string/copy.options"
                         android:textColor="@color/colorPrimary"
                         android:textSize="@dimen/font_normal"
                         android:textStyle="bold" />
@@ -78,88 +75,74 @@
                         android:background="@color/gray_separator" />
 
                     <com.innso.mobile.ui.views.VectorCompatTextView
-                        android:id="@+id/textView_producrts"
-                        android:layout_width="wrap_content"
+                        android:id="@+id/textView_add_user"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_vertical"
-                        android:layout_margin="@dimen/spacing_large"
-                        android:drawablePadding="@dimen/spacing_medium"
+                        android:padding="@dimen/spacing_large"
                         android:gravity="center_vertical"
-                        android:text="@string/copy.products"
-                        app:drawableLeftCompat="@drawable/ic_dashboard" />
+                        android:drawablePadding="@dimen/spacing_medium"
+                        android:text="@string/copy.add_user"
+                        android:onClick="@{viewModel::addUser}"
+                        app:drawableLeftCompat="@drawable/ic_add_user" />
+
+                    <com.innso.mobile.ui.views.VectorCompatTextView
+                        android:id="@+id/textView_add_customer"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:padding="@dimen/spacing_large"
+                        android:gravity="center_vertical"
+                        android:drawablePadding="@dimen/spacing_medium"
+                        android:text="@string/copy.add_costumer"
+                        android:onClick="@{viewModel::addCustomer}"
+                        app:drawableLeftCompat="@drawable/icon_footer_customers" />
 
                     <com.innso.mobile.ui.views.VectorCompatTextView
                         android:id="@+id/textView_banks"
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_vertical"
-                        android:layout_margin="@dimen/spacing_large"
-                        android:drawablePadding="@dimen/spacing_medium"
                         android:gravity="center_vertical"
-                        android:text="@string/copy.bank_accounts"
+                        android:padding="@dimen/spacing_large"
+                        android:drawablePadding="@dimen/spacing_medium"
+                        android:text="@string/copy.add_back_account"
                         app:drawableLeftCompat="@drawable/ic_bank" />
 
-                    <com.innso.mobile.ui.views.VectorCompatTextView
-                        android:id="@+id/textView_registry"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_vertical"
-                        android:layout_margin="@dimen/spacing_large"
-                        android:drawablePadding="@dimen/spacing_medium"
-                        android:gravity="center_vertical"
-                        android:text="@string/copy.camara_Comercio"
-                        app:drawableLeftCompat="@drawable/ic_registry" />
 
                     <com.innso.mobile.ui.views.VectorCompatTextView
-                        android:id="@+id/textView_value"
+                        android:id="@+id/textView_bank_statement"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_vertical"
-                        android:layout_margin="@dimen/spacing_large"
-                        android:drawablePadding="@dimen/spacing_medium"
-                        android:text="@string/copy.rut"
                         android:gravity="center_vertical"
-                        app:drawableLeftCompat="@drawable/ic_information" />
+                        android:padding="@dimen/spacing_large"
+                        android:drawablePadding="@dimen/spacing_medium"
+                        android:text="Agregar extracto"
+                        app:drawableLeftCompat="@drawable/ic_add_bank_statement" />
 
                     <com.innso.mobile.ui.views.VectorCompatTextView
                         android:id="@+id/textView_"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_vertical"
-                        android:layout_margin="@dimen/spacing_large"
-                        android:drawablePadding="@dimen/spacing_medium"
-                        android:gravity="center_vertical"
-                        android:text="@string/copy.bill_resolution"
-                        app:drawableLeftCompat="@drawable/ic_gavel" />
-
-                </LinearLayout>
-
-            </android.support.v7.widget.CardView>
-
-            <android.support.v7.widget.CardView
-                android:id="@+id/cardView_documents_container"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/cardView_information_container"
-                android:layout_marginLeft="@dimen/spacing_standard"
-                android:layout_marginRight="@dimen/spacing_standard"
-                android:layout_marginBottom="@dimen/spacing_standard"
-                android:layout_marginTop="@dimen/spacing_xlarge">
-
-                <LinearLayout
-                    android:id="@+id/layout_documents"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="vertical">
-
-                    <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_margin="@dimen/spacing_large"
-                        android:text="@string/copy.taxes_return"
-                        android:textColor="@color/colorPrimary"
-                        android:textSize="@dimen/font_normal"
-                        android:textStyle="bold" />
+                        android:layout_gravity="center_vertical"
+                        android:padding="@dimen/spacing_large"
+                        android:drawablePadding="@dimen/spacing_medium"
+                        android:gravity="center_vertical"
+                        android:text="Agregar comprobante de Impuesto"
+                        app:drawableLeftCompat="@drawable/ic_gavel" />
+
+                    <com.innso.mobile.ui.views.VectorCompatTextView
+                        android:id="@+id/textView_close_session"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:padding="@dimen/spacing_large"
+                        android:drawablePadding="@dimen/spacing_medium"
+                        android:gravity="center_vertical"
+                        android:text="@string/copy.close_session"
+                        android:onClick="@{viewModel::closeSession}"
+                        app:drawableLeftCompat="@drawable/ic_exit_app" />
 
                 </LinearLayout>
 

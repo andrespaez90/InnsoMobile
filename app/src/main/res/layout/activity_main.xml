@@ -13,7 +13,7 @@
         <ScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_above="@id/navigation_view"
+            android:layout_above="@+id/navigation_view"
             android:scrollbars="none">
 
             <RelativeLayout
@@ -26,7 +26,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="@dimen/spacing_standard"
-                    android:text="@string/copy.flow_accounting"
+                    android:text="@string/title.flow_accounting"
                     android:textSize="@dimen/font_xxxlarge" />
 
 
