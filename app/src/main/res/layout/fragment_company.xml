@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/background"
+            android:padding="@dimen/spacing_standard">
+
+            <ImageView
+                android:id="@+id/imageView_logo"
+                android:layout_width="@dimen/size_profile_image"
+                android:layout_height="@dimen/size_profile_image"
+                android:layout_marginTop="@dimen/spacing_standard"
+                android:src="@drawable/innso_logo" />
+
+            <TextView
+                android:id="@+id/textView_company_name"
+                style="@style/TextBig.Black"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignTop="@id/imageView_logo"
+                android:layout_marginLeft="@dimen/spacing_large"
+                android:layout_marginRight="@dimen/spacing_large"
+                android:layout_toEndOf="@+id/imageView_logo"
+                android:layout_toRightOf="@id/imageView_logo"
+                android:paddingTop="@dimen/spacing_medium"
+                tools:text="@string/company.name" />
+
+            <TextView
+                android:id="@+id/textView_company_nit"
+                style="@style/TextNormal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignEnd="@id/textView_company_name"
+                android:layout_alignLeft="@id/textView_company_name"
+                android:layout_alignRight="@id/textView_company_name"
+                android:layout_alignStart="@id/textView_company_name"
+                android:layout_below="@id/textView_company_name"
+                tools:text="@string/company.nit" />
+
+            <android.support.v7.widget.CardView
+                android:id="@+id/cardView_information_container"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/imageView_logo"
+                android:layout_marginLeft="@dimen/spacing_standard"
+                android:layout_marginRight="@dimen/spacing_standard"
+                android:layout_marginTop="@dimen/spacing_xlarge">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/spacing_large"
+                        android:text="@string/copy.information"
+                        android:textColor="@color/colorPrimary"
+                        android:textSize="@dimen/font_normal"
+                        android:textStyle="bold" />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/spacing_xmicro"
+                        android:layout_marginEnd="@dimen/spacing_large"
+                        android:layout_marginLeft="@dimen/spacing_large"
+                        android:layout_marginRight="@dimen/spacing_large"
+                        android:layout_marginStart="@dimen/spacing_large"
+                        android:background="@color/gray_separator" />
+
+                    <com.innso.mobile.ui.views.VectorCompatTextView
+                        android:id="@+id/textView_producrts"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_margin="@dimen/spacing_large"
+                        android:drawablePadding="@dimen/spacing_medium"
+                        android:text="@string/copy.products"
+                        app:drawableLeftCompat="@drawable/ic_dashboard" />
+
+                    <com.innso.mobile.ui.views.VectorCompatTextView
+                        android:id="@+id/textView_banks"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_margin="@dimen/spacing_large"
+                        android:drawablePadding="@dimen/spacing_medium"
+                        android:text="@string/copy.bank_accounts"
+                        app:drawableLeftCompat="@drawable/ic_bank" />
+
+                    <com.innso.mobile.ui.views.VectorCompatTextView
+                        android:id="@+id/textView_registry"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_margin="@dimen/spacing_large"
+                        android:drawablePadding="@dimen/spacing_medium"
+                        android:text="@string/copy.camara_Comercio"
+                        app:drawableLeftCompat="@drawable/ic_registry" />
+
+                    <com.innso.mobile.ui.views.VectorCompatTextView
+                        android:id="@+id/textView_value"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_margin="@dimen/spacing_large"
+                        android:drawablePadding="@dimen/spacing_medium"
+                        android:text="@string/copy.rut"
+                        app:drawableLeftCompat="@drawable/ic_information" />
+
+                    <com.innso.mobile.ui.views.VectorCompatTextView
+                        android:id="@+id/textView_"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_margin="@dimen/spacing_large"
+                        android:drawablePadding="@dimen/spacing_medium"
+                        android:text="@string/copy.bill_resolution"
+                        app:drawableLeftCompat="@drawable/ic_gavel" />
+
+                </LinearLayout>
+
+            </android.support.v7.widget.CardView>
+
+            <android.support.v7.widget.CardView
+                android:id="@+id/cardView_documents_container"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/cardView_information_container"
+                android:layout_marginLeft="@dimen/spacing_standard"
+                android:layout_marginRight="@dimen/spacing_standard"
+                android:layout_marginBottom="@dimen/spacing_standard"
+                android:layout_marginTop="@dimen/spacing_xlarge">
+
+                <LinearLayout
+                    android:id="@+id/layout_documents"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/spacing_large"
+                        android:text="@string/copy.taxes_return"
+                        android:textColor="@color/colorPrimary"
+                        android:textSize="@dimen/font_normal"
+                        android:textStyle="bold" />
+
+                </LinearLayout>
+
+            </android.support.v7.widget.CardView>
+
+        </RelativeLayout>
+
+    </ScrollView>
+
+</layout>

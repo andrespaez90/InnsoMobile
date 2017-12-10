@@ -9,10 +9,10 @@ import android.support.v4.app.FragmentTransaction;
 import android.util.Pair;
 import android.view.View;
 
+import com.innso.mobile.R;
 import com.innso.mobile.ui.factories.SnackBarFactory;
 
-
-public abstract class BaseFragment extends Fragment {
+public class BaseFragment extends Fragment {
 
     protected ProgressDialog progressDialog;
 
@@ -60,7 +60,7 @@ public abstract class BaseFragment extends Fragment {
 
     protected void replaceFragment(BaseFragment fragment) {
 
-        replaceFragment(fragment,  fragment.getContainer());
+        replaceFragment(fragment, fragment.getContainer());
     }
 
     private void showMessage(@SnackBarFactory.SnackBarType String type, @NonNull View view, String message, int duration) {
@@ -103,5 +103,7 @@ public abstract class BaseFragment extends Fragment {
         return 0;
     }
 
-    public abstract int getContainer();
+    public int getContainer() {
+        return R.id.container;
+    }
 }

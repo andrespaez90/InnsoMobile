@@ -3,7 +3,6 @@ package com.innso.mobile.ui.activities;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.PersistableBundle;
 import android.support.annotation.CallSuper;
 import android.support.annotation.ColorInt;
 import android.support.annotation.NonNull;
@@ -48,7 +47,8 @@ public class BaseActivity extends AppCompatActivity {
     @CallSuper
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        disposable = new CompositeDisposable();
+        this.fragmentManager = this.getSupportFragmentManager();
+        this.disposable = new CompositeDisposable();
     }
 
     public ActivityComponent getComponent() {

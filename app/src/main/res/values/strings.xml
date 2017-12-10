@@ -4,11 +4,35 @@
     <string name="copy.name">Nombre</string>
     <string name="copy.phone_number">Número Telefonico</string>
     <string name="copy.email">Correo Electronico</string>
-    <string name="title.new_user">Acceso a\nNuevo Usuario</string>
-    <string name="copy.finalize">Finalizar</string>
-    <string name="error.empty_fields">Campos vacios</string>
-    <string name="error.incorrect_fields">Campos incorrectos</string>
+
+
     <string name="copy.password">Contraseña</string>
     <string name="copy.login">Ingresar</string>
     <string name="copy.forgot_my_password">Olvide mi contraseña</string>
+    <string name="copy.finalize">Finalizar</string>
+    <string name="copy.dashboard">Dashboard</string>
+    <string name="copy.customers">Clientes</string>
+    <string name="copy.company">Compañia</string>
+    <string name="copy.profile">Perfil</string>
+    <string name="copy.documents">Documentos</string>
+    <string name="copy.information">Información</string>
+    <string name="copy.taxes_return">Impuestos Presentados</string>
+    <string name="copy.banks">Bancos</string>
+    <string name="copy.bank_accounts">Cuentas Bancarias</string>
+
+    <string name="title.new_user">Acceso a\nNuevo Usuario</string>
+    <string name="error.empty_fields">Campos vacios</string>
+    <string name="error.incorrect_fields">Campos incorrectos</string>
+    <string name="copy.flow_accounting">Flujo Contable</string>
+
+    <string name="accounting.revenue">%s\nIngresos</string>
+    <string name="accounting.expenditure">%s\nExpenditure</string>
+
+    <string name="company.name">Innso SAS\nInnovating Software SAS</string>
+    <string name="company.nit">Nit: 900548400-0</string>
+    <string name="copy.rut">RUT</string>
+    <string name="copy.camara_Comercio">Camara de Comercio</string>
+    <string name="copy.products">Productos</string>
+    <string name="copy.bill_resolution">Resolución Facturación</string>
+
 </resources>
