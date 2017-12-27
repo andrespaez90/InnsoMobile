@@ -1,12 +1,15 @@
 package com.innso.mobile.di.modules;
 
 
+import android.content.Context;
+
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.innso.mobile.api.config.ApiConfig;
 import com.innso.mobile.api.config.AuthenticatorService;
 import com.innso.mobile.api.services.ApplicationApi;
 import com.innso.mobile.api.services.CustomerApi;
+import com.innso.mobile.api.services.UserApi;
 import com.innso.mobile.managers.preferences.PrefsManager;
 
 import java.util.concurrent.TimeUnit;
@@ -16,7 +19,9 @@ import javax.inject.Singleton;
 
 import dagger.Module;
 import dagger.Provides;
+import okhttp3.Interceptor;
 import okhttp3.OkHttpClient;
+import okhttp3.Request;
 import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
@@ -29,10 +34,15 @@ public class ApiModule {
 
     @Provides
     @Singleton
-    public ApplicationApi applicationApi( Retrofit retrofit) {
+    public ApplicationApi applicationApi(Retrofit retrofit) {
         return retrofit.create(ApplicationApi.class);
     }
 
+    @Provides
+    @Singleton
+    public UserApi userApi(@Named("firebase-functions") Retrofit retrofit) {
+        return retrofit.create(UserApi.class);
+    }
 
     @Provides
     @Singleton
@@ -48,17 +58,6 @@ public class ApiModule {
 
 
     @Provides
-    @Singleton AuthenticatorService getAuthenticator(){
-        return new AuthenticatorService();
-    }
-
-    @Provides
-    @Singleton
-    public Gson gson() {
-        return new GsonBuilder().create();
-    }
-
-    @Provides
     @Singleton
     public Retrofit retrofitFirebase(ApiConfig apiConfig, Gson gson, AuthenticatorService authenticator) {
 
@@ -66,6 +65,18 @@ public class ApiModule {
                 .authenticator(authenticator);
 
         return getRetrofitBuilder(httpClient.build(), apiConfig.getFirebaseUrl(), gson).build();
+    }
+
+    @Provides
+    @Singleton
+    @Named("firebase-functions")
+    public Retrofit retrofitFirebaseFunctions(ApiConfig apiConfig, Gson gson, AuthenticatorService authenticator, PrefsManager prefsManager) {
+
+        OkHttpClient.Builder httpClient = getHttpClientBuilder(apiConfig)
+                .addInterceptor(provideDynamicHeaderInterceptor(prefsManager))
+                .authenticator(authenticator);
+
+        return getRetrofitBuilder(httpClient.build(), apiConfig.getFuntionsUrlBase(), gson).build();
     }
 
     private OkHttpClient.Builder getHttpClientBuilder(ApiConfig apiConfig) {
@@ -93,6 +104,36 @@ public class ApiModule {
                 .baseUrl(url)
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                 .addConverterFactory(GsonConverterFactory.create(gson));
+    }
+
+    private Interceptor provideDynamicHeaderInterceptor(PrefsManager prefsManager) {
+
+        return chain -> {
+            Request.Builder newBuilder;
+
+            newBuilder = getDefaultHeaders(chain, prefsManager);
+
+            return chain.proceed(newBuilder.build());
+        };
+    }
+
+    private Request.Builder getDefaultHeaders(Interceptor.Chain chain, PrefsManager prefsManager) {
+        return chain.request().newBuilder()
+                .header(ApiConfig.AUTHORIZATION, ApiConfig.BEARER + "12321SDSDFSDFSFV")
+                .method(chain.request().method(), chain.request().body());
+    }
+
+
+    @Provides
+    @Singleton
+    public Gson gson() {
+        return new GsonBuilder().create();
+    }
+
+    @Provides
+    @Singleton
+    AuthenticatorService getAuthenticator(Context context) {
+        return new AuthenticatorService(context);
     }
 
 }

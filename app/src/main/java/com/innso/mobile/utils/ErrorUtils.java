@@ -11,8 +11,6 @@ import retrofit2.HttpException;
 
 public class ErrorUtils {
 
-    public static final int ORDER_UNAVAILABLE_CODE = 422;
-
     private static final String CONNECTION_ERROR = "Revisa tu conexión a internet.";
 
     public static String getMessageError(Throwable e) {

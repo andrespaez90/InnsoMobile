@@ -1,13 +1,11 @@
 package com.innso.mobile.di.components;
 
 
-import android.support.annotation.Nullable;
-
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 import com.innso.mobile.api.config.ApiConfig;
 import com.innso.mobile.api.config.AuthenticatorService;
 import com.innso.mobile.api.controllers.AppControllerApi;
+import com.innso.mobile.api.controllers.UserControllerApi;
 import com.innso.mobile.di.modules.ApiModule;
 import com.innso.mobile.di.modules.AppModule;
 import com.innso.mobile.di.modules.ControllerModule;
@@ -15,7 +13,6 @@ import com.innso.mobile.di.modules.FirebaseModule;
 import com.innso.mobile.managers.preferences.PrefsManager;
 import com.innso.mobile.providers.ResourceProvider;
 
-import javax.inject.Named;
 import javax.inject.Singleton;
 
 import dagger.Component;
@@ -45,14 +42,12 @@ public interface AppComponent {
 
     FirebaseAuth firebaseAuth();
 
-    @Named("firebaseUserAdmin")
-    FirebaseAuth firebaseAdmin();
-
-
     /**
      * Controllers
      */
 
     AppControllerApi appControllerApi();
+
+    UserControllerApi userControllerApi();
 
 }

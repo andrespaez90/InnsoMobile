@@ -79,7 +79,7 @@
             android:layout_alignParentBottom="true"
             android:layout_centerHorizontal="true"
             android:layout_marginBottom="@dimen/spacing_standard"
-            android:onClick="@{viewModel::onFinaliceClick}"
+            android:onClick="@{viewModel::onFinalizeClick}"
             android:text="@string/copy.finalize"/>
 
     </RelativeLayout>

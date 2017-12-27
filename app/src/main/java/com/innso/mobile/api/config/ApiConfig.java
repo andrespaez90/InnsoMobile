@@ -6,6 +6,7 @@ import com.innso.mobile.managers.preferences.PrefsManager;
 public class ApiConfig {
 
     public static final String BEARER = "Bearer ";
+    public static final String AUTHORIZATION = "Authorization";
 
     public boolean DEBUG = true;
 
@@ -17,5 +18,9 @@ public class ApiConfig {
 
     public String getFirebaseUrl() {
         return "https://innso-mobile.firebaseio.com";
+    }
+
+    public String getFuntionsUrlBase() {
+        return "https://us-central1-innso-mobile.cloudfunctions.net";
     }
 }
