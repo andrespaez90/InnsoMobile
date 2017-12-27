@@ -16,8 +16,8 @@ public class AppControllerApi {
         this.applicationApi = applicationFirebaseApi;
     }
 
-    public Single<GeneralInformation> checkVersion(String tokenUser){
-        return applicationApi.getAppVersion(tokenUser).subscribeOn(Schedulers.io())
+    public Single<GeneralInformation> checkVersion(){
+        return applicationApi.getAppVersion().subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread());
     }
 

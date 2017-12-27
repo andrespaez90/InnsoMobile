@@ -1,5 +1,6 @@
 <resources>
     <string name="app_name">Innso Mobile</string>
+    <string name="package_app">package:com.innso.mobile</string>
 
     <string name="copy.check_version">Verificando Actualizaciones</string>
     <string name="copy.name">Nombre</string>
@@ -30,6 +31,10 @@
 
     <string name="title.new_user">Acceso a\nNuevo Usuario</string>
     <string name="title.flow_accounting">Flujo Contable</string>
+
+
+    <string name="splash.new_version">Nueva Version</string>
+    <string name="splash.get_latest_version">Para seguir usando Innso Mobile, debes actualizar la version en la tienda</string>
 
     <string name="error.empty_fields">Campos vacios</string>
     <string name="error.incorrect_fields">Campos incorrectos</string>
