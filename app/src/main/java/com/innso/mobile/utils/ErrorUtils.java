@@ -1,6 +1,8 @@
 package com.innso.mobile.utils;
 
 
+import android.text.TextUtils;
+
 import com.google.gson.Gson;
 import com.innso.mobile.utils.models.DefaultError;
 
@@ -26,7 +28,7 @@ public class ErrorUtils {
 
                 defaultError = new Gson().fromJson(responseBody.string(), DefaultError.class);
 
-                error = defaultError.getError();
+                error = TextUtils.isEmpty(defaultError.getError()) ? defaultError.getMessage() : defaultError.getError();
             } else if (e instanceof IOException) {
                 error = CONNECTION_ERROR;
             }

@@ -29,6 +29,7 @@ public class CreateUserActivity extends BaseActivity {
     }
 
     public void subscribe() {
+        disposable.add(viewModel.observableSnackBar().subscribe(event -> showMessage(event.getTypeSnackBar(), binding.getRoot(), event.getMessage())));
         disposable.add(viewModel.userCreated().subscribe(message -> showError(binding.getRoot(), message)));
     }
 

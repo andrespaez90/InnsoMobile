@@ -5,11 +5,16 @@ import com.google.gson.annotations.SerializedName;
 public class DefaultError {
 
     @SerializedName("error")
-    private String errorMessage;
+    String error;
+
+    @SerializedName("message")
+    String message;
 
     public String getError() {
-        return errorMessage;
+        return error;
     }
 
-
+    public String getMessage() {
+        return message;
+    }
 }
