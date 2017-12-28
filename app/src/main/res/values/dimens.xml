@@ -60,5 +60,6 @@
 
     <dimen name="size_chart">180dp</dimen>
     <dimen name="size_profile_image">100dp</dimen>
+    <dimen name="size_item_profile_image">80dp</dimen>
 
 </resources>

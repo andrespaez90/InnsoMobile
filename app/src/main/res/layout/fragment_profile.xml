@@ -82,9 +82,9 @@
                         android:padding="@dimen/spacing_large"
                         android:gravity="center_vertical"
                         android:drawablePadding="@dimen/spacing_medium"
-                        android:text="@string/copy.add_user"
+                        android:text="@string/copy.users"
                         android:onClick="@{viewModel::addUser}"
-                        app:drawableLeftCompat="@drawable/ic_add_user" />
+                        app:drawableLeftCompat="@drawable/ic_users" />
 
                     <com.innso.mobile.ui.views.VectorCompatTextView
                         android:id="@+id/textView_add_customer"

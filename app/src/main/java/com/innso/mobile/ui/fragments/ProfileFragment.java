@@ -65,7 +65,6 @@ public class ProfileFragment extends BaseFragment {
         disposable.add(viewModel.closeSession().subscribe(this::closeSession));
     }
 
-
     private void startActivityFormEvent(Class<?> clazz){
         startActivity(new Intent(getContext(), clazz));
     }

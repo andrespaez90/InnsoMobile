@@ -5,6 +5,7 @@ import android.view.View;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.innso.mobile.ui.activities.CreateUserActivity;
+import com.innso.mobile.ui.activities.UsersActivity;
 
 import javax.inject.Inject;
 
@@ -24,20 +25,20 @@ public class ProfileViewModel extends BaseViewModel {
         getComponent().inject(this);
     }
 
-    public void addUser(View view){
+    public void addUser(View view) {
+        startActivityEvent.onNext(UsersActivity.class);
+    }
+
+    public void addCustomer(View view) {
         startActivityEvent.onNext(CreateUserActivity.class);
     }
 
-    public void addCustomer(View view){
-        startActivityEvent.onNext(CreateUserActivity.class);
-    }
-
-    public void closeSession(View view){
+    public void closeSession(View view) {
         firebaseAuth.signOut();
         closeSession.onNext(true);
     }
 
-    public Observable<Boolean> closeSession(){
+    public Observable<Boolean> closeSession() {
         return closeSession.observeOn(AndroidSchedulers.mainThread());
     }
 

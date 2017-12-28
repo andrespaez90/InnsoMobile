@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="viewModel"
+            type="com.innso.mobile.ui.viewModels.UsersListViewModel" />
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="@dimen/spacing_large"
+        tools:context="com.innso.mobile.ui.activities.UsersActivity">
+
+        <TextView
+            android:id="@+id/textView_title"
+            style="@style/TextHuge.Black.Bold"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/title.users"
+            android:textColor="@color/colorPrimary" />
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recyclerList_users"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/textView_title"
+            android:layout_marginTop="@dimen/spacing_medium" />
+
+        <android.support.design.widget.FloatingActionButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_margin="@dimen/spacing_standard"
+            android:onClick="@{viewModel::onNewUserClick}"
+            android:src="@drawable/ic_add_user_white" />
+
+    </RelativeLayout>
+
+</layout>
+

@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="@dimen/spacing_large">
+
+        <ImageView
+            android:id="@+id/imageView_profile_picture"
+            android:layout_width="@dimen/size_item_profile_image"
+            android:layout_height="@dimen/size_item_profile_image"
+            android:padding="@dimen/spacing_small"
+            android:src="@mipmap/ic_launcher" />
+
+        <android.support.v7.widget.AppCompatImageView
+            android:id="@+id/imageView_chat"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignTop="@id/imageView_profile_picture"
+            android:layout_marginTop="@dimen/spacing_small"
+            app:srcCompat="@drawable/ic_chat" />
+
+        <android.support.v7.widget.AppCompatImageView
+            android:id="@+id/imageView_call"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@id/imageView_profile_picture"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginBottom="@dimen/spacing_small"
+            app:srcCompat="@drawable/ic_call" />
+
+        <TextView
+            android:id="@+id/textView_name"
+            style="@style/TextBig.Black"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@id/imageView_profile_picture"
+            android:layout_toEndOf="@id/imageView_profile_picture"
+            android:layout_toLeftOf="@id/imageView_chat"
+            android:layout_toRightOf="@id/imageView_profile_picture"
+            android:layout_toStartOf="@id/imageView_chat"
+            tools:text="Nombre\nCorreo" />
+
+        <TextView
+            android:id="@+id/textView_phone"
+            style="@style/TextBig.Black"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@id/imageView_profile_picture"
+            android:layout_alignLeft="@id/textView_name"
+            android:layout_alignStart="@id/textView_name"
+            android:layout_below="@id/textView_name"
+            tools:text="+5712345678" />
+
+    </RelativeLayout>
+
+</layout>

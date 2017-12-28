@@ -24,4 +24,20 @@ public class UserRequest {
         this.phone = phone;
         this.password = DEFAULT_PASSWORD;
     }
+
+    public String getDEFAULT_PASSWORD() {
+        return DEFAULT_PASSWORD;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
 }

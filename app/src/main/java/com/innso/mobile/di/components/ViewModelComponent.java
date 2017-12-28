@@ -5,6 +5,7 @@ import com.innso.mobile.ui.viewModels.LoginViewModel;
 import com.innso.mobile.ui.viewModels.NewUserViewModel;
 import com.innso.mobile.ui.viewModels.ProfileViewModel;
 import com.innso.mobile.ui.viewModels.SplashViewModel;
+import com.innso.mobile.ui.viewModels.UsersListViewModel;
 
 import dagger.Component;
 
@@ -20,4 +21,6 @@ public interface ViewModelComponent extends AppComponent {
     void inject(LoginViewModel loginViewModel);
 
     void inject(ProfileViewModel profileViewModel);
+
+    void inject(UsersListViewModel usersListViewModel);
 }

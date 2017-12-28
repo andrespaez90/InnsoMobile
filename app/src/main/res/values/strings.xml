@@ -25,12 +25,14 @@
     <string name="copy.bill_resolution">Resolución Facturación</string>
     <string name="copy.options">Opciones</string>
     <string name="copy.add_user">Nuevo Usuario</string>
+    <string name="copy.users">Usuarios Registrados</string>
     <string name="copy.add_back_account">Agregar cuenta Bacaria</string>
     <string name="copy.close_session">Cerrar sesion</string>
     <string name="copy.add_costumer">Nuevo Cliente</string>
 
     <string name="title.new_user">Acceso a\nNuevo Usuario</string>
     <string name="title.flow_accounting">Flujo Contable</string>
+    <string name="title.users">Usuarios\nRegistrados</string>
 
 
     <string name="splash.new_version">Nueva Version</string>
