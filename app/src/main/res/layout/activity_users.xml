@@ -40,8 +40,6 @@
             android:id="@+id/recyclerList_users"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginLeft="@dimen/spacing_standard"
-            android:layout_marginRight="@dimen/spacing_standard"
             android:layout_marginTop="@dimen/font_xxlarge"
             android:layout_below="@id/textView_title" />
 
