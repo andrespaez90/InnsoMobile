@@ -14,9 +14,12 @@ import com.innso.mobile.R;
 import com.innso.mobile.databinding.FragmentCompanyBinding;
 import com.innso.mobile.ui.BaseFragment;
 import com.innso.mobile.ui.itemViews.ItemDetailMonth;
+import com.innso.mobile.ui.viewModels.CompanyViewModel;
 import com.innso.mobile.utils.StringUtils;
 
 public class CompanyFragment extends BaseFragment {
+
+    private CompanyViewModel viewModel;
 
     private FragmentCompanyBinding binding;
 
@@ -25,6 +28,8 @@ public class CompanyFragment extends BaseFragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_company, container, false);
+        viewModel = new CompanyViewModel();
+        binding.setViewModel(viewModel);
         return binding.getRoot();
     }
 
@@ -33,6 +38,16 @@ public class CompanyFragment extends BaseFragment {
         super.onActivityCreated(savedInstanceState);
         initView();
         loadDummyData();
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        subscribe();
+    }
+
+    private void subscribe(){
+        disposable.add(viewModel.observableStartActivity().subscribe(this::startActivityFormEvent));
     }
 
     private void initView() {

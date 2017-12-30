@@ -74,6 +74,7 @@
                         android:layout_marginStart="@dimen/spacing_large"
                         android:background="@color/gray_separator" />
 
+
                     <com.innso.mobile.ui.views.VectorCompatTextView
                         android:id="@+id/textView_add_user"
                         android:layout_width="match_parent"
@@ -82,55 +83,8 @@
                         android:padding="@dimen/spacing_large"
                         android:gravity="center_vertical"
                         android:drawablePadding="@dimen/spacing_medium"
-                        android:text="@string/copy.users"
-                        android:onClick="@{viewModel::addUser}"
-                        app:drawableLeftCompat="@drawable/ic_users" />
-
-                    <com.innso.mobile.ui.views.VectorCompatTextView
-                        android:id="@+id/textView_add_customer"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_vertical"
-                        android:padding="@dimen/spacing_large"
-                        android:gravity="center_vertical"
-                        android:drawablePadding="@dimen/spacing_medium"
-                        android:text="@string/copy.add_costumer"
-                        android:onClick="@{viewModel::addCustomer}"
-                        app:drawableLeftCompat="@drawable/icon_footer_customers" />
-
-                    <com.innso.mobile.ui.views.VectorCompatTextView
-                        android:id="@+id/textView_banks"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_vertical"
-                        android:gravity="center_vertical"
-                        android:padding="@dimen/spacing_large"
-                        android:drawablePadding="@dimen/spacing_medium"
-                        android:text="@string/copy.add_back_account"
-                        app:drawableLeftCompat="@drawable/ic_bank" />
-
-
-                    <com.innso.mobile.ui.views.VectorCompatTextView
-                        android:id="@+id/textView_bank_statement"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_vertical"
-                        android:gravity="center_vertical"
-                        android:padding="@dimen/spacing_large"
-                        android:drawablePadding="@dimen/spacing_medium"
-                        android:text="Agregar extracto"
-                        app:drawableLeftCompat="@drawable/ic_add_bank_statement" />
-
-                    <com.innso.mobile.ui.views.VectorCompatTextView
-                        android:id="@+id/textView_"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_vertical"
-                        android:padding="@dimen/spacing_large"
-                        android:drawablePadding="@dimen/spacing_medium"
-                        android:gravity="center_vertical"
-                        android:text="Agregar comprobante de Impuesto"
-                        app:drawableLeftCompat="@drawable/ic_gavel" />
+                        android:text="Editar Perfil"
+                        app:drawableLeftCompat="@drawable/ic_edit" />
 
                     <com.innso.mobile.ui.views.VectorCompatTextView
                         android:id="@+id/textView_close_session"

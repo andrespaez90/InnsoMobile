@@ -1,6 +1,7 @@
 package com.innso.mobile.ui;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.CallSuper;
 import android.support.annotation.ColorInt;
@@ -53,6 +54,9 @@ public class BaseFragment extends Fragment {
                 .build();
     }
 
+    public void startActivityFormEvent(Class<?> clazz){
+        startActivity(new Intent(getContext(), clazz));
+    }
 
     public void showProgressDialog(Pair<Boolean, Integer> progressData) {
         initProgressDialog();

@@ -3,8 +3,11 @@ package com.innso.mobile.ui.activities;
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
+import android.support.v4.content.ContextCompat;
+import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
 import android.view.ViewGroup;
 
 import com.innso.mobile.R;
@@ -58,6 +61,8 @@ public class UsersActivity extends BaseActivity {
     }
 
     private void addUser(List<UserRequest> users) {
+        binding.progressbar.setVisibility(View.GONE);
+        userListAdapter.clearAll();
         for (UserRequest user : users) {
             userListAdapter.addItem(new GenericItemAbstract(user, GenericAdapterFactory.TYPE_ITEM));
         }
