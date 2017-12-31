@@ -19,13 +19,19 @@
             </intent-filter>
         </activity>
 
+        <activity android:name=".ui.activities.LoginActivity" />
+
+        <activity android:name=".ui.activities.MainActivity" />
+
+        <activity android:name=".ui.activities.UsersActivity"/>
+
+        <activity
+            android:name=".ui.activities.NewCustomerActivity"
+            android:theme="@style/AppThemeFullScreen" />
+
         <activity
             android:name=".ui.activities.CreateUserActivity"
             android:theme="@style/AppThemeFullScreen" />
-
-        <activity android:name=".ui.activities.LoginActivity" />
-        <activity android:name=".ui.activities.MainActivity" />
-        <activity android:name=".ui.activities.UsersActivity"/>
 
     </application>
 

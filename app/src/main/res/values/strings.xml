@@ -4,6 +4,7 @@
 
     <string name="copy.check_version">Verificando Actualizaciones</string>
     <string name="copy.name">Nombre</string>
+    <string name="copy.address">Dirección</string>
     <string name="copy.phone_number">Número Telefonico</string>
     <string name="copy.email">Correo Electronico</string>
     <string name="copy.password">Contraseña</string>
@@ -31,6 +32,7 @@
     <string name="copy.add_costumer">Nuevo Cliente</string>
 
     <string name="title.new_user">Acceso a\nNuevo Usuario</string>
+    <string name="title.new_costumer">Registro de a\nNuevo Cliente</string>
     <string name="title.flow_accounting">Flujo Contable</string>
     <string name="title.users">Usuarios\nRegistrados</string>
 
@@ -43,6 +45,9 @@
 
     <string name="accounting.revenue">%s\nIngresos</string>
     <string name="accounting.expenditure">%s\nExpenditure</string>
+
+    <string name="customer.name">Nombre o Razón social</string>
+    <string name="customer.id">NIT</string>
 
     <string name="company.name">Innso SAS\nInnovating Software SAS</string>
     <string name="company.nit">Nit: 900.548.400&#8211;0</string>

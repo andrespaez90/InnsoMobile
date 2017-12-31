@@ -7,6 +7,7 @@ public class ApiConfig {
 
     public static final String BEARER = "Bearer ";
     public static final String AUTHORIZATION = "authorization";
+    public static final String PARAM_AUTHORIZATION = "auth";
 
     public boolean DEBUG = true;
 

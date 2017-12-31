@@ -2,7 +2,9 @@ package com.innso.mobile.di.modules;
 
 
 import android.content.Context;
+import android.text.TextUtils;
 
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.innso.mobile.api.config.ApiConfig;
@@ -10,6 +12,7 @@ import com.innso.mobile.api.config.AuthenticatorService;
 import com.innso.mobile.api.services.ApplicationApi;
 import com.innso.mobile.api.services.CustomerApi;
 import com.innso.mobile.api.services.UserApi;
+import com.innso.mobile.managers.preferences.InnsoPreferences;
 import com.innso.mobile.managers.preferences.PrefsManager;
 
 import java.util.concurrent.TimeUnit;
@@ -19,6 +22,7 @@ import javax.inject.Singleton;
 
 import dagger.Module;
 import dagger.Provides;
+import okhttp3.HttpUrl;
 import okhttp3.Interceptor;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
@@ -59,9 +63,10 @@ public class ApiModule {
 
     @Provides
     @Singleton
-    public Retrofit retrofitFirebase(ApiConfig apiConfig, Gson gson, AuthenticatorService authenticator) {
+    public Retrofit retrofitFirebase(ApiConfig apiConfig, Gson gson, AuthenticatorService authenticator, PrefsManager prefsManager) {
 
         OkHttpClient.Builder httpClient = getHttpClientBuilder(apiConfig)
+                .addInterceptor(addFirebaseAuthentication(prefsManager))
                 .authenticator(authenticator);
 
         return getRetrofitBuilder(httpClient.build(), apiConfig.getFirebaseUrl(), gson).build();
@@ -106,6 +111,25 @@ public class ApiModule {
                 .addConverterFactory(GsonConverterFactory.create(gson));
     }
 
+    private Interceptor addFirebaseAuthentication(PrefsManager prefsManager) {
+
+        return chain -> {
+
+            Request.Builder newBuilder = chain.request().newBuilder();
+
+            newBuilder.method(chain.request().method(), chain.request().body());
+
+            String token = prefsManager.getString(InnsoPreferences.ACCESS_TOKEN);
+
+            if (!TextUtils.isEmpty(token)) {
+                newBuilder.url(chain.request().url().newBuilder().addQueryParameter(ApiConfig.PARAM_AUTHORIZATION, token)
+                        .build());
+            }
+
+            return chain.proceed(newBuilder.build());
+        };
+    }
+
     private Interceptor provideDynamicHeaderInterceptor(PrefsManager prefsManager) {
 
         return chain -> {
@@ -119,7 +143,7 @@ public class ApiModule {
 
     private Request.Builder getDefaultHeaders(Interceptor.Chain chain, PrefsManager prefsManager) {
         return chain.request().newBuilder()
-                .header(ApiConfig.AUTHORIZATION, ApiConfig.BEARER + "12321SDSDFSDFSFV")
+                .header(ApiConfig.AUTHORIZATION, ApiConfig.BEARER + prefsManager.getString(InnsoPreferences.ACCESS_TOKEN))
                 .method(chain.request().method(), chain.request().body());
     }
 
@@ -132,8 +156,8 @@ public class ApiModule {
 
     @Provides
     @Singleton
-    AuthenticatorService getAuthenticator(Context context) {
-        return new AuthenticatorService(context);
+    AuthenticatorService getAuthenticator(Context context, PrefsManager prefsManager, FirebaseAuth firebaseAuth) {
+        return new AuthenticatorService(context, prefsManager, firebaseAuth);
     }
 
 }

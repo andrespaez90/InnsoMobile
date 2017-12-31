@@ -1,13 +1,10 @@
 package com.innso.mobile.ui.activities;
 
-import android.database.DatabaseUtils;
 import android.databinding.DataBindingUtil;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
 import com.innso.mobile.R;
 import com.innso.mobile.databinding.ActivityLoginBinding;
-import com.innso.mobile.ui.viewModels.BaseViewModel;
 import com.innso.mobile.ui.viewModels.LoginViewModel;
 
 public class LoginActivity extends BaseActivity {

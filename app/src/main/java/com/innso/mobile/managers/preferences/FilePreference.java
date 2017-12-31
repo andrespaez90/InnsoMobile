@@ -6,4 +6,5 @@ public class FilePreference {
     public final static String InformationPreference = "APPINFORMATION";
     public final static String UrlInformation = "URLINFORMATION";
 
+
 }

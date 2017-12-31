@@ -7,7 +7,11 @@ import android.view.View;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.GetTokenResult;
 import com.innso.mobile.R;
+import com.innso.mobile.managers.preferences.InnsoPreferences;
+import com.innso.mobile.managers.preferences.PreferencesKey;
+import com.innso.mobile.managers.preferences.PrefsManager;
 import com.innso.mobile.ui.activities.MainActivity;
 import com.innso.mobile.utils.StringUtils;
 
@@ -21,6 +25,9 @@ public class LoginViewModel extends BaseViewModel {
 
     @Inject
     FirebaseAuth firebaseAuth;
+
+    @Inject
+    PrefsManager prefsManager;
 
     public LoginViewModel() {
         getComponent().inject(this);
@@ -37,12 +44,21 @@ public class LoginViewModel extends BaseViewModel {
 
     private void validateLogin(Task<AuthResult> authResultTask) {
         if (authResultTask.isSuccessful()) {
-            startActivityEvent.onNext(MainActivity.class);
+            firebaseAuth.getCurrentUser().getToken(true)
+                    .addOnCompleteListener(this::validateToken);
+
         } else {
             Exception exception = authResultTask.getException();
             if (exception != null) {
                 showSnackBarError(exception.getMessage());
             }
+        }
+    }
+
+    private void validateToken(Task<GetTokenResult> tokenResultTask) {
+        if (tokenResultTask.isSuccessful()) {
+            prefsManager.set(InnsoPreferences.ACCESS_TOKEN, tokenResultTask.getResult().getToken());
+            startActivityEvent.onNext(MainActivity.class);
         }
     }
 
