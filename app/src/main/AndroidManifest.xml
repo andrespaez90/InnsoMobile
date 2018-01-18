@@ -13,23 +13,26 @@
             android:name=".ui.activities.SplashActivity"
             android:theme="@style/AppThemeFullScreen">
 
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+
         </activity>
+
         <activity
             android:name=".ui.activities.CreateUserActivity"
             android:theme="@style/AppThemeFullScreen" />
+
         <activity android:name=".ui.activities.LoginActivity" />
 
         <activity android:name=".ui.activities.MainActivity" />
 
         <activity android:name=".ui.activities.UsersActivity" />
 
-        <activity android:name=".ui.activities.AddBillActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+        <activity android:name=".ui.activities.AddBillActivity"
+            android:screenOrientation="portrait"/>
 
         <provider
             android:name="android.support.v4.content.FileProvider"
