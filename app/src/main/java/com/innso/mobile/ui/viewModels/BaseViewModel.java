@@ -9,6 +9,7 @@ import com.innso.mobile.InnsoApplication;
 import com.innso.mobile.di.components.DaggerViewModelComponent;
 import com.innso.mobile.di.components.ViewModelComponent;
 import com.innso.mobile.ui.factories.SnackBarFactory;
+import com.innso.mobile.ui.models.DatePickerModel;
 import com.innso.mobile.ui.models.events.SnackBarEvent;
 import com.innso.mobile.utils.ErrorUtils;
 
@@ -29,6 +30,8 @@ public class BaseViewModel {
     private PublishSubject<SnackBarEvent> snackBarSubject = PublishSubject.create();
 
     private BehaviorSubject<Pair<Boolean, Integer>> showProgressDialog = BehaviorSubject.createDefault(new Pair<>(false, 0));
+
+    PublishSubject<DatePickerModel> showDatePicker = PublishSubject.create();
 
     PublishSubject<Class> startActivityEvent = PublishSubject.create();
 
@@ -149,5 +152,9 @@ public class BaseViewModel {
 
     public Observable<Class> observableStartActivity() {
         return startActivityEvent.observeOn(AndroidSchedulers.mainThread());
+    }
+
+    public Observable<DatePickerModel> onDatePickerClick() {
+        return showDatePicker.observeOn(AndroidSchedulers.mainThread());
     }
 }

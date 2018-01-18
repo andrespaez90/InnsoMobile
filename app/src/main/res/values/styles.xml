@@ -79,6 +79,10 @@
         <item name="android:textColor">@android:color/black</item>
     </style>
 
+    <style name="TextHuge.Blue" parent="TextHuge">
+        <item name="android:textColor">@color/colorPrimary</item>
+    </style>
+
     <style name="TextSmall.Blue.Light" parent="TextSmall">
         <item name="android:textColor">@color/colorPrimary</item>
     </style>
@@ -100,6 +104,10 @@
     </style>
 
     <style name="TextHuge.Black.Bold" parent="TextHuge.Black">
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="TextHuge.Blue.Bold" parent="TextHuge.Blue">
         <item name="android:textStyle">bold</item>
     </style>
 

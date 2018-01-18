@@ -5,6 +5,7 @@ import android.app.Application;
 import com.innso.mobile.di.components.AppComponent;
 import com.innso.mobile.di.components.DaggerAppComponent;
 import com.innso.mobile.di.modules.AppModule;
+import com.innso.mobile.utils.FileUtil;
 
 
 public class InnsoApplication extends Application {
@@ -18,12 +19,18 @@ public class InnsoApplication extends Application {
         super.onCreate();
         instance = this;
         updateDagger();
+        initialize();
     }
 
     public void updateDagger() {
         appComponent = DaggerAppComponent.builder()
                 .appModule(new AppModule(this))
                 .build();
+    }
+
+    private void initialize() {
+        FileUtil.init(BuildConfig.APPLICATION_ID);
+        FileUtil.generateBasicFolders(getString(R.string.app_name));
     }
 
     public AppComponent getAppComponent() {
