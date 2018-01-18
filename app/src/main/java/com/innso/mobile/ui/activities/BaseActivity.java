@@ -17,17 +17,26 @@ import android.util.Pair;
 import android.view.View;
 
 import com.innso.mobile.InnsoApplication;
+import com.innso.mobile.R;
 import com.innso.mobile.di.components.ActivityComponent;
 import com.innso.mobile.di.components.DaggerActivityComponent;
 import com.innso.mobile.ui.BaseFragment;
+import com.innso.mobile.ui.dialogs.DatePickerDialogFragment;
 import com.innso.mobile.ui.factories.SnackBarFactory;
+import com.innso.mobile.ui.models.DatePickerModel;
+import com.innso.mobile.utils.FileUtil;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import io.reactivex.disposables.CompositeDisposable;
+import permissions.dispatcher.NeedsPermission;
+import permissions.dispatcher.RuntimePermissions;
 
+@RuntimePermissions
 public class BaseActivity extends AppCompatActivity {
+
+    protected final int REQUEST_IMAGE_CAPTURE = 1001;
 
     private List<BaseFragment> pendingForClose = new ArrayList<>();
 
@@ -228,6 +237,27 @@ public class BaseActivity extends AppCompatActivity {
                 e.printStackTrace();
             }
         }
+    }
+
+    @NeedsPermission({"android.permission.WRITE_EXTERNAL_STORAGE"})
+    @CallSuper
+    protected void successStoragePermission() {
+        FileUtil.generateBasicFolders(getString(R.string.app_name));
+    }
+
+    public void requestStoragePermissions() {
+        BaseActivityPermissionsDispatcher.successStoragePermissionWithPermissionCheck(this);
+    }
+
+
+    public void showDatePicker(DatePickerModel model) {
+        DatePickerDialogFragment datePicker = DatePickerDialogFragment.newInstance(model);
+        datePicker.setListener((dialog, date) -> onDateSelected(date));
+        datePicker.show(getSupportFragmentManager(), DatePickerDialogFragment.class.getSimpleName());
+    }
+
+    public void onDateSelected(String date) {
+
     }
 
     public void showProgressDialog(String message) {
