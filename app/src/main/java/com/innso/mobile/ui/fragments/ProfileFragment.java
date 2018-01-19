@@ -61,6 +61,7 @@ public class ProfileFragment extends BaseFragment {
     }
 
     public void subscribe(){
+        disposable.add(viewModel.observableSnackBar().subscribe(event -> showError(binding.getRoot(), event.getMessage())));
         disposable.add(viewModel.observableStartActivity().subscribe(this::startActivityFormEvent));
         disposable.add(viewModel.closeSession().subscribe(this::closeSession));
     }

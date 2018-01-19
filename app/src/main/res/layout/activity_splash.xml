@@ -2,6 +2,12 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.innso.mobile.ui.viewModels.SplashViewModel" />
+    </data>
 
     <RelativeLayout
         android:id="@+id/activity_splash"
@@ -17,8 +23,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
-            android:transitionName="@string/app_name"
-            android:src="@drawable/innso_logo" />
+            android:src="@drawable/innso_logo"
+            android:transitionName="@string/app_name" />
 
         <TextView
             android:id="@+id/textView_splash_text"
@@ -31,11 +37,23 @@
             tools:text="Verificando Actualizaciones" />
 
         <ProgressBar
+            android:id="@+id/progressbar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_above="@id/textView_splash_text"
             android:layout_centerHorizontal="true"
             android:layout_marginBottom="@dimen/spacing_standard" />
+
+        <Button
+            android:id="@+id/button_retry"
+            style="@style/Button.Dark_Blue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@id/progressbar"
+            android:layout_centerHorizontal="true"
+            android:onClick="@{o->viewModel.validateAuthentication()}"
+            android:text="Reintentar"
+            android:visibility="gone" />
 
     </RelativeLayout>
 

@@ -3,9 +3,11 @@ package com.innso.mobile.di.modules;
 
 import com.innso.mobile.api.controllers.AppControllerApi;
 import com.innso.mobile.api.controllers.CustomerController;
+import com.innso.mobile.api.controllers.FinanceController;
 import com.innso.mobile.api.controllers.UserControllerApi;
 import com.innso.mobile.api.services.ApplicationApi;
 import com.innso.mobile.api.services.CustomerApi;
+import com.innso.mobile.api.services.FinanceApi;
 import com.innso.mobile.api.services.UserApi;
 import com.innso.mobile.managers.preferences.PrefsManager;
 
@@ -33,6 +35,12 @@ public class ControllerModule {
     @Singleton
     CustomerController customerController(CustomerApi customerApi, PrefsManager prefsManager) {
         return new CustomerController(customerApi, prefsManager);
+    }
+
+    @Provides
+    @Singleton
+    FinanceController financeController(FinanceApi financeApi) {
+        return new FinanceController(financeApi);
     }
 
 }

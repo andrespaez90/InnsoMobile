@@ -9,6 +9,7 @@ import android.view.View;
 
 import com.innso.mobile.R;
 import com.innso.mobile.databinding.ActivityMainBinding;
+import com.innso.mobile.ui.fragments.BillListFragment;
 import com.innso.mobile.ui.fragments.CompanyFragment;
 import com.innso.mobile.ui.fragments.ProfileFragment;
 import com.innso.mobile.ui.helpers.NavigationViewHelper;
@@ -17,6 +18,8 @@ import com.innso.mobile.ui.itemViews.ItemDetailMonth;
 public class MainActivity extends BaseActivity implements BottomNavigationView.OnNavigationItemSelectedListener {
 
     private ActivityMainBinding binding;
+
+    private BillListFragment billListFragment;
 
     private CompanyFragment companyFragment;
 
@@ -56,6 +59,9 @@ public class MainActivity extends BaseActivity implements BottomNavigationView.O
             case R.id.action_profile:
                 replaceFragment(getProfileFragment());
                 break;
+            case R.id.action_bills:
+                replaceFragment(getBillListFragment());
+                break;
             case R.id.action_main:
                 binding.container.setVisibility(View.GONE);
                 break;
@@ -76,6 +82,13 @@ public class MainActivity extends BaseActivity implements BottomNavigationView.O
             profileFragment = new ProfileFragment();
         }
         return profileFragment;
+    }
+
+    private BillListFragment getBillListFragment() {
+        if (billListFragment == null) {
+            billListFragment = new BillListFragment();
+        }
+        return billListFragment;
     }
 
 }

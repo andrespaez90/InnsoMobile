@@ -9,10 +9,10 @@
         app:showAsAction="withText" />
 
     <item
-        android:id="@+id/action_customers"
+        android:id="@+id/action_bills"
         android:enabled="true"
-        android:icon="@drawable/icon_footer_customers"
-        android:title="@string/copy.customers"
+        android:icon="@drawable/icon_footer_bill"
+        android:title="@string/copy.bills"
         app:showAsAction="withText" />
 
     <item

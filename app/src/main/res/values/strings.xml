@@ -30,6 +30,7 @@
     <string name="copy.add_back_account">Agregar cuenta Bacaria</string>
     <string name="copy.close_session">Cerrar sesion</string>
     <string name="copy.add_costumer">Nuevo Cliente</string>
+    <string name="copy.bills">Facturas</string>
 
     <string name="copy.day">Día</string>
     <string name="copy.month">Mes</string>

@@ -11,6 +11,7 @@ import com.innso.mobile.api.config.ApiConfig;
 import com.innso.mobile.api.config.AuthenticatorService;
 import com.innso.mobile.api.services.ApplicationApi;
 import com.innso.mobile.api.services.CustomerApi;
+import com.innso.mobile.api.services.FinanceApi;
 import com.innso.mobile.api.services.UserApi;
 import com.innso.mobile.managers.preferences.InnsoPreferences;
 import com.innso.mobile.managers.preferences.PrefsManager;
@@ -22,7 +23,6 @@ import javax.inject.Singleton;
 
 import dagger.Module;
 import dagger.Provides;
-import okhttp3.HttpUrl;
 import okhttp3.Interceptor;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
@@ -52,6 +52,12 @@ public class ApiModule {
     @Singleton
     public CustomerApi customerApi(Retrofit retrofit) {
         return retrofit.create(CustomerApi.class);
+    }
+
+    @Provides
+    @Singleton
+    public FinanceApi financeApi(Retrofit retrofit) {
+        return retrofit.create(FinanceApi.class);
     }
 
     @Provides

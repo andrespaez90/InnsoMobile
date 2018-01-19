@@ -6,6 +6,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.ActivityOptionsCompat;
 import android.support.v7.app.AlertDialog;
+import android.view.View;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.innso.mobile.R;
@@ -29,6 +30,7 @@ public class SplashActivity extends BaseActivity {
         getComponent().inject(this);
         binding = DataBindingUtil.setContentView(this, R.layout.activity_splash);
         this.splashViewModel = new SplashViewModel();
+        binding.setViewModel(splashViewModel);
     }
 
     @Override
@@ -42,6 +44,19 @@ public class SplashActivity extends BaseActivity {
         disposable.add(splashViewModel.observableSnackBar().subscribe(event -> showError(binding.getRoot(), event.getMessage())));
         disposable.add(splashViewModel.observableStartActivity().subscribe(this::startActivity));
         disposable.add(splashViewModel.updateVersionEvent().subscribe(this::showForceUpdateDialog));
+        disposable.add(splashViewModel.showLoader().subscribe(this::showLoaders));
+    }
+
+    private void showLoaders(Boolean show) {
+        if (show) {
+            binding.progressbar.setVisibility(View.VISIBLE);
+            binding.textViewSplashText.setVisibility(View.VISIBLE);
+            binding.buttonRetry.setVisibility(View.GONE);
+        } else {
+            binding.progressbar.setVisibility(View.INVISIBLE);
+            binding.textViewSplashText.setVisibility(View.INVISIBLE);
+            binding.buttonRetry.setVisibility(View.VISIBLE);
+        }
     }
 
     private void showForceUpdateDialog(Boolean update) {

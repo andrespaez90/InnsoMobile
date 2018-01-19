@@ -1,10 +1,13 @@
 package com.innso.mobile.ui.viewModels;
 
 import android.databinding.ObservableField;
+import android.support.design.widget.Snackbar;
 import android.text.Editable;
 import android.text.TextUtils;
 import android.view.View;
 
+import com.innso.mobile.R;
+import com.innso.mobile.api.controllers.FinanceController;
 import com.innso.mobile.managers.FirebaseStorageManager;
 import com.innso.mobile.ui.TextWatcher.MoneyTextWatcher;
 import com.innso.mobile.ui.factories.SnackBarFactory;
@@ -17,6 +20,8 @@ import java.io.File;
 import java.util.Calendar;
 import java.util.Locale;
 
+import javax.inject.Inject;
+
 import io.reactivex.Observable;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.subjects.PublishSubject;
@@ -25,11 +30,11 @@ public class AddBillViewModel extends BaseViewModel {
 
     public ObservableField<String> code = new ObservableField<>("");
 
-    public ObservableField<String> day = new ObservableField<String>("");
+    public ObservableField<String> day = new ObservableField<>("");
 
-    public ObservableField<String> month = new ObservableField<String>("");
+    public ObservableField<String> month = new ObservableField<>("");
 
-    public ObservableField<String> year = new ObservableField<String>("");
+    public ObservableField<String> year = new ObservableField<>("");
 
     public ObservableField<File> billImage = new ObservableField<>();
 
@@ -44,6 +49,13 @@ public class AddBillViewModel extends BaseViewModel {
     private String date = "";
 
     protected String urlPhotoFirebase;
+
+    @Inject
+    FinanceController financeController;
+
+    public AddBillViewModel() {
+        getComponent().inject(this);
+    }
 
     public void onDateClick(View view) {
         showDatePicker.onNext(new DatePickerModel());
@@ -70,9 +82,9 @@ public class AddBillViewModel extends BaseViewModel {
         return price;
     }
 
-    public void updateDate(String date) {
-        if (!TextUtils.isEmpty(date)) {
-            Calendar calendar = DateUtils.getCalendarFromString(date);
+    public void updateDate(String newDate) {
+        if (!TextUtils.isEmpty(newDate)) {
+            Calendar calendar = DateUtils.getCalendarFromString(newDate);
             date = DateUtils.parseDateToStringWithFormat(calendar.getTime(), "dd/MM/yyyy");
             day.set(String.valueOf(calendar.get(Calendar.DAY_OF_MONTH)));
             month.set(calendar.getDisplayName(Calendar.MONTH, Calendar.LONG, Locale.getDefault()));
@@ -91,11 +103,29 @@ public class AddBillViewModel extends BaseViewModel {
 
     public void uploadImage(View view) {
 
-        if (TextUtils.isEmpty(urlPhotoFirebase)) {
-            showLoading();
-            disposables.add(FirebaseStorageManager.attemptToUploadPhoto(FileUtil.BILL, reducedFile)
-                    .subscribe(o -> showSnackBarMessage(SnackBarFactory.TYPE_INFO, "subido", 100), this::showServiceError));
+        if (!isInformationValid()) {
+            if (TextUtils.isEmpty(urlPhotoFirebase)) {
+                showLoading();
+                disposables.add(FirebaseStorageManager.attemptToUploadPhoto(FileUtil.BILL, reducedFile)
+                        .subscribe(this::successUploadPhoto, this::showServiceError));
+            }
+        } else {
+            showSnackBarMessage(SnackBarFactory.TYPE_INFO, R.string.error_empty_fields, Snackbar.LENGTH_LONG);
         }
+    }
+
+    private boolean isInformationValid() {
+        return TextUtils.isEmpty(date) || TextUtils.isEmpty(value.get())
+                || TextUtils.isEmpty(taxes.get()) || TextUtils.isEmpty(code.get());
+    }
+
+    private void successUploadPhoto(String urlImage) {
+        disposables.add(financeController.addBill(code.get(), date, value.get(), taxes.get(), urlImage)
+                .subscribe(this::onSaveBill, this::showServiceError));
+    }
+
+    public void onSaveBill() {
+        showSnackBarMessage(SnackBarFactory.TYPE_INFO, "Factura Agregada", Snackbar.LENGTH_LONG);
     }
 
     public Observable<Boolean> onCameraOpen() {

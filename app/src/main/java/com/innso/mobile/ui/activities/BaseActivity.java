@@ -249,7 +249,6 @@ public class BaseActivity extends AppCompatActivity {
         BaseActivityPermissionsDispatcher.successStoragePermissionWithPermissionCheck(this);
     }
 
-
     public void showDatePicker(DatePickerModel model) {
         DatePickerDialogFragment datePicker = DatePickerDialogFragment.newInstance(model);
         datePicker.setListener((dialog, date) -> onDateSelected(date));

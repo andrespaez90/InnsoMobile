@@ -18,6 +18,8 @@ public class SplashViewModel extends BaseViewModel {
 
     private PublishSubject<Boolean> updateVersion = PublishSubject.create();
 
+    private PublishSubject<Boolean> showLoaders = PublishSubject.create();
+
     @Inject
     AppControllerApi appControllerApi;
 
@@ -30,7 +32,9 @@ public class SplashViewModel extends BaseViewModel {
 
 
     public void validateAuthentication() {
+        showLoaders.onNext(true);
         appControllerApi.checkVersion()
+                .doOnError(error -> showLoaders.onNext(false))
                 .subscribe(this::validateVersion, this::showServiceError);
     }
 
@@ -49,6 +53,10 @@ public class SplashViewModel extends BaseViewModel {
 
     public Observable<Boolean> updateVersionEvent() {
         return updateVersion.observeOn(AndroidSchedulers.mainThread());
+    }
+
+    public Observable<Boolean> showLoader() {
+        return showLoaders.observeOn(AndroidSchedulers.mainThread());
     }
 
 }

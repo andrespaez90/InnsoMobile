@@ -11,6 +11,7 @@ import com.innso.mobile.ui.viewModels.AddBillViewModel;
 import com.innso.mobile.utils.CameraUtil;
 import com.innso.mobile.utils.ErrorUtils;
 import com.innso.mobile.utils.FileUtil;
+import com.innso.mobile.utils.MoneyUtil;
 
 public class AddBillActivity extends BaseActivity {
 
@@ -26,6 +27,8 @@ public class AddBillActivity extends BaseActivity {
         binding.setViewModel(viewModel);
         binding.editTextValue.addTextChangedListener(new MoneyTextWatcher(binding.editTextValue, "CO"));
         binding.editTextTaxes.addTextChangedListener(new MoneyTextWatcher(binding.editTextTaxes, "CO"));
+        binding.editTextTaxes.setHint(MoneyUtil.getBasicCurrencyPrice("CO", 0));
+        binding.editTextValue.setHint(MoneyUtil.getBasicCurrencyPrice("CO", 0));
     }
 
     @Override
@@ -35,8 +38,9 @@ public class AddBillActivity extends BaseActivity {
     }
 
     public void subscribe() {
-        disposable.add(viewModel.onDatePickerClick().subscribe(this::showDatePicker));
+        disposable.add(viewModel.observableSnackBar().subscribe(event -> showError(binding.getRoot(), event.getMessage())));
         disposable.add(viewModel.onCameraOpen().subscribe(o -> requestStoragePermissions(), event -> showError(binding.getRoot(), ErrorUtils.getMessageError(event))));
+        disposable.add(viewModel.onDatePickerClick().subscribe(this::showDatePicker));
     }
 
     @Override
