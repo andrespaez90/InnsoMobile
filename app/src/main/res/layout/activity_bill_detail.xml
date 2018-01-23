@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="@dimen/spacing_xlarge"
+    tools:context="com.innso.mobile.ui.activities.BillDetailActivity">
+
+    <TextView
+        android:id="@+id/textView_total"
+        style="@style/TextHuge.Black.Bold"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:gravity="end|right"
+        tools:text="$20.000" />
+
+    <TextView
+        android:id="@+id/textView_taxes"
+        style="@style/TextBig.Black"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="end|right"
+        android:layout_above="@id/textView_total"
+        tools:text="$20.000" />
+
+    <TextView
+        android:id="@+id/textView_value"
+        style="@style/TextBig.Black"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/textView_taxes"
+        android:layout_marginTop="@dimen/spacing_standard"
+        android:gravity="end|right"
+        tools:text="$20.000" />
+
+    <ImageView
+        android:id="@+id/imageView_bill"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop"
+        android:layout_above="@id/textView_value"/>
+
+</RelativeLayout>

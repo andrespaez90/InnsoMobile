@@ -31,6 +31,8 @@ public class BaseViewModel {
 
     private BehaviorSubject<Pair<Boolean, Integer>> showProgressDialog = BehaviorSubject.createDefault(new Pair<>(false, 0));
 
+    PublishSubject<Integer> showAlertDialog = PublishSubject.create();
+
     PublishSubject<DatePickerModel> showDatePicker = PublishSubject.create();
 
     PublishSubject<Class> startActivityEvent = PublishSubject.create();
@@ -46,6 +48,7 @@ public class BaseViewModel {
     protected InnsoApplication getApplication() {
         return InnsoApplication.get();
     }
+
     public ArrayList<Disposable> getDisposablesArray() {
         return disposables;
     }
@@ -58,7 +61,6 @@ public class BaseViewModel {
         }
         return vectorDisposable;
     }
-
 
     public void clearDisposables() {
 
@@ -156,5 +158,9 @@ public class BaseViewModel {
 
     public Observable<DatePickerModel> onDatePickerClick() {
         return showDatePicker.observeOn(AndroidSchedulers.mainThread());
+    }
+
+    public Observable<Integer> showAlertDialog() {
+        return showAlertDialog.observeOn(AndroidSchedulers.mainThread());
     }
 }

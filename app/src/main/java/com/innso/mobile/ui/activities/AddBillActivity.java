@@ -41,6 +41,7 @@ public class AddBillActivity extends BaseActivity {
         disposable.add(viewModel.observableSnackBar().subscribe(event -> showError(binding.getRoot(), event.getMessage())));
         disposable.add(viewModel.onCameraOpen().subscribe(o -> requestStoragePermissions(), event -> showError(binding.getRoot(), ErrorUtils.getMessageError(event))));
         disposable.add(viewModel.onDatePickerClick().subscribe(this::showDatePicker));
+        disposable.add(viewModel.showAlertDialog().subscribe(this::showAlertDialog));
     }
 
     @Override

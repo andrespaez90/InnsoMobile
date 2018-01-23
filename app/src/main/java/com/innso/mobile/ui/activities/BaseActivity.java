@@ -11,6 +11,7 @@ import android.support.design.widget.Snackbar;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.ActionBar;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Pair;
@@ -280,6 +281,23 @@ public class BaseActivity extends AppCompatActivity {
             progressDialog.dismiss();
         }
     }
+
+    public void showAlertDialog(int message) {
+        showAlertDialog(R.string.app_name, message);
+    }
+
+    public void showAlertDialog(int title, int message) {
+
+        new AlertDialog.Builder(this)
+                .setTitle(title)
+                .setMessage(message)
+                .setPositiveButton(android.R.string.yes, (dialog, which) -> {
+                    finish();
+                })
+                .setIcon(R.drawable.innso_logo)
+                .show();
+    }
+
 
     public ProgressDialog getProgressDialog() {
         return progressDialog;

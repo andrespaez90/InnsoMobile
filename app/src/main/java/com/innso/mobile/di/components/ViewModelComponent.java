@@ -2,6 +2,7 @@ package com.innso.mobile.di.components;
 
 import com.innso.mobile.di.scope.ApplicationScope;
 import com.innso.mobile.ui.viewModels.AddBillViewModel;
+import com.innso.mobile.ui.viewModels.BillListViewModel;
 import com.innso.mobile.ui.viewModels.CompanyViewModel;
 import com.innso.mobile.ui.viewModels.LoginViewModel;
 import com.innso.mobile.ui.viewModels.NewCustomerViewModel;
@@ -32,4 +33,6 @@ public interface ViewModelComponent extends AppComponent {
     void inject(NewCustomerViewModel newCustomerViewModel);
 
     void inject(AddBillViewModel addBillViewModel);
+
+    void inject(BillListViewModel billListViewModel);
 }

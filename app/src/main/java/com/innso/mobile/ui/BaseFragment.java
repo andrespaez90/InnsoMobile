@@ -96,7 +96,7 @@ public class BaseFragment extends Fragment {
         replaceFragment(fragment, fragment.getContainer());
     }
 
-    private void showMessage(@SnackBarFactory.SnackBarType String type, @NonNull View view, String message, int duration) {
+    public void showMessage(@SnackBarFactory.SnackBarType String type, @NonNull View view, String message, int duration) {
         SnackBarFactory.getSnackBar(type, view, message, duration).show();
     }
 

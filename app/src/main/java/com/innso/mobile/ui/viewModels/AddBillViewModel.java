@@ -125,7 +125,7 @@ public class AddBillViewModel extends BaseViewModel {
     }
 
     public void onSaveBill() {
-        showSnackBarMessage(SnackBarFactory.TYPE_INFO, "Factura Agregada", Snackbar.LENGTH_LONG);
+        showAlertDialog.onNext(R.string.copy_bill_added);
     }
 
     public Observable<Boolean> onCameraOpen() {

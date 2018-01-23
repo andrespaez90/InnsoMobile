@@ -55,5 +55,4 @@ public interface AppComponent {
     CustomerController customerController();
 
     FinanceController financeController();
-
 }

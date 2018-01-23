@@ -22,7 +22,6 @@ public class BillModel {
     @SerializedName("imageUrl")
     String image;
 
-
     public BillModel(String code, String date, String value, String taxes, String imageUrl) {
         this.code = code;
         this.date = date;
@@ -30,5 +29,29 @@ public class BillModel {
         this.taxes = Double.valueOf(taxes);
         this.image = imageUrl;
         this.total = this.value + this.taxes;
+    }
+
+    public String getCode() {
+        return code;
+    }
+
+    public double getValue() {
+        return value;
+    }
+
+    public double getTaxes() {
+        return taxes;
+    }
+
+    public double getTotal() {
+        return total;
+    }
+
+    public String getDate() {
+        return date;
+    }
+
+    public String getImage() {
+        return image;
     }
 }

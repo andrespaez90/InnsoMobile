@@ -44,7 +44,7 @@
     <string name="title.new_costumer">Registro de a\nNuevo Cliente</string>
     <string name="title.flow_accounting">Flujo Contable</string>
     <string name="title.users">Usuarios\nRegistrados</string>
-
+    <string name="title.new_bill">Nueva Factura</string>
 
     <string name="splash.new_version">Nueva Version</string>
     <string name="splash.get_latest_version">Para seguir usando Innso Mobile, debes actualizar la version en la tienda</string>
@@ -61,10 +61,15 @@
 
     <string name="company.name">Innso SAS\nInnovating Software SAS</string>
     <string name="company.nit">Nit: 900.548.400&#8211;0</string>
-    <string name="title.new_bill">Nueva Factura</string>
+
     <string name="hint.bill_code">001</string>
+
     <string name="copy.bill_sub_value">Sub-total</string>
     <string name="copy.values_taxes">IVA</string>
     <string name="copy.bill_image">Foto Factura</string>
+    <string name="copy_bill_added">Factura Agregada</string>
 
+    <string name="format_value">Valor: %1$s</string>
+    <string name="format_taxes">IVA: %1$s</string>
+    <string name="format_total">Total: %1$s</string>
 </resources>
