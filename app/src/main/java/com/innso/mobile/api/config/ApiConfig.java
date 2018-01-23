@@ -1,6 +1,9 @@
 package com.innso.mobile.api.config;
 
 
+import android.content.Context;
+
+import com.innso.mobile.R;
 import com.innso.mobile.managers.preferences.PrefsManager;
 
 public class ApiConfig {
@@ -9,16 +12,18 @@ public class ApiConfig {
     public static final String AUTHORIZATION = "authorization";
     public static final String PARAM_AUTHORIZATION = "auth";
 
-    public boolean DEBUG = true;
+    public boolean DEBUG = false;
 
     private PrefsManager prefsManager;
+    private Context context;
 
-    public ApiConfig(PrefsManager prefsManager) {
+    public ApiConfig(Context context, PrefsManager prefsManager) {
         this.prefsManager = prefsManager;
+        this.context = context;
     }
 
     public String getFirebaseUrl() {
-        return "https://innso-mobile.firebaseio.com";
+        return context.getString(R.string.firebase_database);
     }
 
     public String getFuntionsUrlBase() {

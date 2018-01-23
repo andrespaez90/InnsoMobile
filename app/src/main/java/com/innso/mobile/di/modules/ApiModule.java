@@ -62,10 +62,9 @@ public class ApiModule {
 
     @Provides
     @Singleton
-    public ApiConfig getApiConfig(PrefsManager prefsManager) {
-        return new ApiConfig(prefsManager);
+    public ApiConfig getApiConfig(Context context, PrefsManager prefsManager) {
+        return new ApiConfig(context, prefsManager);
     }
-
 
     @Provides
     @Singleton

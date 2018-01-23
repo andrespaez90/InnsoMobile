@@ -1,9 +1,11 @@
 package com.innso.mobile.api.controllers;
 
 import com.innso.mobile.api.models.finance.BillModel;
+import com.innso.mobile.api.models.finance.SummaryMonth;
 import com.innso.mobile.api.services.FinanceApi;
 import com.innso.mobile.utils.DateUtils;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -24,6 +26,21 @@ public class FinanceController {
         this.financeApi = financeApi;
     }
 
+    public Single<SummaryMonth[]> getSummary() {
+        return financeApi.getAccountSummary("2017")
+                .map(response -> response.body() == null ? new HashMap<String, SummaryMonth>() : response.body())
+                .map(this::sortFinanceSummary)
+                .subscribeOn(Schedulers.io());
+    }
+
+    private SummaryMonth[] sortFinanceSummary(Map<String, SummaryMonth> response) throws ParseException {
+        SummaryMonth[] summaryMonths = new SummaryMonth[12];
+        for (Map.Entry<String, SummaryMonth> e : response.entrySet()) {
+            summaryMonths[DateUtils.getMonth(e.getKey())] = e.getValue();
+        }
+        return summaryMonths;
+    }
+
     public Completable addBill(String code, String date, String value, String taxes, String urlImage) {
         BillModel billModel = new BillModel(code, date, value, taxes, urlImage);
         return financeApi.addBill(datePath(date), billModel).subscribeOn(Schedulers.io());
@@ -35,7 +52,7 @@ public class FinanceController {
 
     public Single<List<BillModel>> getBills(String year) {
         return financeApi.getBills(year)
-                .map(response -> response.body() == null  ? new HashMap<String, Map<String, BillModel>>() : response.body())
+                .map(response -> response.body() == null ? new HashMap<String, Map<String, BillModel>>() : response.body())
                 .map(this::concatBills)
                 .subscribeOn(Schedulers.io());
     }

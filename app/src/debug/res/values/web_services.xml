@@ -2,5 +2,5 @@
 <resources>
 
     <string name="url_play_store" translatable="false">https://play.google.com/store/apps/details?id=com.innso.apparkar</string>
-    <string name="firebase_database" translatable="false">https://innso-mobile.firebaseio.com/</string>
+    <string name="firebase_database" translatable="false">https://innso-mobile-dev.firebaseio.com/</string>
 </resources>

@@ -1,6 +1,7 @@
 package com.innso.mobile.utils;
 
 import java.text.DateFormatSymbols;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
@@ -12,6 +13,13 @@ public class DateUtils {
 
     public static String getMonth(int month) {
         return new DateFormatSymbols().getMonths()[month];
+    }
+
+    public static int getMonth(String month) throws ParseException {
+        Date date = new SimpleDateFormat("MMM", Locale.US).parse(month);
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(date);
+        return cal.get(Calendar.MONTH);
     }
 
     public static String getCurrentDate(String format, Locale locale) {
@@ -26,6 +34,7 @@ public class DateUtils {
         SimpleDateFormat sdf = new SimpleDateFormat(format, locale);
         return sdf.format(date);
     }
+
     public static Calendar getCalendarFromString(String dateString) {
         return getCalendarFromString(dateString, "yyyy-MM-dd");
     }
@@ -39,7 +48,7 @@ public class DateUtils {
     public static Date getDateFromString(String dateString, String format) {
         try {
             SimpleDateFormat sdf = new SimpleDateFormat(format, Locale.US);
-            return dateString != null && dateString.length() != 0?sdf.parse(dateString):new Date();
+            return dateString != null && dateString.length() != 0 ? sdf.parse(dateString) : new Date();
         } catch (Exception var3) {
             var3.printStackTrace();
             return null;

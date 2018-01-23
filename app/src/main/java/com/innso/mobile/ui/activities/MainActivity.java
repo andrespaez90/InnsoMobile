@@ -14,6 +14,12 @@ import com.innso.mobile.ui.fragments.CompanyFragment;
 import com.innso.mobile.ui.fragments.ProfileFragment;
 import com.innso.mobile.ui.helpers.NavigationViewHelper;
 import com.innso.mobile.ui.itemViews.ItemDetailMonth;
+import com.innso.mobile.ui.models.ItemDetailModel;
+import com.innso.mobile.ui.viewModels.FinanceViewModel;
+import com.innso.mobile.utils.DateUtils;
+import com.innso.mobile.utils.MoneyUtil;
+
+import java.util.List;
 
 public class MainActivity extends BaseActivity implements BottomNavigationView.OnNavigationItemSelectedListener {
 
@@ -25,17 +31,20 @@ public class MainActivity extends BaseActivity implements BottomNavigationView.O
 
     private ProfileFragment profileFragment;
 
+    private FinanceViewModel financeViewModel;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main);
+        financeViewModel = new FinanceViewModel();
+        financeViewModel.getSummary();
         initView();
         initListeners();
     }
 
     private void initView() {
         NavigationViewHelper.disableShiftMode(binding.navigationView);
-        createMonthDetails();
     }
 
     private void initListeners() {
@@ -43,9 +52,17 @@ public class MainActivity extends BaseActivity implements BottomNavigationView.O
 
     }
 
-    private void createMonthDetails() {
-        for (int i = 0, limit = 12; i < limit; i++) {
-            binding.layoutDetailContainer.addView(new ItemDetailMonth(getBaseContext()));
+    @Override
+    protected void onResume() {
+        super.onResume();
+        disposable.add(financeViewModel.onRevenueUpdated().subscribe(this::updateInformation));
+    }
+
+    private void updateInformation(List<Double> values) {
+        binding.cardViewChartSales.addChartInformation(values);
+        for (int i = 0, limit = values.size(); i < limit; i++) {
+            binding.layoutDetailContainer.addView(new ItemDetailMonth(getBaseContext(),
+                    new ItemDetailModel(DateUtils.getMonth(i), MoneyUtil.getBasicCurrencyPrice("CO", values.get(i)))));
         }
     }
 

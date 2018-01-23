@@ -41,7 +41,6 @@ public class LineChartItem extends CardView {
         setElevation(getResources().getDimensionPixelSize(R.dimen.cardview_default_elevation));
         initChart();
         addView(customLineChart, new LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, getResources().getDimensionPixelSize(R.dimen.size_chart)));
-        addChartInformation();
     }
 
     private void initChart() {
@@ -65,14 +64,19 @@ public class LineChartItem extends CardView {
         customLineChart.setScaleEnabled(false);
     }
 
-    private void addChartInformation() {
+    public void addChartInformation(List<Double> values) {
 
         customLineChart.clear();
 
         List<Entry> entries = new ArrayList<>();
 
-        for (int i = 0, size = 12; i < size; i++) {
-            entries.add(new Entry(i, 0));
+        float min = 0;
+        float max = 0;
+
+        for (int i = 0, size = values.size(); i < size; i++) {
+            double value = values.get(i);
+            max = max < value ? (float) value : max;
+            entries.add(new Entry(i, (float) value));
         }
 
         LineDataSet dataSet = new LineDataSet(entries, null);
@@ -87,9 +91,6 @@ public class LineChartItem extends CardView {
         dataSet.setHighLightColor(Color.TRANSPARENT);
 
         LineData lineData = new LineData(dataSet);
-
-        float min = 0;
-        float max = 100;
 
         customLineChart.getAxisRight().setAxisMinimum(min);
         customLineChart.getAxisLeft().setAxisMinimum(min);

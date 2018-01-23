@@ -57,9 +57,6 @@ public class CompanyFragment extends BaseFragment {
     }
 
     private void loadDummyData() {
-        for (int i = 0, limit = 5; i < limit; i++) {
-            binding.layoutDocuments.addView(new ItemDetailMonth(getContext()));
 
-        }
     }
 }
