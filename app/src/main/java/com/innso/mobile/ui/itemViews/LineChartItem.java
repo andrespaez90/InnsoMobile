@@ -6,6 +6,7 @@ import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.CardView;
 import android.util.AttributeSet;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 
 import com.github.mikephil.charting.components.XAxis;
 import com.github.mikephil.charting.data.Entry;
@@ -18,7 +19,7 @@ import com.innso.mobile.utils.DateUtils;
 import java.util.ArrayList;
 import java.util.List;
 
-public class LineChartItem extends CardView {
+public class LineChartItem extends LinearLayout {
 
     private CustomLineChart customLineChart;
 
@@ -38,7 +39,6 @@ public class LineChartItem extends CardView {
     }
 
     private void init() {
-        setElevation(getResources().getDimensionPixelSize(R.dimen.cardview_default_elevation));
         initChart();
         addView(customLineChart, new LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, getResources().getDimensionPixelSize(R.dimen.size_chart)));
     }
@@ -71,7 +71,7 @@ public class LineChartItem extends CardView {
         List<Entry> entries = new ArrayList<>();
 
         float min = 0;
-        float max = 0;
+        float max = 100;
 
         for (int i = 0, size = values.size(); i < size; i++) {
             double value = values.get(i);

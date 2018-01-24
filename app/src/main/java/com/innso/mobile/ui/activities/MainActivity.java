@@ -41,6 +41,7 @@ public class MainActivity extends BaseActivity implements BottomNavigationView.O
         financeViewModel.getSummary();
         initView();
         initListeners();
+        binding.setViewModel(financeViewModel);
     }
 
     private void initView() {
@@ -60,6 +61,7 @@ public class MainActivity extends BaseActivity implements BottomNavigationView.O
 
     private void updateInformation(List<Double> values) {
         binding.cardViewChartSales.addChartInformation(values);
+        binding.layoutDetailContainer.removeAllViews();
         for (int i = 0, limit = values.size(); i < limit; i++) {
             binding.layoutDetailContainer.addView(new ItemDetailMonth(getBaseContext(),
                     new ItemDetailModel(DateUtils.getMonth(i), MoneyUtil.getBasicCurrencyPrice("CO", values.get(i)))));

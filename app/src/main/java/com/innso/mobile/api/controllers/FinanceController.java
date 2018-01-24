@@ -26,8 +26,8 @@ public class FinanceController {
         this.financeApi = financeApi;
     }
 
-    public Single<SummaryMonth[]> getSummary() {
-        return financeApi.getAccountSummary("2017")
+    public Single<SummaryMonth[]> getSummary(String year) {
+        return financeApi.getAccountSummary(year)
                 .map(response -> response.body() == null ? new HashMap<String, SummaryMonth>() : response.body())
                 .map(this::sortFinanceSummary)
                 .subscribeOn(Schedulers.io());
