@@ -50,13 +50,22 @@ public class MainActivity extends BaseActivity implements BottomNavigationView.O
 
     private void initListeners() {
         binding.navigationView.setOnNavigationItemSelectedListener(this);
-
     }
 
     @Override
     protected void onResume() {
         super.onResume();
+        subscribe();
+    }
+
+    private void subscribe() {
         disposable.add(financeViewModel.onRevenueUpdated().subscribe(this::updateInformation));
+        disposable.add(financeViewModel.onTotalRevenueUpdated().subscribe(this::updateTotalRevenue));
+    }
+
+    private void updateTotalRevenue(Double totalRevenue) {
+        binding.textViewTotalRevenue.setText(getString(R.string.accounting_revenue,
+                MoneyUtil.getBasicCurrencyPrice("CO", totalRevenue)));
     }
 
     private void updateInformation(List<Double> values) {

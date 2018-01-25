@@ -1,7 +1,7 @@
 package com.innso.mobile.api.services;
 
 import com.innso.mobile.api.models.finance.BillModel;
-import com.innso.mobile.api.models.finance.SummaryMonth;
+import com.innso.mobile.api.models.finance.FinanceYearSummary;
 
 import java.util.Map;
 
@@ -21,8 +21,8 @@ public interface FinanceApi {
     @GET("/bills/{year}.json")
     Single<Response<Map<String, Map<String, BillModel>>>> getBills(@Path("year") String year);
 
-    @GET("/finance/{year}/summary.json")
-    Single<Response<Map<String, SummaryMonth>>> getAccountSummary(@Path("year") String year);
+    @GET("/finance/{year}.json")
+    Single<Response<FinanceYearSummary>> getAccountSummary(@Path("year") String year);
 
 
 }

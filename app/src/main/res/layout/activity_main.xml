@@ -117,7 +117,7 @@
                         android:paddingTop="@dimen/spacing_small">
 
                         <TextView
-                            android:id="@+id/textView_delivered_label"
+                            android:id="@+id/textView_total_revenue"
                             style="@style/TextSmall.Black"
                             android:layout_width="@dimen/spacing_empty"
                             android:layout_height="wrap_content"

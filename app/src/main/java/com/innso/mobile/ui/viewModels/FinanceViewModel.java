@@ -1,14 +1,19 @@
 package com.innso.mobile.ui.viewModels;
 
 import android.databinding.ObservableField;
+import android.support.annotation.NonNull;
 import android.view.View;
 
 import com.innso.mobile.api.controllers.FinanceController;
+import com.innso.mobile.api.models.finance.FinanceYearSummary;
 import com.innso.mobile.api.models.finance.SummaryMonth;
+import com.innso.mobile.utils.DateUtils;
 
+import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
+import java.util.Map;
 
 import javax.inject.Inject;
 
@@ -19,6 +24,8 @@ import io.reactivex.subjects.PublishSubject;
 public class FinanceViewModel extends BaseViewModel {
 
     private PublishSubject<List<Double>> revenue = PublishSubject.create();
+
+    private PublishSubject<Double> totalRevenue = PublishSubject.create();
 
     public ObservableField<String> currentYear = new ObservableField<>("");
 
@@ -46,21 +53,40 @@ public class FinanceViewModel extends BaseViewModel {
         getSummary();
     }
 
-    private void updateRevenue(SummaryMonth[] summaryMonth) {
+    private void updateRevenue(FinanceYearSummary yearSummary) throws ParseException {
         hideLoading();
+        SummaryMonth[] summaryMonth = sortFinanceSummary(yearSummary.getMonthSummary());
+        revenue.onNext(getRevenuesValues(summaryMonth));
+        totalRevenue.onNext(yearSummary.getTotalRevenue());
+    }
+
+    @NonNull
+    private ArrayList<Double> getRevenuesValues(SummaryMonth[] summaryMonth) {
         ArrayList<Double> revenueValues = new ArrayList<>(12);
-        for (int i = 0; i < summaryMonth.length; i++) {
-            if (summaryMonth[i] != null) {
-                revenueValues.add(summaryMonth[i].getRevenue());
+        for (SummaryMonth aSummaryMonth : summaryMonth) {
+            if (aSummaryMonth != null) {
+                revenueValues.add(aSummaryMonth.getRevenue());
             } else {
                 revenueValues.add(0d);
             }
         }
-        revenue.onNext(revenueValues);
+        return revenueValues;
+    }
+
+    private SummaryMonth[] sortFinanceSummary(Map<String, SummaryMonth> response) throws ParseException {
+        SummaryMonth[] summaryMonths = new SummaryMonth[12];
+        for (Map.Entry<String, SummaryMonth> e : response.entrySet()) {
+            summaryMonths[DateUtils.getMonth(e.getKey())] = e.getValue();
+        }
+        return summaryMonths;
     }
 
     public Observable<List<Double>> onRevenueUpdated() {
         return revenue.observeOn(AndroidSchedulers.mainThread());
+    }
+
+    public Observable<Double> onTotalRevenueUpdated() {
+        return totalRevenue.observeOn(AndroidSchedulers.mainThread());
     }
 
 

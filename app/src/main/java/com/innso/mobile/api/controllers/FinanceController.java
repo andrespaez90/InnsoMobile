@@ -1,6 +1,7 @@
 package com.innso.mobile.api.controllers;
 
 import com.innso.mobile.api.models.finance.BillModel;
+import com.innso.mobile.api.models.finance.FinanceYearSummary;
 import com.innso.mobile.api.models.finance.SummaryMonth;
 import com.innso.mobile.api.services.FinanceApi;
 import com.innso.mobile.utils.DateUtils;
@@ -26,19 +27,10 @@ public class FinanceController {
         this.financeApi = financeApi;
     }
 
-    public Single<SummaryMonth[]> getSummary(String year) {
+    public Single<FinanceYearSummary> getSummary(String year) {
         return financeApi.getAccountSummary(year)
-                .map(response -> response.body() == null ? new HashMap<String, SummaryMonth>() : response.body())
-                .map(this::sortFinanceSummary)
+                .map(response -> response.body() == null ? new FinanceYearSummary() : response.body())
                 .subscribeOn(Schedulers.io());
-    }
-
-    private SummaryMonth[] sortFinanceSummary(Map<String, SummaryMonth> response) throws ParseException {
-        SummaryMonth[] summaryMonths = new SummaryMonth[12];
-        for (Map.Entry<String, SummaryMonth> e : response.entrySet()) {
-            summaryMonths[DateUtils.getMonth(e.getKey())] = e.getValue();
-        }
-        return summaryMonths;
     }
 
     public Completable addBill(String code, String date, String value, String taxes, String urlImage) {
