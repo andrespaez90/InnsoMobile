@@ -13,8 +13,6 @@ buildscript {
     }
 }
 
-apply plugin: 'me.tatarka.retrolambda'
-
 android {
     compileSdkVersion 25
     buildToolsVersion '26.0.2'

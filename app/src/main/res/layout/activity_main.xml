@@ -27,34 +27,47 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
+                <View
+                    android:id="@+id/middle_divider"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_centerHorizontal="true" />
+
                 <TextView
                     android:id="@+id/textView_title"
                     style="@style/TextHuge.Black.Bold"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_margin="@dimen/spacing_standard"
+                    android:layout_marginStart="@dimen/spacing_standard"
+                    android:layout_marginLeft="@dimen/spacing_standard"
+                    android:layout_marginTop="@dimen/spacing_large"
+                    android:layout_marginBottom="@dimen/spacing_large"
                     android:text="@string/title.flow_accounting"
                     android:textSize="@dimen/font_xxxlarge" />
 
                 <android.support.v7.widget.CardView
-                    android:id="@+id/cardView_chart_container"
-                    android:layout_width="match_parent"
+                    android:id="@+id/layout_year_picker"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginRight="@dimen/spacing_large"
+                    android:layout_marginLeft="@dimen/spacing_large"
                     android:layout_below="@id/textView_title"
-                    android:layout_margin="@dimen/spacing_standard">
+                    app:cardCornerRadius="@dimen/radius_medium">
 
                     <RelativeLayout
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
+                        android:layout_height="wrap_content"
+                        android:background="@android:color/white"
+                        android:layout_marginLeft="@dimen/spacing_large"
+                        android:layout_marginRight="@dimen/spacing_large">
 
                         <TextView
                             android:id="@+id/textView_year"
                             style="@style/TextHuge.Black.Bold"
                             android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
+                            android:layout_height="match_parent"
                             android:layout_centerHorizontal="true"
-                            android:layout_marginTop="@dimen/spacing_large"
-                            android:layout_marginBottom="@dimen/spacing_standard"
+                            android:layout_margin="@dimen/spacing_medium"
                             android:gravity="center"
                             android:text="@{viewModel.currentYear}"
                             tools:text="2018" />
@@ -63,12 +76,9 @@
                             android:id="@+id/imageView_back_year"
                             android:layout_width="@dimen/spacing_xxlarge"
                             android:layout_height="@dimen/spacing_xxlarge"
-                            android:layout_alignBottom="@+id/textView_year"
                             android:layout_alignParentLeft="true"
                             android:layout_alignParentStart="true"
-                            android:layout_alignTop="@+id/textView_year"
-                            android:layout_marginLeft="@dimen/spacing_medium"
-                            android:layout_marginStart="@dimen/spacing_medium"
+                            android:layout_centerVertical="true"
                             android:contentDescription="@null"
                             android:onClick="@{viewModel::onLastYear}"
                             android:rotation="90"
@@ -78,24 +88,132 @@
                             android:id="@+id/imageView_next_year"
                             android:layout_width="@dimen/spacing_xxlarge"
                             android:layout_height="@dimen/spacing_xxlarge"
-                            android:layout_alignBottom="@+id/textView_year"
                             android:layout_alignParentEnd="true"
                             android:layout_alignParentRight="true"
-                            android:layout_alignTop="@+id/textView_year"
-                            android:layout_marginEnd="@dimen/spacing_medium"
-                            android:layout_marginRight="@dimen/spacing_medium"
+                            android:layout_centerVertical="true"
                             android:contentDescription="@null"
                             android:onClick="@{viewModel::onNextYear}"
                             android:rotation="270"
                             android:src="@mipmap/ic_arrow_green" />
 
-                        <com.innso.mobile.ui.itemViews.LineChartItem
-                            android:id="@+id/cardView_chart_sales"
+                    </RelativeLayout>
+
+                </android.support.v7.widget.CardView>
+
+                <android.support.v7.widget.CardView
+                    android:id="@+id/textView_back_summary"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/layout_year_picker"
+                    android:layout_marginStart="@dimen/spacing_large"
+                    android:layout_marginTop="@dimen/spacing_large"
+                    android:layout_marginBottom="@dimen/spacing_large"
+                    android:layout_marginLeft="@dimen/spacing_large"
+                    android:layout_marginRight="@dimen/spacing_small"
+                    android:layout_marginEnd="@dimen/spacing_small"
+                    android:layout_toLeftOf="@id/middle_divider"
+                    android:layout_toStartOf="@id/middle_divider"
+                    app:cardBackgroundColor="@color/colorPrimary">
+
+                    <RelativeLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:padding="@dimen/spacing_xlarge">
+
+                        <TextView
+                            android:id="@+id/textView_back_summary_title"
+                            style="@style/TextHuge.White.Bold"
                             android:layout_width="match_parent"
-                            android:layout_height="@dimen/size_chart"
-                            android:layout_below="@id/textView_year" />
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:text="Bancos" />
+
+                        <View
+                            android:id="@+id/view_bank_divider"
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/spacing_xxmicro"
+                            android:layout_below="@id/textView_back_summary_title"
+                            android:layout_marginTop="@dimen/spacing_small"
+                            android:layout_marginBottom="@dimen/spacing_small"
+                            android:background="@android:color/white" />
+
+                        <TextView
+                            android:id="@+id/textView_back_summary_value"
+                            style="@style/TextHuge.White.Bold"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/view_bank_divider"
+                            android:gravity="center"
+                            android:text="$ 5 MM" />
 
                     </RelativeLayout>
+
+                </android.support.v7.widget.CardView>
+
+
+                <android.support.v7.widget.CardView
+                    android:id="@+id/textView_cash_summary"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/layout_year_picker"
+                    android:layout_marginTop="@dimen/spacing_large"
+                    android:layout_marginBottom="@dimen/spacing_large"
+                    android:layout_marginEnd="@dimen/spacing_large"
+                    android:layout_marginRight="@dimen/spacing_large"
+                    android:layout_marginLeft="@dimen/spacing_small"
+                    android:layout_marginStart="@dimen/spacing_small"
+                    android:layout_toRightOf="@id/middle_divider"
+                    android:layout_toEndOf="@id/middle_divider"
+                    app:cardBackgroundColor="@color/colorAccent">
+
+                    <RelativeLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:padding="@dimen/spacing_xlarge">
+
+                        <TextView
+                            android:id="@+id/textView_summary_title"
+                            style="@style/TextHuge.White.Bold"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:text="Caja" />
+
+                        <View
+                            android:id="@+id/view_divider"
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/spacing_xxmicro"
+                            android:layout_below="@id/textView_summary_title"
+                            android:layout_marginTop="@dimen/spacing_small"
+                            android:layout_marginBottom="@dimen/spacing_small"
+                            android:background="@android:color/white" />
+
+                        <TextView
+                            android:id="@+id/textView_summary_value"
+                            style="@style/TextHuge.White.Bold"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/view_divider"
+                            android:gravity="center"
+                            android:text="$ 1.5 MM" />
+
+                    </RelativeLayout>
+
+                </android.support.v7.widget.CardView>
+
+                <android.support.v7.widget.CardView
+                    android:id="@+id/cardView_chart_container"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/textView_back_summary"
+                    android:layout_marginLeft="@dimen/spacing_large"
+                    android:layout_marginRight="@dimen/spacing_large">
+
+                    <com.innso.mobile.ui.itemViews.LineChartItem
+                        android:id="@+id/cardView_chart_sales"
+                        android:layout_width="match_parent"
+                        android:padding="@dimen/spacing_standard"
+                        android:layout_height="@dimen/size_chart" />
 
                 </android.support.v7.widget.CardView>
 
@@ -104,7 +222,10 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/cardView_chart_container"
-                    android:layout_margin="@dimen/spacing_standard"
+                    android:layout_marginTop="@dimen/spacing_standard"
+                    android:layout_marginBottom="@dimen/spacing_standard"
+                    android:layout_marginLeft="@dimen/spacing_large"
+                    android:layout_marginRight="@dimen/spacing_large"
                     app:cardBackgroundColor="@android:color/white"
                     app:cardCornerRadius="@dimen/radius_medium">
 
@@ -144,11 +265,15 @@
 
                 </android.support.v7.widget.CardView>
 
+
                 <android.support.v7.widget.CardView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/cardView_resume_sales"
-                    android:layout_margin="@dimen/spacing_standard"
+                    android:layout_marginTop="@dimen/spacing_standard"
+                    android:layout_marginBottom="@dimen/spacing_standard"
+                    android:layout_marginLeft="@dimen/spacing_large"
+                    android:layout_marginRight="@dimen/spacing_large"
                     app:cardBackgroundColor="@android:color/white"
                     app:cardCornerRadius="@dimen/radius_medium">
 
