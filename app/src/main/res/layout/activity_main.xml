@@ -138,7 +138,7 @@
                             android:background="@android:color/white" />
 
                         <TextView
-                            android:id="@+id/textView_back_summary_value"
+                            android:id="@+id/textView_bank_summary_value"
                             style="@style/TextHuge.White.Bold"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
@@ -189,7 +189,7 @@
                             android:background="@android:color/white" />
 
                         <TextView
-                            android:id="@+id/textView_summary_value"
+                            android:id="@+id/textView_summary_cash_value"
                             style="@style/TextHuge.White.Bold"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
@@ -253,7 +253,7 @@
                             android:background="@android:color/darker_gray" />
 
                         <TextView
-                            android:id="@+id/textView_canceled_label"
+                            android:id="@+id/textView_total_expenditure"
                             style="@style/TextSmall.Black"
                             android:layout_width="@dimen/spacing_empty"
                             android:layout_height="wrap_content"

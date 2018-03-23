@@ -13,6 +13,12 @@ public class FinanceYearSummary {
     @SerializedName("total_expenditure")
     double totalExpediture;
 
+    @SerializedName("total_banks")
+    double totalBanks;
+
+    @SerializedName("total_cash")
+    double totalCash;
+
     @SerializedName("summary")
     Map<String, SummaryMonth> monthSummary;
 
@@ -22,6 +28,14 @@ public class FinanceYearSummary {
 
     public double getTotalExpediture() {
         return totalExpediture;
+    }
+
+    public double getTotalBanks() {
+        return totalBanks;
+    }
+
+    public double getTotalCash() {
+        return totalCash;
     }
 
     public Map<String, SummaryMonth> getMonthSummary() {

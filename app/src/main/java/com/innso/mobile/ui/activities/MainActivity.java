@@ -6,6 +6,7 @@ import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.TextView;
 
 import com.innso.mobile.R;
 import com.innso.mobile.databinding.ActivityMainBinding;
@@ -59,13 +60,27 @@ public class MainActivity extends BaseActivity implements BottomNavigationView.O
     }
 
     private void subscribe() {
-        disposable.add(financeViewModel.onRevenueUpdated().subscribe(this::updateInformation));
-        disposable.add(financeViewModel.onTotalRevenueUpdated().subscribe(this::updateTotalRevenue));
+        disposable.addAll(financeViewModel.onRevenueUpdated().subscribe(this::updateInformation),
+                financeViewModel.onTotalRevenueUpdated().subscribe(this::updateRevenueValue),
+                financeViewModel.onTotalExpenditureUpdated().subscribe(this::updateExpenditureValue),
+                financeViewModel.onTotalBanksUpdated().subscribe(value -> updateValue(binding.textViewBankSummaryValue, value)),
+                financeViewModel.onTotalCashUpdated().subscribe(value -> updateValue(binding.textViewSummaryCashValue, value)));
     }
 
-    private void updateTotalRevenue(Double totalRevenue) {
-        binding.textViewTotalRevenue.setText(getString(R.string.accounting_revenue,
-                MoneyUtil.getBasicCurrencyPrice("CO", totalRevenue)));
+    private void updateValue(TextView view, Double value) {
+        view.setText(MoneyUtil.getBasicCurrencyPrice("CO", value));
+    }
+
+    private void updateRevenueValue(Double totalRevenue) {
+        updateViewValueWithFormat(binding.textViewTotalRevenue, totalRevenue, R.string.accounting_revenue);
+    }
+
+    private void updateExpenditureValue(Double totalExpenditure) {
+        updateViewValueWithFormat(binding.textViewTotalExpenditure, totalExpenditure, R.string.accounting_expenditure);
+    }
+
+    private void updateViewValueWithFormat(TextView view, Double value, int stringFormat) {
+        view.setText(getString(stringFormat, MoneyUtil.getBasicCurrencyPrice("CO", value)));
     }
 
     private void updateInformation(List<Double> values) {

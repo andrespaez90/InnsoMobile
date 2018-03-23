@@ -27,6 +27,12 @@ public class FinanceViewModel extends BaseViewModel {
 
     private PublishSubject<Double> totalRevenue = PublishSubject.create();
 
+    private PublishSubject<Double> totalExpenditure = PublishSubject.create();
+
+    private PublishSubject<Double> totalBanks = PublishSubject.create();
+
+    private PublishSubject<Double> totalCash = PublishSubject.create();
+
     public ObservableField<String> currentYear = new ObservableField<>("");
 
     @Inject
@@ -58,6 +64,9 @@ public class FinanceViewModel extends BaseViewModel {
         SummaryMonth[] summaryMonth = sortFinanceSummary(yearSummary.getMonthSummary());
         revenue.onNext(getRevenuesValues(summaryMonth));
         totalRevenue.onNext(yearSummary.getTotalRevenue());
+        totalExpenditure.onNext(yearSummary.getTotalExpediture());
+        totalBanks.onNext(yearSummary.getTotalBanks());
+        totalCash.onNext(yearSummary.getTotalCash());
     }
 
     @NonNull
@@ -87,6 +96,18 @@ public class FinanceViewModel extends BaseViewModel {
 
     public Observable<Double> onTotalRevenueUpdated() {
         return totalRevenue.observeOn(AndroidSchedulers.mainThread());
+    }
+
+    public Observable<Double> onTotalExpenditureUpdated() {
+        return totalExpenditure.observeOn(AndroidSchedulers.mainThread());
+    }
+
+    public Observable<Double> onTotalBanksUpdated() {
+        return totalBanks.observeOn(AndroidSchedulers.mainThread());
+    }
+
+    public Observable<Double> onTotalCashUpdated() {
+        return totalCash.observeOn(AndroidSchedulers.mainThread());
     }
 
 
