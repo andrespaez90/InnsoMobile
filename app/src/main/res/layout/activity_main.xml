@@ -144,7 +144,18 @@
                             android:layout_height="wrap_content"
                             android:layout_below="@id/view_bank_divider"
                             android:gravity="center"
-                            android:text="$ 5 MM" />
+                            tools:text="$ 5 MM" />
+
+                        <ProgressBar
+                            android:id="@+id/loader_bank"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignTop="@id/textView_bank_summary_value"
+                            android:layout_alignBottom="@id/textView_bank_summary_value"
+                            android:layout_alignStart="@id/textView_bank_summary_value"
+                            android:layout_alignEnd="@id/textView_bank_summary_value"
+                            android:layout_alignLeft="@id/textView_bank_summary_value"
+                            android:layout_alignRight="@id/textView_bank_summary_value" />
 
                     </RelativeLayout>
 
@@ -195,7 +206,18 @@
                             android:layout_height="wrap_content"
                             android:layout_below="@id/view_divider"
                             android:gravity="center"
-                            android:text="$ 1.5 MM" />
+                            tools:text="$ 1.5 MM" />
+
+                        <ProgressBar
+                            android:id="@+id/loader_cash"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignTop="@id/textView_summary_cash_value"
+                            android:layout_alignBottom="@id/textView_summary_cash_value"
+                            android:layout_alignStart="@id/textView_summary_cash_value"
+                            android:layout_alignEnd="@id/textView_summary_cash_value"
+                            android:layout_alignLeft="@id/textView_summary_cash_value"
+                            android:layout_alignRight="@id/textView_summary_cash_value" />
 
                     </RelativeLayout>
 
@@ -257,6 +279,7 @@
                             style="@style/TextSmall.Black"
                             android:layout_width="@dimen/spacing_empty"
                             android:layout_height="wrap_content"
+                            android:textColor="@android:color/holo_red_light"
                             android:layout_weight="1"
                             android:gravity="center"
                             android:text="@string/accounting.expenditure" />

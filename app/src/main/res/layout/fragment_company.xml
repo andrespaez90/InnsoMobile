@@ -97,6 +97,18 @@
                         app:drawableLeftCompat="@drawable/ic_users" />
 
                     <com.innso.mobile.ui.views.VectorCompatTextView
+                        android:id="@+id/textView_add_bill"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:padding="@dimen/spacing_large"
+                        android:gravity="center_vertical"
+                        android:drawablePadding="@dimen/spacing_medium"
+                        android:text="@string/copy.bills"
+                        android:onClick="@{viewModel::addBill}"
+                        app:drawableLeftCompat="@drawable/ic_bill" />
+
+                    <com.innso.mobile.ui.views.VectorCompatTextView
                         android:id="@+id/textView_add_customer"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"

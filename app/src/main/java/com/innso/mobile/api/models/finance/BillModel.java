@@ -19,10 +19,14 @@ public class BillModel {
     @SerializedName("date")
     String date;
 
+    @SerializedName("customer")
+    String customer;
+
     @SerializedName("imageUrl")
     String image;
 
-    public BillModel(String code, String date, String value, String taxes, String imageUrl) {
+    public BillModel(String code, String date, String customerName, String value, String taxes, String imageUrl) {
+        this.customer = customerName;
         this.code = code;
         this.date = date;
         this.value = Double.valueOf(value);
@@ -49,6 +53,10 @@ public class BillModel {
 
     public String getDate() {
         return date;
+    }
+
+    public String getCustomer() {
+        return customer;
     }
 
     public String getImage() {

@@ -3,21 +3,22 @@ package com.innso.mobile.api.controllers;
 
 import com.innso.mobile.api.models.cutomers.Customer;
 import com.innso.mobile.api.services.CustomerApi;
-import com.innso.mobile.managers.preferences.InnsoPreferences;
-import com.innso.mobile.managers.preferences.PrefsManager;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import io.reactivex.Completable;
+import io.reactivex.Observable;
+import io.reactivex.Single;
 import io.reactivex.schedulers.Schedulers;
 
 public class CustomerController {
 
     private CustomerApi customerApi;
 
-    private PrefsManager prefsManager;
 
-    public CustomerController(CustomerApi customerApi, PrefsManager prefsManager) {
+    public CustomerController(CustomerApi customerApi) {
         this.customerApi = customerApi;
-        this.prefsManager = prefsManager;
     }
 
     public Completable addCustomer(String id, String name, String address, String phone) {
@@ -25,6 +26,12 @@ public class CustomerController {
         Customer customer = new Customer().setId(id).setName(name).setAddress(address).setPhone(phone);
 
         return customerApi.addCustomer(customer).subscribeOn(Schedulers.io());
+    }
+
+    public Single<ArrayList<Customer>> getCustomers() {
+        return customerApi.getCustomers()
+                .map(it -> new ArrayList<>(it.values()))
+                .subscribeOn(Schedulers.io());
     }
 
 }

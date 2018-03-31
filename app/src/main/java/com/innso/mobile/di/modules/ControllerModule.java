@@ -33,8 +33,8 @@ public class ControllerModule {
 
     @Provides
     @Singleton
-    CustomerController customerController(CustomerApi customerApi, PrefsManager prefsManager) {
-        return new CustomerController(customerApi, prefsManager);
+    CustomerController customerController(CustomerApi customerApi) {
+        return new CustomerController(customerApi);
     }
 
     @Provides

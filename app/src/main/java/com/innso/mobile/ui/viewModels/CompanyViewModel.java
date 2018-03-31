@@ -3,16 +3,9 @@ package com.innso.mobile.ui.viewModels;
 
 import android.view.View;
 
-import com.google.firebase.auth.FirebaseAuth;
-import com.innso.mobile.ui.activities.CreateUserActivity;
 import com.innso.mobile.ui.activities.NewCustomerActivity;
 import com.innso.mobile.ui.activities.UsersActivity;
-
-import javax.inject.Inject;
-
-import io.reactivex.Observable;
-import io.reactivex.android.schedulers.AndroidSchedulers;
-import io.reactivex.subjects.PublishSubject;
+import com.innso.mobile.ui.activities.bills.BillsActivity;
 
 public class CompanyViewModel extends BaseViewModel {
 
@@ -29,5 +22,8 @@ public class CompanyViewModel extends BaseViewModel {
         startActivityEvent.onNext(NewCustomerActivity.class);
     }
 
+    public void addBill(View view) {
+        startActivityEvent.onNext(BillsActivity.class);
+    }
 
 }

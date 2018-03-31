@@ -18,7 +18,6 @@ public class GeneralBindings {
         Glide.with(context)
                 .load(imagePath)
                 .asBitmap()
-                .centerCrop()
                 .placeholder(R.mipmap.ic_launcher)
                 .error(R.mipmap.ic_launcher)
                 .into(imageView);

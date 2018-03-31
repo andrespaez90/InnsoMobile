@@ -80,6 +80,19 @@ public class BaseActivity extends AppCompatActivity {
         }
     }
 
+    protected void enableActionBack() {
+        ActionBar actionBar = getSupportActionBar();
+        if (actionBar != null) {
+            actionBar.setDisplayHomeAsUpEnabled(true);
+        }
+    }
+
+    @Override
+    public boolean onSupportNavigateUp() {
+        finish();
+        return true;
+    }
+
     @Override
     protected void onPause() {
         super.onPause();

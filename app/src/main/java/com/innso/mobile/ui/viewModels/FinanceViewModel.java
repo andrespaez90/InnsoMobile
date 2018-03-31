@@ -60,13 +60,13 @@ public class FinanceViewModel extends BaseViewModel {
     }
 
     private void updateRevenue(FinanceYearSummary yearSummary) throws ParseException {
-        hideLoading();
         SummaryMonth[] summaryMonth = sortFinanceSummary(yearSummary.getMonthSummary());
         revenue.onNext(getRevenuesValues(summaryMonth));
         totalRevenue.onNext(yearSummary.getTotalRevenue());
         totalExpenditure.onNext(yearSummary.getTotalExpediture());
         totalBanks.onNext(yearSummary.getTotalBanks());
         totalCash.onNext(yearSummary.getTotalCash());
+        hideLoading();
     }
 
     @NonNull

@@ -15,6 +15,8 @@ public class Bill implements Parcelable {
 
     public String id;
 
+    public String customer;
+
     public String date;
 
     public String value;
@@ -28,6 +30,7 @@ public class Bill implements Parcelable {
     public Bill(BillModel billModel) {
         this.id = billModel.getCode();
         this.date = billModel.getDate();
+        this.customer = billModel.getCustomer();
         this.value = MoneyUtil.getBasicCurrencyPrice("CO", billModel.getValue());
         this.taxes = MoneyUtil.getBasicCurrencyPrice("CO", billModel.getTaxes());
         this.total = MoneyUtil.getBasicCurrencyPrice("CO", billModel.getTotal());
@@ -43,7 +46,7 @@ public class Bill implements Parcelable {
         this.imageUrl = in.readString();
     }
 
-    public String getCategory() {
+    public String getMonth() {
         Calendar calendar = DateUtils.getCalendarFromString(date, "dd/MM/yyyy");
         return new SimpleDateFormat("MMMM", Locale.getDefault()).format(calendar.getTime()).toLowerCase();
     }

@@ -37,7 +37,6 @@ public class CompanyFragment extends BaseFragment {
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         initView();
-        loadDummyData();
     }
 
     @Override
@@ -56,7 +55,4 @@ public class CompanyFragment extends BaseFragment {
         binding.textViewCompanyNit.setText(StringUtils.setSpannablesFromRegex(getString(R.string.company_nit), "(.*):", new StyleSpan(Typeface.BOLD)));
     }
 
-    private void loadDummyData() {
-
-    }
 }

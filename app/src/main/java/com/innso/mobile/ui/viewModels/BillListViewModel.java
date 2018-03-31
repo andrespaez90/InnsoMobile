@@ -4,7 +4,7 @@ import android.view.View;
 
 import com.innso.mobile.api.controllers.FinanceController;
 import com.innso.mobile.api.models.finance.BillModel;
-import com.innso.mobile.ui.activities.AddBillActivity;
+import com.innso.mobile.ui.activities.bills.AddBillActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -31,14 +31,15 @@ public class BillListViewModel extends BaseViewModel {
         startActivityEvent.onNext(AddBillActivity.class);
     }
 
-    public Observable<List<BillModel>> onBillsChange() {
-        return bills.observeOn(AndroidSchedulers.mainThread());
-    }
-
     public void update(String yearSelected) {
         showLoading();
         financeController.getBills(yearSelected)
                 .doOnSuccess(list -> hideLoading())
                 .subscribe(bills::onNext, this::showServiceError);
     }
+
+    public Observable<List<BillModel>> onBillsChange() {
+        return bills.observeOn(AndroidSchedulers.mainThread());
+    }
+
 }

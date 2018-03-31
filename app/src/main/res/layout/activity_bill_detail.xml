@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="@dimen/spacing_xlarge"
-    tools:context="com.innso.mobile.ui.activities.BillDetailActivity">
+    tools:context="com.innso.mobile.ui.activities.bills.BillDetailActivity">
 
     <TextView
         android:id="@+id/textView_total"
@@ -38,7 +38,7 @@
         android:id="@+id/imageView_bill"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:scaleType="centerCrop"
+        android:scaleType="centerInside"
         android:layout_above="@id/textView_value"/>
 
 </RelativeLayout>

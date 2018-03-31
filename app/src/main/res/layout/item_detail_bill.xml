@@ -5,10 +5,6 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="@dimen/spacing_micro"
-        android:layout_marginLeft="@dimen/spacing_standard"
-        android:layout_marginRight="@dimen/spacing_standard"
-        android:layout_marginTop="@dimen/spacing_small"
         android:background="@android:color/white">
 
         <ImageView
@@ -18,34 +14,58 @@
             android:layout_alignBottom="@id/imageView_call"
             android:layout_alignTop="@id/imageView_chat"
             android:contentDescription="@null"
-            android:padding="@dimen/spacing_small"
+            android:layout_margin="@dimen/spacing_standard"
             android:src="@mipmap/ic_launcher" />
 
         <TextView
-            android:id="@+id/textView_date"
+            android:id="@+id/textView_customer"
             style="@style/TextBig.Black.Bold"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignTop="@id/imageView_chat"
-            android:layout_marginLeft="@dimen/spacing_medium"
-            android:layout_marginStart="@dimen/spacing_medium"
-            android:layout_marginTop="@dimen/spacing_medium"
+            android:layout_alignTop="@id/imageView_bill_image"
             android:layout_toEndOf="@id/imageView_bill_image"
             android:layout_toRightOf="@id/imageView_bill_image"
-            android:gravity="end|right"
-            tools:text="12/01/2017" />
+            tools:text="Innovating Software" />
 
         <TextView
             android:id="@+id/textView_total"
-            style="@style/TextBig.Black"
-            android:layout_width="match_parent"
+            style="@style/TextNormal.Black"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignBottom="@id/imageView_call"
             android:layout_alignLeft="@id/textView_date"
             android:layout_alignStart="@id/textView_date"
-            android:layout_below="@id/textView_date"
-            android:gravity="end|right"
+            android:layout_below="@id/textView_customer"
             tools:text="$500.000" />
+
+        <TextView
+            android:id="@+id/textView_date"
+            style="@style/TextSmall.Black"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@id/imageView_bill_image"
+            android:layout_toRightOf="@id/imageView_bill_image"
+            android:layout_below="@id/textView_total"
+            tools:text="12/01/2017" />
+
+        <ImageView
+            android:id="@+id/imageView_back_year"
+            android:layout_width="@dimen/spacing_xlarge"
+            android:layout_height="@dimen/spacing_xlarge"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="@dimen/spacing_xlarge"
+            android:layout_marginEnd="@dimen/spacing_xlarge"
+            android:contentDescription="@null"
+            android:rotation="-90"
+            android:src="@mipmap/ic_arrow_green" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/spacing_xxmicro"
+            android:background="@color/gray_separator"
+            android:layout_below="@id/imageView_bill_image" />
+
 
     </RelativeLayout>
 

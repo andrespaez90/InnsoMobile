@@ -23,14 +23,31 @@
         </activity>
         <activity
             android:name=".ui.activities.CreateUserActivity"
-            android:theme="@style/AppThemeFullScreen" />
+            android:screenOrientation="portrait" />
+
         <activity android:name=".ui.activities.LoginActivity" />
+
         <activity android:name=".ui.activities.MainActivity" />
-        <activity android:name=".ui.activities.UsersActivity" />
+
         <activity
-            android:name=".ui.activities.AddBillActivity"
+            android:name=".ui.activities.UsersActivity"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".ui.activities.NewCustomerActivity"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".ui.activities.bills.BillsActivity"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".ui.activities.bills.AddBillActivity"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="stateHidden" />
+            android:windowSoftInputMode="stateHidden"
+            android:label="@string/title.new_bill" />
+
+        <activity android:name=".ui.activities.bills.BillDetailActivity" />
 
         <provider
             android:name="android.support.v4.content.FileProvider"
@@ -42,7 +59,6 @@
                 android:resource="@xml/provider_paths" />
         </provider>
 
-        <activity android:name=".ui.activities.BillDetailActivity"></activity>
     </application>
 
 </manifest>

@@ -31,6 +31,7 @@
     <string name="copy.close_session">Cerrar sesion</string>
     <string name="copy.add_costumer">Nuevo Cliente</string>
     <string name="copy.bills">Facturas</string>
+    <string name="copy.new_bill">Agregar Factura</string>
 
     <string name="copy.day">Día</string>
     <string name="copy.month">Mes</string>
@@ -54,7 +55,7 @@
     <string name="error.not_load_image">Error al cargar la imagen, por favor intenta de nuevo</string>
 
     <string name="accounting.revenue">%s\nIngresos</string>
-    <string name="accounting.expenditure">%s\nExpenditure</string>
+    <string name="accounting.expenditure">%s\nGastos</string>
 
     <string name="customer.name">Nombre o Razón social</string>
     <string name="customer.id">NIT</string>

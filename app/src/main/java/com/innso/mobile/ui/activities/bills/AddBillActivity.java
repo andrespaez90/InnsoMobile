@@ -1,12 +1,15 @@
-package com.innso.mobile.ui.activities;
+package com.innso.mobile.ui.activities.bills;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
+import android.support.v7.app.AlertDialog;
 
 import com.innso.mobile.R;
 import com.innso.mobile.databinding.ActivityAddBillBinding;
 import com.innso.mobile.ui.TextWatcher.MoneyTextWatcher;
+import com.innso.mobile.ui.activities.BaseActivity;
 import com.innso.mobile.ui.viewModels.AddBillViewModel;
 import com.innso.mobile.utils.CameraUtil;
 import com.innso.mobile.utils.ErrorUtils;
@@ -25,6 +28,11 @@ public class AddBillActivity extends BaseActivity {
         binding = DataBindingUtil.setContentView(this, R.layout.activity_add_bill);
         viewModel = new AddBillViewModel();
         binding.setViewModel(viewModel);
+        initViews();
+    }
+
+    private void initViews() {
+        enableActionBack();
         binding.editTextValue.addTextChangedListener(new MoneyTextWatcher(binding.editTextValue, "CO"));
         binding.editTextTaxes.addTextChangedListener(new MoneyTextWatcher(binding.editTextTaxes, "CO"));
         binding.editTextTaxes.setHint(MoneyUtil.getBasicCurrencyPrice("CO", 0));
@@ -40,6 +48,7 @@ public class AddBillActivity extends BaseActivity {
     public void subscribe() {
         disposable.add(viewModel.observableSnackBar().subscribe(event -> showError(binding.getRoot(), event.getMessage())));
         disposable.add(viewModel.onCameraOpen().subscribe(o -> requestStoragePermissions(), event -> showError(binding.getRoot(), ErrorUtils.getMessageError(event))));
+        disposable.add(viewModel.onShowCustomers().subscribe(this::showCustomersDialog));
         disposable.add(viewModel.onDatePickerClick().subscribe(this::showDatePicker));
         disposable.add(viewModel.showAlertDialog().subscribe(this::showAlertDialog));
     }
@@ -54,6 +63,14 @@ public class AddBillActivity extends BaseActivity {
         super.successStoragePermission();
         CameraUtil.openCamera(this, FileUtil.getPathForBillFolder(), REQUEST_IMAGE_CAPTURE);
     }
+
+    private void showCustomersDialog(CharSequence names[]) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("Selecciona un Cliente");
+        builder.setItems(names, (dialog, which) -> viewModel.onCustomerSelected(which));
+        builder.show();
+    }
+
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent intent) {

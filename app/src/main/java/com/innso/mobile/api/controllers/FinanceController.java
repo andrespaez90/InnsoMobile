@@ -2,11 +2,9 @@ package com.innso.mobile.api.controllers;
 
 import com.innso.mobile.api.models.finance.BillModel;
 import com.innso.mobile.api.models.finance.FinanceYearSummary;
-import com.innso.mobile.api.models.finance.SummaryMonth;
 import com.innso.mobile.api.services.FinanceApi;
 import com.innso.mobile.utils.DateUtils;
 
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -33,8 +31,8 @@ public class FinanceController {
                 .subscribeOn(Schedulers.io());
     }
 
-    public Completable addBill(String code, String date, String value, String taxes, String urlImage) {
-        BillModel billModel = new BillModel(code, date, value, taxes, urlImage);
+    public Completable addBill(String code, String date, String customerName, String value, String taxes, String urlImage) {
+        BillModel billModel = new BillModel(code, date, customerName, value, taxes, urlImage);
         return financeApi.addBill(datePath(date), billModel).subscribeOn(Schedulers.io());
     }
 

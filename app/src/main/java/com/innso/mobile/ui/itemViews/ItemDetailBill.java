@@ -45,6 +45,7 @@ public class ItemDetailBill extends FrameLayout implements GenericItemView<Bill>
         this.bill = data;
         binding.textViewDate.setText(this.bill.date);
         binding.textViewTotal.setText(this.bill.total);
+        binding.textViewCustomer.setText(this.bill.customer);
         GeneralBindings.loadImage(binding.imageViewBillImage, bill.imageUrl);
     }
 

@@ -7,7 +7,9 @@ import android.text.TextUtils;
 import android.view.View;
 
 import com.innso.mobile.R;
+import com.innso.mobile.api.controllers.CustomerController;
 import com.innso.mobile.api.controllers.FinanceController;
+import com.innso.mobile.api.models.cutomers.Customer;
 import com.innso.mobile.managers.FirebaseStorageManager;
 import com.innso.mobile.ui.TextWatcher.MoneyTextWatcher;
 import com.innso.mobile.ui.factories.SnackBarFactory;
@@ -18,6 +20,7 @@ import com.innso.mobile.utils.ImageUtils;
 
 import java.io.File;
 import java.util.Calendar;
+import java.util.List;
 import java.util.Locale;
 
 import javax.inject.Inject;
@@ -38,11 +41,17 @@ public class AddBillViewModel extends BaseViewModel {
 
     public ObservableField<File> billImage = new ObservableField<>();
 
+    public ObservableField<String> customer = new ObservableField<>("");
+
     private ObservableField<String> value = new ObservableField<>("");
 
     private ObservableField<String> taxes = new ObservableField<>("");
 
     private PublishSubject<Boolean> openCamera = PublishSubject.create();
+
+    private PublishSubject<CharSequence[]> showCustomers = PublishSubject.create();
+
+    private CharSequence customersNames[] = new CharSequence[0];
 
     private File reducedFile;
 
@@ -53,12 +62,29 @@ public class AddBillViewModel extends BaseViewModel {
     @Inject
     FinanceController financeController;
 
+    @Inject
+    CustomerController customerController;
+
     public AddBillViewModel() {
         getComponent().inject(this);
+        customerController.getCustomers().subscribe(this::updateCustomers, this::showServiceError);
+    }
+
+    private void updateCustomers(List<Customer> customers) {
+        customersNames = new CharSequence[customers.size()];
+        for (int i = 0, size = customers.size(); i < size; i++) {
+            customersNames[i] = customers.get(i).getName();
+        }
     }
 
     public void onDateClick(View view) {
         showDatePicker.onNext(new DatePickerModel());
+    }
+
+    public void onCustomerSelected(int position) {
+        if (position <= customersNames.length) {
+            customer.set(customersNames[position].toString());
+        }
     }
 
     public void watcherValue(Editable editable) {
@@ -96,6 +122,10 @@ public class AddBillViewModel extends BaseViewModel {
         openCamera.onNext(true);
     }
 
+    public void onCustomerClick(View view) {
+        showCustomers.onNext(customersNames);
+    }
+
     public void loadImageFile() {
         reducedFile = ImageUtils.resizeImage(FileUtil.getLastFileModifiedOnFolder(FileUtil.getPathForBillFolder()));
         billImage.set(reducedFile);
@@ -115,12 +145,12 @@ public class AddBillViewModel extends BaseViewModel {
     }
 
     private boolean isInformationValid() {
-        return TextUtils.isEmpty(date) || TextUtils.isEmpty(value.get())
+        return TextUtils.isEmpty(date) || TextUtils.isEmpty(value.get()) || reducedFile == null
                 || TextUtils.isEmpty(taxes.get()) || TextUtils.isEmpty(code.get());
     }
 
     private void successUploadPhoto(String urlImage) {
-        disposables.add(financeController.addBill(code.get(), date, value.get(), taxes.get(), urlImage)
+        disposables.add(financeController.addBill(code.get(), date, customer.get(), value.get(), taxes.get(), urlImage)
                 .subscribe(this::onSaveBill, this::showServiceError));
     }
 
@@ -130,5 +160,9 @@ public class AddBillViewModel extends BaseViewModel {
 
     public Observable<Boolean> onCameraOpen() {
         return openCamera.observeOn(AndroidSchedulers.mainThread());
+    }
+
+    public Observable<CharSequence[]> onShowCustomers() {
+        return showCustomers.observeOn(AndroidSchedulers.mainThread());
     }
 }

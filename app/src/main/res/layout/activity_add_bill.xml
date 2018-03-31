@@ -13,8 +13,8 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:padding="@dimen/spacing_large"
-        tools:context="com.innso.mobile.ui.activities.AddBillActivity">
+        android:background="@color/background"
+        tools:context="com.innso.mobile.ui.activities.bills.AddBillActivity">
 
         <ScrollView
             android:layout_width="match_parent"
@@ -25,101 +25,114 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
+                <RelativeLayout
+                    android:id="@+id/layout_header"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:paddingLeft="@dimen/spacing_xlarge"
+                    android:paddingRight="@dimen/spacing_xlarge"
+                    android:layout_marginTop="@dimen/spacing_xlarge">
+
+                    <LinearLayout
+                        android:id="@+id/layout_date_container"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="@dimen/spacing_standard"
+                        android:layout_marginRight="@dimen/spacing_standard"
+                        android:background="@drawable/box_round_borders_blue"
+                        android:onClick="@{viewModel::onDateClick}"
+                        android:orientation="horizontal"
+                        android:padding="@dimen/spacing_medium">
+
+                        <TextView
+                            android:id="@+id/textView_date"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="@dimen/spacing_medium"
+                            android:layout_marginRight="@dimen/spacing_medium"
+                            android:layout_weight="1"
+                            android:background="@color/background"
+                            android:gravity="center"
+                            android:hint="@string/copy.day"
+                            android:padding="@dimen/spacing_small"
+                            android:text="@={viewModel.day}" />
+
+                        <TextView
+                            android:id="@+id/textView_month"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="@dimen/spacing_medium"
+                            android:layout_marginRight="@dimen/spacing_medium"
+                            android:layout_weight="1"
+                            android:background="@color/background"
+                            android:gravity="center"
+                            android:hint="@string/copy.month"
+                            android:padding="@dimen/spacing_small"
+                            android:text="@={viewModel.month}" />
+
+                        <TextView
+                            android:id="@+id/textView_year"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:background="@color/background"
+                            android:gravity="center"
+                            android:hint="@string/copy.year"
+                            android:padding="@dimen/spacing_small"
+                            android:text="@={viewModel.year}" />
+
+                    </LinearLayout>
+
+                    <EditText
+                        android:id="@+id/editText_bill_code"
+                        style="@style/TextBig.Black.Bold"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignBottom="@+id/layout_date_container"
+                        android:layout_alignTop="@+id/layout_date_container"
+                        android:layout_toEndOf="@id/layout_date_container"
+                        android:layout_toRightOf="@id/layout_date_container"
+                        android:background="@drawable/box_round_borders_blue"
+                        android:gravity="center_vertical|end"
+                        android:hint="@string/hint.bill_code"
+                        android:inputType="number|text"
+                        android:padding="@dimen/spacing_medium"
+                        android:text="@={viewModel.code}" />
+
+                </RelativeLayout>
+
                 <TextView
-                    android:id="@+id/textView_title"
-                    style="@style/TextHuge.Blue.Bold"
+                    android:id="@+id/textView_customer"
+                    style="@style/TextNormal.Black.Bold"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="@color/background"
-                    android:gravity="center"
-                    android:padding="@dimen/spacing_medium"
-                    android:text="@string/title.new_bill" />
-
-                <EditText
-                    android:id="@+id/editText_bill_code"
-                    style="@style/TextBig.Black.Bold"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentEnd="true"
-                    android:layout_alignParentRight="true"
-                    android:layout_below="@id/textView_title"
-                    android:layout_marginEnd="@dimen/font_xxlarge"
-                    android:layout_alignTop="@+id/layout_date_container"
-                    android:layout_alignBottom="@+id/layout_date_container"
-                    android:layout_marginRight="@dimen/font_xxlarge"
+                    android:layout_height="match_parent"
+                    android:layout_alignEnd="@id/layout_header"
+                    android:layout_alignLeft="@id/layout_header"
+                    android:layout_alignRight="@id/layout_header"
+                    android:layout_alignStart="@id/layout_header"
+                    android:layout_below="@+id/layout_header"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="@dimen/spacing_large"
                     android:background="@drawable/box_round_borders_blue"
-                    android:gravity="end|center_vertical"
-                    android:hint="@string/hint.bill_code"
-                    android:inputType="number|text"
-                    android:padding="@dimen/spacing_medium"
-                    android:text="@={viewModel.code}" />
-
-                <LinearLayout
-                    android:id="@+id/layout_date_container"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/textView_title"
-                    android:layout_marginTop="@dimen/spacing_standard"
-                    android:layout_marginEnd="@dimen/spacing_standard"
-                    android:layout_marginRight="@dimen/spacing_standard"
-                    android:layout_toLeftOf="@id/editText_bill_code"
-                    android:layout_toStartOf="@id/editText_bill_code"
-                    android:background="@drawable/box_round_borders_blue"
-                    android:onClick="@{viewModel::onDateClick}"
-                    android:orientation="horizontal"
-                    android:padding="@dimen/spacing_medium">
-
-                    <TextView
-                        android:id="@+id/textView_date"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginEnd="@dimen/spacing_medium"
-                        android:layout_marginRight="@dimen/spacing_medium"
-                        android:layout_weight="1"
-                        android:background="@color/background"
-                        android:gravity="center"
-                        android:hint="@string/copy.day"
-                        android:padding="@dimen/spacing_small"
-                        android:text="@={viewModel.day}" />
-
-                    <TextView
-                        android:id="@+id/textView_month"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginEnd="@dimen/spacing_medium"
-                        android:layout_marginRight="@dimen/spacing_medium"
-                        android:layout_weight="1"
-                        android:background="@color/background"
-                        android:gravity="center"
-                        android:hint="@string/copy.month"
-                        android:padding="@dimen/spacing_small"
-                        android:text="@={viewModel.month}" />
-
-                    <TextView
-                        android:id="@+id/textView_year"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:background="@color/background"
-                        android:gravity="center"
-                        android:hint="@string/copy.year"
-                        android:padding="@dimen/spacing_small"
-                        android:text="@={viewModel.year}" />
-
-                </LinearLayout>
+                    android:gravity="center_vertical|center"
+                    android:hint="Nombre del cliente"
+                    android:text="@{viewModel.customer}"
+                    android:onClick="@{viewModel.onCustomerClick}"
+                    android:padding="@dimen/spacing_large" />
 
                 <EditText
                     android:id="@+id/editText_value"
                     style="@style/TextBig.Black"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_alignEnd="@+id/editText_bill_code"
-                    android:layout_alignRight="@id/editText_bill_code"
-                    android:layout_below="@id/editText_bill_code"
-                    android:layout_marginTop="@dimen/spacing_medium"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_below="@id/textView_customer"
+                    android:layout_margin="@dimen/font_xlarge"
                     android:afterTextChanged="@{ s -> viewModel.watcherValue(s)}"
                     android:background="@drawable/box_round_borders_blue"
-                    android:gravity="end"
+                    android:gravity="center_vertical|end"
                     android:inputType="number|text"
                     android:padding="@dimen/spacing_medium"
                     app:layout_widthPercent="50%"
@@ -131,8 +144,6 @@
                     android:layout_height="match_parent"
                     android:layout_alignBottom="@+id/editText_value"
                     android:layout_alignTop="@+id/editText_value"
-                    android:layout_marginEnd="@dimen/spacing_standard"
-                    android:layout_marginRight="@dimen/spacing_standard"
                     android:layout_toLeftOf="@+id/editText_value"
                     android:layout_toStartOf="@+id/editText_value"
                     android:gravity="center_vertical|end"
@@ -143,13 +154,12 @@
                     style="@style/TextBig.Black"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_alignEnd="@+id/editText_bill_code"
-                    android:layout_alignRight="@id/editText_bill_code"
+                    android:layout_alignEnd="@+id/editText_value"
+                    android:layout_alignRight="@id/editText_value"
                     android:layout_below="@id/editText_value"
-                    android:layout_marginTop="@dimen/spacing_medium"
                     android:afterTextChanged="@{ s -> viewModel.watcherTaxes(s)}"
                     android:background="@drawable/box_round_borders_blue"
-                    android:gravity="end"
+                    android:gravity="center_vertical|end"
                     android:inputType="number|text"
                     android:padding="@dimen/spacing_medium"
                     app:layout_widthPercent="50%"
@@ -168,36 +178,27 @@
                     android:gravity="center_vertical|end"
                     android:text="@string/copy.values_taxes" />
 
-                <android.support.v7.widget.AppCompatImageView
-                    android:id="@+id/imageView_camera"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentEnd="true"
-                    android:layout_alignParentRight="true"
-                    android:layout_below="@id/editText_taxes"
-                    android:layout_centerHorizontal="true"
-                    android:layout_margin="@dimen/spacing_xxlarge"
-                    android:contentDescription="@null"
-                    android:onClick="@{viewModel::onCameraClick}"
-                    app:srcCompat="@drawable/ic_camera" />
-
-                <TextView
+                <com.innso.mobile.ui.views.VectorCompatTextView
                     android:id="@+id/textView_label_take_photo"
                     style="@style/TextBig.Black.Bold"
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_alignBottom="@id/imageView_camera"
-                    android:layout_marginTop="@dimen/spacing_xxxlarge"
-                    android:layout_toLeftOf="@id/imageView_camera"
-                    android:layout_toStartOf="@id/imageView_camera"
-                    android:text="@string/copy.bill_image" />
+                    android:layout_below="@id/editText_taxes"
+                    android:layout_centerHorizontal="true"
+                    android:layout_margin="@dimen/spacing_xlarge"
+                    android:drawablePadding="@dimen/spacing_medium"
+                    android:onClick="@{viewModel::onCameraClick}"
+                    android:text="@string/copy.bill_image"
+                    app:drawableRightCompat="@drawable/ic_camera" />
 
                 <ImageView
                     android:id="@+id/imageView_whim"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/textView_label_take_photo"
-                    android:layout_marginTop="@dimen/spacing_medium"
+                    android:layout_marginLeft="@dimen/spacing_xxlarge"
+                    android:layout_marginRight="@dimen/spacing_xxlarge"
+                    android:layout_centerHorizontal="true"
                     android:contentDescription="@null"
                     app:load_image_file="@{viewModel.billImage}" />
 

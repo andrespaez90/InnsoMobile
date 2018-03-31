@@ -4,13 +4,13 @@ import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
+import android.support.v4.content.ContextCompat;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 
 import com.innso.mobile.R;
 import com.innso.mobile.databinding.ActivityMainBinding;
-import com.innso.mobile.ui.fragments.BillListFragment;
 import com.innso.mobile.ui.fragments.CompanyFragment;
 import com.innso.mobile.ui.fragments.ProfileFragment;
 import com.innso.mobile.ui.helpers.NavigationViewHelper;
@@ -25,8 +25,6 @@ import java.util.List;
 public class MainActivity extends BaseActivity implements BottomNavigationView.OnNavigationItemSelectedListener {
 
     private ActivityMainBinding binding;
-
-    private BillListFragment billListFragment;
 
     private CompanyFragment companyFragment;
 
@@ -47,6 +45,7 @@ public class MainActivity extends BaseActivity implements BottomNavigationView.O
 
     private void initView() {
         NavigationViewHelper.disableShiftMode(binding.navigationView);
+        binding.loaderCash.getIndeterminateDrawable().setColorFilter(ContextCompat.getColor(getBaseContext(), R.color.colorPrimary), android.graphics.PorterDuff.Mode.MULTIPLY);
     }
 
     private void initListeners() {
@@ -64,7 +63,8 @@ public class MainActivity extends BaseActivity implements BottomNavigationView.O
                 financeViewModel.onTotalRevenueUpdated().subscribe(this::updateRevenueValue),
                 financeViewModel.onTotalExpenditureUpdated().subscribe(this::updateExpenditureValue),
                 financeViewModel.onTotalBanksUpdated().subscribe(value -> updateValue(binding.textViewBankSummaryValue, value)),
-                financeViewModel.onTotalCashUpdated().subscribe(value -> updateValue(binding.textViewSummaryCashValue, value)));
+                financeViewModel.onTotalCashUpdated().subscribe(value -> updateValue(binding.textViewSummaryCashValue, value)),
+                financeViewModel.observableShowLoading().subscribe(this::showLoaders));
     }
 
     private void updateValue(TextView view, Double value) {
@@ -81,6 +81,20 @@ public class MainActivity extends BaseActivity implements BottomNavigationView.O
 
     private void updateViewValueWithFormat(TextView view, Double value, int stringFormat) {
         view.setText(getString(stringFormat, MoneyUtil.getBasicCurrencyPrice("CO", value)));
+    }
+
+    private void showLoaders(boolean showLoader) {
+        int loaderVisibility = showLoader ? View.VISIBLE : View.INVISIBLE;
+        int textVisibility = showLoader ? View.INVISIBLE : View.VISIBLE;
+
+        binding.loaderBank.setVisibility(loaderVisibility);
+        binding.loaderCash.setVisibility(loaderVisibility);
+
+        binding.textViewSummaryCashValue.setVisibility(textVisibility);
+        binding.textViewBankSummaryValue.setVisibility(textVisibility);
+        binding.textViewTotalExpenditure.setVisibility(textVisibility);
+        binding.textViewTotalRevenue.setVisibility(textVisibility);
+
     }
 
     private void updateInformation(List<Double> values) {
@@ -103,7 +117,6 @@ public class MainActivity extends BaseActivity implements BottomNavigationView.O
                 replaceFragment(getProfileFragment());
                 break;
             case R.id.action_bills:
-                replaceFragment(getBillListFragment());
                 break;
             case R.id.action_main:
                 binding.container.setVisibility(View.GONE);
@@ -126,13 +139,5 @@ public class MainActivity extends BaseActivity implements BottomNavigationView.O
         }
         return profileFragment;
     }
-
-    private BillListFragment getBillListFragment() {
-        if (billListFragment == null) {
-            billListFragment = new BillListFragment();
-        }
-        return billListFragment;
-    }
-
 }
 
