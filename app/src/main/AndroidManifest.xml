@@ -47,7 +47,13 @@
             android:windowSoftInputMode="stateHidden"
             android:label="@string/title.new_bill" />
 
-        <activity android:name=".ui.activities.bills.BillDetailActivity" />
+        <activity
+            android:name=".ui.activities.bills.BillDetailActivity"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".ui.activities.AddExpenseActivity"
+            android:screenOrientation="portrait" />
 
         <provider
             android:name="android.support.v4.content.FileProvider"

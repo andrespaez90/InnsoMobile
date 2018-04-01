@@ -31,6 +31,7 @@
     <string name="copy.close_session">Cerrar sesion</string>
     <string name="copy.add_costumer">Nuevo Cliente</string>
     <string name="copy.bills">Facturas</string>
+    <string name="copy.expenses">Gastos</string>
     <string name="copy.new_bill">Agregar Factura</string>
 
     <string name="copy.day">Día</string>
@@ -69,6 +70,7 @@
     <string name="copy.values_taxes">IVA</string>
     <string name="copy.bill_image">Foto Factura</string>
     <string name="copy_bill_added">Factura Agregada</string>
+    <string name="copy_expense_added">Gasto Agregado</string>
 
     <string name="format_value">Valor: %1$s</string>
     <string name="format_taxes">IVA: %1$s</string>

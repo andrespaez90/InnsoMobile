@@ -3,6 +3,7 @@ package com.innso.mobile.ui.viewModels;
 
 import android.view.View;
 
+import com.innso.mobile.ui.activities.AddExpenseActivity;
 import com.innso.mobile.ui.activities.NewCustomerActivity;
 import com.innso.mobile.ui.activities.UsersActivity;
 import com.innso.mobile.ui.activities.bills.BillsActivity;
@@ -22,8 +23,12 @@ public class CompanyViewModel extends BaseViewModel {
         startActivityEvent.onNext(NewCustomerActivity.class);
     }
 
-    public void addBill(View view) {
+    public void showBills(View view) {
         startActivityEvent.onNext(BillsActivity.class);
+    }
+
+    public void addExpense(View view) {
+        startActivityEvent.onNext(AddExpenseActivity.class);
     }
 
 }

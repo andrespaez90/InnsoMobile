@@ -1,0 +1,9 @@
+<resources>
+
+    <array name="expense_concepts">
+        <item>Pago de impuesto</item>
+        <item>Parqueadero</item>
+        <item>Gasolina</item>
+        <item>Papeleria</item>
+    </array>
+</resources>

@@ -15,6 +15,7 @@ public class FileUtil {
     private static String applicationId;
     private static final String CHAT = "chat";
     public static final String BILL = "bills/";
+    public static final String EXPENSE = "expense/";
     public static String pathLastFileGenerated;
 
     public static void init(String id) {
@@ -26,6 +27,7 @@ public class FileUtil {
         createFolder(Environment.getExternalStorageDirectory() + File.separator + appName);
         createFolder(getPathForChatFolder());
         createFolder(getPathForBillFolder());
+        createFolder(getPathForExpensesFolder());
         createFolder(getPathForUserFolder());
     }
 
@@ -49,6 +51,10 @@ public class FileUtil {
 
 
     public static String getPathForBillFolder() {
+        return Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES).getPath() + File.separator + appName + File.separator + "bill";
+    }
+
+    public static String getPathForExpensesFolder() {
         return Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES).getPath() + File.separator + appName + File.separator + "bill";
     }
 

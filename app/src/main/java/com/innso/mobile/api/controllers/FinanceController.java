@@ -1,6 +1,7 @@
 package com.innso.mobile.api.controllers;
 
 import com.innso.mobile.api.models.finance.BillModel;
+import com.innso.mobile.api.models.finance.ExpenseModel;
 import com.innso.mobile.api.models.finance.FinanceYearSummary;
 import com.innso.mobile.api.services.FinanceApi;
 import com.innso.mobile.utils.DateUtils;
@@ -34,6 +35,11 @@ public class FinanceController {
     public Completable addBill(String code, String date, String customerName, String value, String taxes, String urlImage) {
         BillModel billModel = new BillModel(code, date, customerName, value, taxes, urlImage);
         return financeApi.addBill(datePath(date), billModel).subscribeOn(Schedulers.io());
+    }
+
+    public Completable addExpene(String date, String concept, String value, String taxes, String urlImage) {
+        ExpenseModel expenseModel = new ExpenseModel(date, concept, value, taxes, urlImage);
+        return financeApi.addExpense(datePath(date), expenseModel).subscribeOn(Schedulers.io());
     }
 
     public Single<List<BillModel>> getBills() {
