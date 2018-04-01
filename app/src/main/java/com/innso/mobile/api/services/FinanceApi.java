@@ -25,6 +25,9 @@ public interface FinanceApi {
     @GET("/bills/{year}.json")
     Single<Response<Map<String, Map<String, BillModel>>>> getBills(@Path("year") String year);
 
+    @GET("/expenses/{year}.json")
+    Single<Response<Map<String, Map<String, ExpenseModel>>>> getExpenses(@Path("year") String year);
+
     @GET("/finance/{year}.json")
     Single<Response<FinanceYearSummary>> getAccountSummary(@Path("year") String year);
 

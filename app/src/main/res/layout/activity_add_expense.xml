@@ -157,7 +157,7 @@
                     android:layout_margin="@dimen/spacing_xlarge"
                     android:drawablePadding="@dimen/spacing_medium"
                     android:onClick="@{viewModel::onCameraClick}"
-                    android:text="@string/copy.bill_image"
+                    android:text="@string/copy.support_image"
                     app:drawableRightCompat="@drawable/ic_camera" />
 
                 <ImageView

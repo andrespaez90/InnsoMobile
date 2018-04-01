@@ -1,6 +1,11 @@
 package com.innso.mobile.api.models.finance;
 
 import com.google.gson.annotations.SerializedName;
+import com.innso.mobile.utils.DateUtils;
+
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Locale;
 
 public class ExpenseModel {
 
@@ -17,13 +22,13 @@ public class ExpenseModel {
     String date;
 
     @SerializedName("concept")
-    String customer;
+    String concept;
 
     @SerializedName("imageUrl")
     String image;
 
-    public ExpenseModel(String date, String customerName, String value, String taxes, String imageUrl) {
-        this.customer = customerName;
+    public ExpenseModel(String date, String concept, String value, String taxes, String imageUrl) {
+        this.concept = concept;
         this.date = date;
         this.value = Double.valueOf(value);
         this.taxes = Double.valueOf(taxes);
@@ -47,11 +52,16 @@ public class ExpenseModel {
         return date;
     }
 
-    public String getCustomer() {
-        return customer;
+    public String getConcept() {
+        return concept;
     }
 
     public String getImage() {
         return image;
+    }
+
+    public String getMonth() {
+        Calendar calendar = DateUtils.getCalendarFromString(date, "dd/MM/yyyy");
+        return new SimpleDateFormat("MMMM", Locale.getDefault()).format(calendar.getTime()).toLowerCase();
     }
 }

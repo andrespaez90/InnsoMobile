@@ -25,6 +25,10 @@ public class FinanceViewModel extends BaseViewModel {
 
     private PublishSubject<List<Double>> revenue = PublishSubject.create();
 
+    private PublishSubject<List<Double>> expenses = PublishSubject.create();
+
+    private PublishSubject<List<Double>> totalMonth = PublishSubject.create();
+
     private PublishSubject<Double> totalRevenue = PublishSubject.create();
 
     private PublishSubject<Double> totalExpenditure = PublishSubject.create();
@@ -61,7 +65,11 @@ public class FinanceViewModel extends BaseViewModel {
 
     private void updateRevenue(FinanceYearSummary yearSummary) throws ParseException {
         SummaryMonth[] summaryMonth = sortFinanceSummary(yearSummary.getMonthSummary());
-        revenue.onNext(getRevenuesValues(summaryMonth));
+        ArrayList<Double> revenuePerMonth = new ArrayList<>(12);
+        ArrayList<Double> expensesPerMonth = new ArrayList<>(12);
+        totalMonth.onNext(getRevenueExpensesValues(summaryMonth, revenuePerMonth, expensesPerMonth));
+        revenue.onNext(revenuePerMonth);
+        expenses.onNext(expensesPerMonth);
         totalRevenue.onNext(yearSummary.getTotalRevenue());
         totalExpenditure.onNext(yearSummary.getTotalExpediture());
         totalBanks.onNext(yearSummary.getTotalBanks());
@@ -70,16 +78,20 @@ public class FinanceViewModel extends BaseViewModel {
     }
 
     @NonNull
-    private ArrayList<Double> getRevenuesValues(SummaryMonth[] summaryMonth) {
-        ArrayList<Double> revenueValues = new ArrayList<>(12);
-        for (SummaryMonth aSummaryMonth : summaryMonth) {
-            if (aSummaryMonth != null) {
-                revenueValues.add(aSummaryMonth.getRevenue());
+    private ArrayList<Double> getRevenueExpensesValues(SummaryMonth[] summaryMonth, ArrayList<Double> revenueVales, ArrayList<Double> expenseValues) {
+        ArrayList<Double> totalMonth = new ArrayList<>(12);
+        for (SummaryMonth month : summaryMonth) {
+            if (month != null) {
+                revenueVales.add(month.getRevenue());
+                expenseValues.add(month.getExpenses());
+                totalMonth.add(month.getRevenue() - month.getExpenses());
             } else {
-                revenueValues.add(0d);
+                revenueVales.add(0d);
+                expenseValues.add(0d);
+                totalMonth.add(0d);
             }
         }
-        return revenueValues;
+        return totalMonth;
     }
 
     private SummaryMonth[] sortFinanceSummary(Map<String, SummaryMonth> response) throws ParseException {
@@ -92,6 +104,14 @@ public class FinanceViewModel extends BaseViewModel {
 
     public Observable<List<Double>> onRevenueUpdated() {
         return revenue.observeOn(AndroidSchedulers.mainThread());
+    }
+
+    public Observable<List<Double>> onExpensesUpdated() {
+        return expenses.observeOn(AndroidSchedulers.mainThread());
+    }
+
+    public Observable<List<Double>> onTotalMonthUpdated() {
+        return totalMonth.observeOn(AndroidSchedulers.mainThread());
     }
 
     public Observable<Double> onTotalRevenueUpdated() {

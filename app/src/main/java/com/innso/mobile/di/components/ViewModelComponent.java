@@ -5,6 +5,7 @@ import com.innso.mobile.ui.viewModels.AddBillViewModel;
 import com.innso.mobile.ui.viewModels.AddExpenseViewModel;
 import com.innso.mobile.ui.viewModels.BillListViewModel;
 import com.innso.mobile.ui.viewModels.CompanyViewModel;
+import com.innso.mobile.ui.viewModels.ExpensesViewModel;
 import com.innso.mobile.ui.viewModels.FinanceViewModel;
 import com.innso.mobile.ui.viewModels.LoginViewModel;
 import com.innso.mobile.ui.viewModels.NewCustomerViewModel;
@@ -42,4 +43,5 @@ public interface ViewModelComponent extends AppComponent {
 
     void inject(AddExpenseViewModel addExpenseViewModel);
 
+    void inject(ExpensesViewModel expensesViewModel);
 }

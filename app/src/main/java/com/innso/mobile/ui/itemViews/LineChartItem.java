@@ -2,8 +2,6 @@ package com.innso.mobile.ui.itemViews;
 
 import android.content.Context;
 import android.graphics.Color;
-import android.support.v4.content.ContextCompat;
-import android.support.v7.widget.CardView;
 import android.util.AttributeSet;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
@@ -12,6 +10,7 @@ import com.github.mikephil.charting.components.XAxis;
 import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.data.LineData;
 import com.github.mikephil.charting.data.LineDataSet;
+import com.github.mikephil.charting.interfaces.datasets.ILineDataSet;
 import com.innso.mobile.R;
 import com.innso.mobile.ui.adapters.CustomLineChart;
 import com.innso.mobile.utils.DateUtils;
@@ -64,33 +63,43 @@ public class LineChartItem extends LinearLayout {
         customLineChart.setScaleEnabled(false);
     }
 
-    public void addChartInformation(List<Double> values) {
+    public void addChartInformation(List<Double> values, int lineColor, int circleColor) {
 
-        customLineChart.clear();
+        List<ILineDataSet> dataSets;
+
+        dataSets = customLineChart.getData() == null ? new ArrayList<>() : customLineChart.getData().getDataSets();
 
         List<Entry> entries = new ArrayList<>();
+        for (int i = 0, size = values.size(); i < size; i++) {
+            double value = values.get(i);
+            entries.add(new Entry(i, (float) value));
+        }
+        LineDataSet newDataLine = new LineDataSet(entries, null);
+        newDataLine.setLineWidth(2.5f);
+        newDataLine.setColor(lineColor);
+        newDataLine.setCircleColor(circleColor);
+
+        newDataLine.setCircleRadius(5);
+        newDataLine.setCircleHoleRadius(3);
+        newDataLine.setDrawValues(false);
+
+        newDataLine.setHighLightColor(Color.TRANSPARENT);
+
+        dataSets.add(0, newDataLine);
+
+        LineData lineData = new LineData(dataSets);
+
 
         float min = 0;
         float max = 100;
 
-        for (int i = 0, size = values.size(); i < size; i++) {
-            double value = values.get(i);
-            max = max < value ? (float) value : max;
-            entries.add(new Entry(i, (float) value));
+        for (int j = 0, size = dataSets.size(); j < size; j++) {
+            List<Entry> lineEntries = ((LineDataSet) dataSets.get(j)).getValues();
+            for (int i = 0, entrySize = lineEntries.size(); i < entrySize; i++) {
+                double value = lineEntries.get(i).getY();
+                max = max < value ? (float) value : max;
+            }
         }
-
-        LineDataSet dataSet = new LineDataSet(entries, null);
-        dataSet.setLineWidth(2.5f);
-        dataSet.setColor(ContextCompat.getColor(getContext(), R.color.colorPrimaryDark));
-        dataSet.setCircleColor(ContextCompat.getColor(getContext(), R.color.colorPrimaryDark));
-
-        dataSet.setCircleRadius(5);
-        dataSet.setCircleHoleRadius(3);
-        dataSet.setDrawValues(false);
-
-        dataSet.setHighLightColor(Color.TRANSPARENT);
-
-        LineData lineData = new LineData(dataSet);
 
         customLineChart.getAxisRight().setAxisMinimum(min);
         customLineChart.getAxisLeft().setAxisMinimum(min);
@@ -100,4 +109,7 @@ public class LineChartItem extends LinearLayout {
         customLineChart.invalidate();
     }
 
+    public void clearInformation() {
+        customLineChart.clear();
+    }
 }

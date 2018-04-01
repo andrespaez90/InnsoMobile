@@ -59,7 +59,9 @@ public class MainActivity extends BaseActivity implements BottomNavigationView.O
     }
 
     private void subscribe() {
-        disposable.addAll(financeViewModel.onRevenueUpdated().subscribe(this::updateInformation),
+        disposable.addAll(financeViewModel.onRevenueUpdated().subscribe(this::updateRevenueInformation),
+                financeViewModel.onExpensesUpdated().subscribe(this::updateExpenseInformation),
+                financeViewModel.onTotalMonthUpdated().subscribe(this::updateTotalValueMonth),
                 financeViewModel.onTotalRevenueUpdated().subscribe(this::updateRevenueValue),
                 financeViewModel.onTotalExpenditureUpdated().subscribe(this::updateExpenditureValue),
                 financeViewModel.onTotalBanksUpdated().subscribe(value -> updateValue(binding.textViewBankSummaryValue, value)),
@@ -84,6 +86,9 @@ public class MainActivity extends BaseActivity implements BottomNavigationView.O
     }
 
     private void showLoaders(boolean showLoader) {
+        if (showLoader)
+            binding.cardViewChartSales.clearInformation();
+
         int loaderVisibility = showLoader ? View.VISIBLE : View.INVISIBLE;
         int textVisibility = showLoader ? View.INVISIBLE : View.VISIBLE;
 
@@ -97,8 +102,19 @@ public class MainActivity extends BaseActivity implements BottomNavigationView.O
 
     }
 
-    private void updateInformation(List<Double> values) {
-        binding.cardViewChartSales.addChartInformation(values);
+    private void updateRevenueInformation(List<Double> values) {
+        binding.cardViewChartSales.addChartInformation(values,
+                ContextCompat.getColor(getBaseContext(), R.color.colorPrimaryDark),
+                ContextCompat.getColor(getBaseContext(), R.color.colorPrimaryDark));
+    }
+
+    private void updateExpenseInformation(List<Double> values) {
+        binding.cardViewChartSales.addChartInformation(values,
+                ContextCompat.getColor(getBaseContext(), android.R.color.holo_red_dark),
+                ContextCompat.getColor(getBaseContext(), android.R.color.holo_red_dark));
+    }
+
+    private void updateTotalValueMonth(List<Double> values) {
         binding.layoutDetailContainer.removeAllViews();
         for (int i = 0, limit = values.size(); i < limit; i++) {
             binding.layoutDetailContainer.addView(new ItemDetailMonth(getBaseContext(),

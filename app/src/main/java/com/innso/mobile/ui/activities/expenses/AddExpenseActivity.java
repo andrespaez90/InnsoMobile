@@ -1,4 +1,4 @@
-package com.innso.mobile.ui.activities;
+package com.innso.mobile.ui.activities.expenses;
 
 import android.content.Intent;
 import android.databinding.DataBindingUtil;

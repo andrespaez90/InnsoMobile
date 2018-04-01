@@ -62,6 +62,29 @@ public class FinanceController {
         return bills;
     }
 
+    public Single<List<ExpenseModel>> getExpenses() {
+        return getExpenses(String.valueOf(Calendar.getInstance().get(Calendar.YEAR)));
+    }
+
+    public Single<List<ExpenseModel>> getExpenses(String year) {
+        return financeApi.getExpenses(year)
+                .map(response -> response.body() == null ? new HashMap<String, Map<String, ExpenseModel>>() : response.body())
+                .map(this::concatExpenses)
+                .subscribeOn(Schedulers.io());
+    }
+
+    private List<ExpenseModel> concatExpenses(Map<String, Map<String, ExpenseModel>> response) {
+        List<ExpenseModel> bills = new ArrayList<>();
+        List<Map<String, ExpenseModel>> serverBillsModel = new ArrayList<>(response.values());
+        for (int i = 0, size = serverBillsModel.size(); i < size; i++) {
+            bills.addAll(serverBillsModel.get(i).values());
+        }
+        return bills;
+    }
+
+
+
+
     private String datePath(String date) {
         Calendar calendar = DateUtils.getCalendarFromString(date, "dd/MM/yyyy");
         String month = new SimpleDateFormat("MMM", Locale.ENGLISH).format(calendar.getTime()).toLowerCase();

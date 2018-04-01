@@ -32,6 +32,7 @@
     <string name="copy.add_costumer">Nuevo Cliente</string>
     <string name="copy.bills">Facturas</string>
     <string name="copy.expenses">Gastos</string>
+    <string name="copy.add_expense">Agregar Gasto</string>
     <string name="copy.new_bill">Agregar Factura</string>
 
     <string name="copy.day">Día</string>
@@ -69,6 +70,7 @@
     <string name="copy.bill_sub_value">Sub-total</string>
     <string name="copy.values_taxes">IVA</string>
     <string name="copy.bill_image">Foto Factura</string>
+    <string name="copy.support_image">Foto de Soporte</string>
     <string name="copy_bill_added">Factura Agregada</string>
     <string name="copy_expense_added">Gasto Agregado</string>
 

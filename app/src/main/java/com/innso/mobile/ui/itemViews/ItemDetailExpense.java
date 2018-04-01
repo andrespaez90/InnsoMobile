@@ -12,25 +12,25 @@ import com.innso.mobile.R;
 import com.innso.mobile.databinding.ItemGenericFinanceDetailBinding;
 import com.innso.mobile.ui.bindings.GeneralBindings;
 import com.innso.mobile.ui.interfaces.GenericItemView;
-import com.innso.mobile.ui.models.Bill;
+import com.innso.mobile.ui.models.Expense;
 
-public class ItemDetailBill extends FrameLayout implements GenericItemView<Bill> {
+public class ItemDetailExpense extends FrameLayout implements GenericItemView<Expense> {
 
     private ItemGenericFinanceDetailBinding binding;
 
-    private Bill bill;
+    private Expense expense;
 
-    public ItemDetailBill(@NonNull Context context) {
+    public ItemDetailExpense(@NonNull Context context) {
         super(context);
         init();
     }
 
-    public ItemDetailBill(@NonNull Context context, @Nullable AttributeSet attrs) {
+    public ItemDetailExpense(@NonNull Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
         init();
     }
 
-    public ItemDetailBill(@NonNull Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
+    public ItemDetailExpense(@NonNull Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         init();
     }
@@ -41,16 +41,16 @@ public class ItemDetailBill extends FrameLayout implements GenericItemView<Bill>
     }
 
     @Override
-    public void bind(Bill data) {
-        this.bill = data;
-        binding.textViewDate.setText(this.bill.date);
-        binding.textViewTotal.setText(this.bill.total);
-        binding.textViewCustomer.setText(this.bill.customer);
-        GeneralBindings.loadImage(binding.imageViewBillImage, bill.imageUrl);
+    public void bind(Expense data) {
+        this.expense = data;
+        binding.textViewDate.setText(this.expense.date);
+        binding.textViewTotal.setText(this.expense.total);
+        binding.textViewCustomer.setText(this.expense.customer);
+        GeneralBindings.loadImage(binding.imageViewBillImage, expense.imageUrl);
     }
 
     @Override
-    public Bill getData() {
-        return bill;
+    public Expense getData() {
+        return expense;
     }
 }

@@ -52,7 +52,11 @@
             android:screenOrientation="portrait" />
 
         <activity
-            android:name=".ui.activities.AddExpenseActivity"
+            android:name=".ui.activities.expenses.AddExpenseActivity"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".ui.activities.expenses.ExpensesActivity"
             android:screenOrientation="portrait" />
 
         <provider
