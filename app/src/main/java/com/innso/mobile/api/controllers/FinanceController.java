@@ -83,8 +83,6 @@ public class FinanceController {
     }
 
 
-
-
     private String datePath(String date) {
         Calendar calendar = DateUtils.getCalendarFromString(date, "dd/MM/yyyy");
         String month = new SimpleDateFormat("MMM", Locale.ENGLISH).format(calendar.getTime()).toLowerCase();

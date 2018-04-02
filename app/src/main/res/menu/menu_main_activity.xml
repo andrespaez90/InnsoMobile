@@ -9,13 +9,6 @@
         app:showAsAction="withText" />
 
     <item
-        android:id="@+id/action_bills"
-        android:enabled="true"
-        android:icon="@drawable/ic_bill"
-        android:title="@string/copy.bills"
-        app:showAsAction="withText" />
-
-    <item
         android:id="@+id/action_company"
         android:enabled="true"
         android:icon="@drawable/icon_footer_company"

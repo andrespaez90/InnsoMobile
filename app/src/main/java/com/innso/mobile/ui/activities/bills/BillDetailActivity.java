@@ -36,6 +36,8 @@ public class BillDetailActivity extends BaseActivity {
         ((TextView) findViewById(R.id.textView_value)).setText(getString(R.string.format_value, bill.value));
         ((TextView) findViewById(R.id.textView_taxes)).setText(getString(R.string.format_taxes, bill.taxes));
         ((TextView) findViewById(R.id.textView_total)).setText(getString(R.string.format_total, bill.total));
+        ((TextView) findViewById(R.id.textView_customer_name)).setText(bill.customer);
+        ((TextView) findViewById(R.id.textView_date)).setText(bill.date);
         ImageView imageView = ((ImageView) findViewById(R.id.imageView_bill));
         GeneralBindings.loadImage(imageView, bill.imageUrl);
     }

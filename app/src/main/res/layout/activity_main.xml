@@ -38,10 +38,10 @@
                     style="@style/TextHuge.Black.Bold"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/spacing_standard"
-                    android:layout_marginLeft="@dimen/spacing_standard"
-                    android:layout_marginTop="@dimen/spacing_large"
                     android:layout_marginBottom="@dimen/spacing_large"
+                    android:layout_marginLeft="@dimen/spacing_standard"
+                    android:layout_marginStart="@dimen/spacing_standard"
+                    android:layout_marginTop="@dimen/spacing_large"
                     android:text="@string/title.flow_accounting"
                     android:textSize="@dimen/font_xxxlarge" />
 
@@ -49,17 +49,17 @@
                     android:id="@+id/layout_year_picker"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginRight="@dimen/spacing_large"
-                    android:layout_marginLeft="@dimen/spacing_large"
                     android:layout_below="@id/textView_title"
+                    android:layout_marginLeft="@dimen/spacing_large"
+                    android:layout_marginRight="@dimen/spacing_large"
                     app:cardCornerRadius="@dimen/radius_medium">
 
                     <RelativeLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:background="@android:color/white"
                         android:layout_marginLeft="@dimen/spacing_large"
-                        android:layout_marginRight="@dimen/spacing_large">
+                        android:layout_marginRight="@dimen/spacing_large"
+                        android:background="@android:color/white">
 
                         <TextView
                             android:id="@+id/textView_year"
@@ -105,12 +105,12 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/layout_year_picker"
-                    android:layout_marginStart="@dimen/spacing_large"
-                    android:layout_marginTop="@dimen/spacing_large"
                     android:layout_marginBottom="@dimen/spacing_large"
+                    android:layout_marginEnd="@dimen/spacing_small"
                     android:layout_marginLeft="@dimen/spacing_large"
                     android:layout_marginRight="@dimen/spacing_small"
-                    android:layout_marginEnd="@dimen/spacing_small"
+                    android:layout_marginStart="@dimen/spacing_large"
+                    android:layout_marginTop="@dimen/spacing_large"
                     android:layout_toLeftOf="@id/middle_divider"
                     android:layout_toStartOf="@id/middle_divider"
                     app:cardBackgroundColor="@color/colorPrimary">
@@ -133,8 +133,8 @@
                             android:layout_width="match_parent"
                             android:layout_height="@dimen/spacing_xxmicro"
                             android:layout_below="@id/textView_back_summary_title"
-                            android:layout_marginTop="@dimen/spacing_small"
                             android:layout_marginBottom="@dimen/spacing_small"
+                            android:layout_marginTop="@dimen/spacing_small"
                             android:background="@android:color/white" />
 
                         <TextView
@@ -150,12 +150,12 @@
                             android:id="@+id/loader_bank"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_alignTop="@id/textView_bank_summary_value"
                             android:layout_alignBottom="@id/textView_bank_summary_value"
-                            android:layout_alignStart="@id/textView_bank_summary_value"
                             android:layout_alignEnd="@id/textView_bank_summary_value"
                             android:layout_alignLeft="@id/textView_bank_summary_value"
-                            android:layout_alignRight="@id/textView_bank_summary_value" />
+                            android:layout_alignRight="@id/textView_bank_summary_value"
+                            android:layout_alignStart="@id/textView_bank_summary_value"
+                            android:layout_alignTop="@id/textView_bank_summary_value" />
 
                     </RelativeLayout>
 
@@ -167,14 +167,14 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/layout_year_picker"
-                    android:layout_marginTop="@dimen/spacing_large"
                     android:layout_marginBottom="@dimen/spacing_large"
                     android:layout_marginEnd="@dimen/spacing_large"
-                    android:layout_marginRight="@dimen/spacing_large"
                     android:layout_marginLeft="@dimen/spacing_small"
+                    android:layout_marginRight="@dimen/spacing_large"
                     android:layout_marginStart="@dimen/spacing_small"
-                    android:layout_toRightOf="@id/middle_divider"
+                    android:layout_marginTop="@dimen/spacing_large"
                     android:layout_toEndOf="@id/middle_divider"
+                    android:layout_toRightOf="@id/middle_divider"
                     app:cardBackgroundColor="@color/colorAccent">
 
                     <RelativeLayout
@@ -195,8 +195,8 @@
                             android:layout_width="match_parent"
                             android:layout_height="@dimen/spacing_xxmicro"
                             android:layout_below="@id/textView_summary_title"
-                            android:layout_marginTop="@dimen/spacing_small"
                             android:layout_marginBottom="@dimen/spacing_small"
+                            android:layout_marginTop="@dimen/spacing_small"
                             android:background="@android:color/white" />
 
                         <TextView
@@ -212,12 +212,12 @@
                             android:id="@+id/loader_cash"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_alignTop="@id/textView_summary_cash_value"
                             android:layout_alignBottom="@id/textView_summary_cash_value"
-                            android:layout_alignStart="@id/textView_summary_cash_value"
                             android:layout_alignEnd="@id/textView_summary_cash_value"
                             android:layout_alignLeft="@id/textView_summary_cash_value"
-                            android:layout_alignRight="@id/textView_summary_cash_value" />
+                            android:layout_alignRight="@id/textView_summary_cash_value"
+                            android:layout_alignStart="@id/textView_summary_cash_value"
+                            android:layout_alignTop="@id/textView_summary_cash_value" />
 
                     </RelativeLayout>
 
@@ -234,8 +234,8 @@
                     <com.innso.mobile.ui.itemViews.LineChartItem
                         android:id="@+id/cardView_chart_sales"
                         android:layout_width="match_parent"
-                        android:padding="@dimen/spacing_standard"
-                        android:layout_height="@dimen/size_chart" />
+                        android:layout_height="@dimen/size_chart"
+                        android:padding="@dimen/spacing_standard" />
 
                 </android.support.v7.widget.CardView>
 
@@ -244,10 +244,10 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/cardView_chart_container"
-                    android:layout_marginTop="@dimen/spacing_standard"
                     android:layout_marginBottom="@dimen/spacing_standard"
                     android:layout_marginLeft="@dimen/spacing_large"
                     android:layout_marginRight="@dimen/spacing_large"
+                    android:layout_marginTop="@dimen/spacing_standard"
                     app:cardBackgroundColor="@android:color/white"
                     app:cardCornerRadius="@dimen/radius_medium">
 
@@ -266,7 +266,10 @@
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:gravity="center"
-                            android:text="@string/accounting.revenue" />
+                            android:onClick="@{viewModel.onRevenueClick}"
+                            android:text="@string/accounting.revenue"
+                            android:textColor="@color/colorPrimary"
+                            android:textStyle="bold" />
 
                         <View
                             android:layout_width="@dimen/spacing_xmicro"
@@ -279,10 +282,12 @@
                             style="@style/TextSmall.Black"
                             android:layout_width="@dimen/spacing_empty"
                             android:layout_height="wrap_content"
-                            android:textColor="@android:color/holo_red_light"
                             android:layout_weight="1"
                             android:gravity="center"
-                            android:text="@string/accounting.expenditure" />
+                            android:onClick="@{viewModel.onExpensesClick}"
+                            android:text="@string/accounting.expenditure"
+                            android:textColor="@android:color/holo_red_light"
+                            android:textStyle="bold" />
 
                     </LinearLayout>
 
@@ -293,10 +298,10 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/cardView_resume_sales"
-                    android:layout_marginTop="@dimen/spacing_standard"
                     android:layout_marginBottom="@dimen/spacing_standard"
                     android:layout_marginLeft="@dimen/spacing_large"
                     android:layout_marginRight="@dimen/spacing_large"
+                    android:layout_marginTop="@dimen/spacing_standard"
                     app:cardBackgroundColor="@android:color/white"
                     app:cardCornerRadius="@dimen/radius_medium">
 

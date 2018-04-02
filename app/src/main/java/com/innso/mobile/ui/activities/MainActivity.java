@@ -66,7 +66,8 @@ public class MainActivity extends BaseActivity implements BottomNavigationView.O
                 financeViewModel.onTotalExpenditureUpdated().subscribe(this::updateExpenditureValue),
                 financeViewModel.onTotalBanksUpdated().subscribe(value -> updateValue(binding.textViewBankSummaryValue, value)),
                 financeViewModel.onTotalCashUpdated().subscribe(value -> updateValue(binding.textViewSummaryCashValue, value)),
-                financeViewModel.observableShowLoading().subscribe(this::showLoaders));
+                financeViewModel.observableShowLoading().subscribe(this::showLoaders),
+                financeViewModel.observableStartActivity().subscribe(this::startActivity));
     }
 
     private void updateValue(TextView view, Double value) {
@@ -131,8 +132,6 @@ public class MainActivity extends BaseActivity implements BottomNavigationView.O
                 break;
             case R.id.action_profile:
                 replaceFragment(getProfileFragment());
-                break;
-            case R.id.action_bills:
                 break;
             case R.id.action_main:
                 binding.container.setVisibility(View.GONE);

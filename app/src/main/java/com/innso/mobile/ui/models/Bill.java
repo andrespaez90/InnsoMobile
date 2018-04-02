@@ -43,6 +43,7 @@ public class Bill implements Parcelable {
         this.value = in.readString();
         this.taxes = in.readString();
         this.total = in.readString();
+        this.customer = in.readString();
         this.imageUrl = in.readString();
     }
 
@@ -63,6 +64,7 @@ public class Bill implements Parcelable {
         dest.writeString(this.value);
         dest.writeString(this.taxes);
         dest.writeString(this.total);
+        dest.writeString(this.customer);
         dest.writeString(this.imageUrl);
     }
 

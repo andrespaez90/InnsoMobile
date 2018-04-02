@@ -7,6 +7,8 @@ import android.view.View;
 import com.innso.mobile.api.controllers.FinanceController;
 import com.innso.mobile.api.models.finance.FinanceYearSummary;
 import com.innso.mobile.api.models.finance.SummaryMonth;
+import com.innso.mobile.ui.activities.bills.BillsActivity;
+import com.innso.mobile.ui.activities.expenses.ExpensesActivity;
 import com.innso.mobile.utils.DateUtils;
 
 import java.text.ParseException;
@@ -100,6 +102,14 @@ public class FinanceViewModel extends BaseViewModel {
             summaryMonths[DateUtils.getMonth(e.getKey())] = e.getValue();
         }
         return summaryMonths;
+    }
+
+    public void onExpensesClick(View view) {
+        startActivityEvent.onNext(ExpensesActivity.class);
+    }
+
+    public void onRevenueClick(View view) {
+        startActivityEvent.onNext(BillsActivity.class);
     }
 
     public Observable<List<Double>> onRevenueUpdated() {

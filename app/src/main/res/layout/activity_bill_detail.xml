@@ -7,38 +7,63 @@
     tools:context="com.innso.mobile.ui.activities.bills.BillDetailActivity">
 
     <TextView
+        android:id="@+id/textView_customer_name"
+        style="@style/TextHuge.Black.Bold"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        tools:text="Innovating Software" />
+
+    <TextView
+        android:id="@+id/textView_date"
+        style="@style/TextSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/spacing_standard"
+        android:layout_marginTop="@dimen/spacing_small"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/textView_customer_name"
+        tools:text="33/33/33" />
+
+    <TextView
         android:id="@+id/textView_total"
         style="@style/TextHuge.Black.Bold"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:gravity="end|right"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:gravity="end"
         tools:text="$20.000" />
 
     <TextView
         android:id="@+id/textView_taxes"
         style="@style/TextBig.Black"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:gravity="end|right"
         android:layout_above="@id/textView_total"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:gravity="end"
         tools:text="$20.000" />
 
     <TextView
         android:id="@+id/textView_value"
         style="@style/TextBig.Black"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_above="@id/textView_taxes"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
         android:layout_marginTop="@dimen/spacing_standard"
-        android:gravity="end|right"
+        android:gravity="end"
         tools:text="$20.000" />
 
     <ImageView
         android:id="@+id/imageView_bill"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:scaleType="centerInside"
-        android:layout_above="@id/textView_value"/>
+        android:layout_above="@id/textView_value"
+        android:layout_below="@id/textView_date" />
 
 </RelativeLayout>
