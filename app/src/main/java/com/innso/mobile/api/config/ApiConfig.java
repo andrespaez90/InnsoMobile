@@ -12,7 +12,7 @@ public class ApiConfig {
     public static final String AUTHORIZATION = "authorization";
     public static final String PARAM_AUTHORIZATION = "auth";
 
-    public boolean DEBUG = false;
+    public boolean DEBUG = true;
 
     private PrefsManager prefsManager;
     private Context context;
@@ -27,6 +27,6 @@ public class ApiConfig {
     }
 
     public String getFuntionsUrlBase() {
-        return "https://us-central1-innso-mobile.cloudfunctions.net";
+        return context.getString(R.string.firebase_functions);
     }
 }
