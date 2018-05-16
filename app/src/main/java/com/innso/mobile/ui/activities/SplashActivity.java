@@ -9,6 +9,7 @@ import android.support.v7.app.AlertDialog;
 import android.view.View;
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.messaging.FirebaseMessaging;
 import com.innso.mobile.R;
 import com.innso.mobile.databinding.ActivitySplashBinding;
 import com.innso.mobile.ui.viewModels.SplashViewModel;
@@ -27,6 +28,7 @@ public class SplashActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        FirebaseMessaging.getInstance().subscribeToTopic("News");
         getComponent().inject(this);
         binding = DataBindingUtil.setContentView(this, R.layout.activity_splash);
         this.splashViewModel = new SplashViewModel();
