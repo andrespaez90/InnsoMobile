@@ -1,9 +1,11 @@
 package com.innso.mobile.ui.models.events;
 
 
-import androidx.annotation.ColorInt;
-import com.google.android.material.snackbar.Snackbar;
 import android.view.View;
+
+import com.google.android.material.snackbar.Snackbar;
+
+import androidx.annotation.ColorInt;
 
 public class ColoredSnackbar {
 

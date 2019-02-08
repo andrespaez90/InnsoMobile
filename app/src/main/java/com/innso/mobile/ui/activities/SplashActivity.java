@@ -5,13 +5,10 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 
-import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.messaging.FirebaseMessaging;
 import com.innso.mobile.R;
 import com.innso.mobile.databinding.ActivitySplashBinding;
-import com.innso.mobile.viewModels.SplashViewModel;
-
-import javax.inject.Inject;
+import com.innso.mobile.viewModels.onBoarding.SplashViewModel;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.core.app.ActivityOptionsCompat;

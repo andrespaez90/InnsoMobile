@@ -1,10 +1,9 @@
 package com.innso.mobile.ui.viewModels;
 
 
-import androidx.annotation.StringRes;
-import com.google.android.material.snackbar.Snackbar;
 import android.util.Pair;
 
+import com.google.android.material.snackbar.Snackbar;
 import com.innso.mobile.InnsoApplication;
 import com.innso.mobile.di.components.DaggerViewModelComponent;
 import com.innso.mobile.di.components.ViewModelComponent;
@@ -13,11 +12,11 @@ import com.innso.mobile.ui.factories.SnackBarFactory;
 import com.innso.mobile.ui.models.DatePickerModel;
 import com.innso.mobile.ui.models.events.SnackBarEvent;
 import com.innso.mobile.utils.ErrorUtils;
-import com.innso.mobile.viewModels.models.StartActionModel;
 import com.innso.mobile.viewModels.models.StartActivityModel;
 
 import java.util.ArrayList;
 
+import androidx.annotation.StringRes;
 import io.reactivex.Observable;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;

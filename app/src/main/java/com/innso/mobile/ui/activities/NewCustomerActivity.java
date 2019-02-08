@@ -1,12 +1,13 @@
 package com.innso.mobile.ui.activities;
 
-import androidx.databinding.DataBindingUtil;
 import android.os.Bundle;
 
 import com.innso.mobile.R;
 import com.innso.mobile.databinding.ActivityNewCustomerBinding;
 import com.innso.mobile.ui.factories.SnackBarFactory;
 import com.innso.mobile.ui.viewModels.NewCustomerViewModel;
+
+import androidx.databinding.DataBindingUtil;
 
 public class NewCustomerActivity extends BaseActivity {
 

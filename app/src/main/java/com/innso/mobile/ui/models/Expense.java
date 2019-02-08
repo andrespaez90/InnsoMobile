@@ -3,7 +3,6 @@ package com.innso.mobile.ui.models;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-import com.innso.mobile.api.models.finance.BillModel;
 import com.innso.mobile.api.models.finance.ExpenseModel;
 import com.innso.mobile.utils.DateUtils;
 import com.innso.mobile.utils.MoneyUtil;

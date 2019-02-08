@@ -12,11 +12,12 @@ import android.media.ExifInterface;
 import android.media.FaceDetector;
 import android.net.Uri;
 import android.provider.MediaStore;
-import androidx.fragment.app.Fragment;
 
 import java.io.File;
 import java.io.IOException;
 import java.util.List;
+
+import androidx.fragment.app.Fragment;
 
 public class CameraUtil {
 

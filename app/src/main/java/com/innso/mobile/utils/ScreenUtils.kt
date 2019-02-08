@@ -1,7 +1,6 @@
 package com.innso.mobile.utils
 
 import android.content.Context
-import android.provider.Settings
 import android.util.DisplayMetrics
 import android.view.WindowManager
 

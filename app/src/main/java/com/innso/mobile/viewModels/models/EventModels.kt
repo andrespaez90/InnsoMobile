@@ -2,8 +2,8 @@ package com.innso.mobile.viewModels.models
 
 import android.content.Intent
 import android.os.Bundle
-import androidx.annotation.StringRes
 import android.view.View
+import androidx.annotation.StringRes
 
 class StartActivityModel(val activity: Class<*>) {
 

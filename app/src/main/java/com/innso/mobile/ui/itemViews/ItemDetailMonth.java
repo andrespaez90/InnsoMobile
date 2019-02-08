@@ -1,9 +1,6 @@
 package com.innso.mobile.ui.itemViews;
 
 import android.content.Context;
-import androidx.databinding.DataBindingUtil;
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.widget.FrameLayout;
@@ -11,6 +8,10 @@ import android.widget.FrameLayout;
 import com.innso.mobile.R;
 import com.innso.mobile.databinding.ItemDetailMonthBinding;
 import com.innso.mobile.ui.models.ItemDetailModel;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.databinding.DataBindingUtil;
 
 public class ItemDetailMonth extends FrameLayout {
 

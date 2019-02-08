@@ -84,6 +84,7 @@ open class AndroidViewModel : ViewModel() {
     fun showLoading() {
         loader.postValue(true)
     }
+
     fun onCloseView() {
         closeView.postValue(FinishActivityModel(Activity.RESULT_OK))
     }
@@ -123,5 +124,5 @@ open class AndroidViewModel : ViewModel() {
 
     fun startActivity(): LiveData<StartActivityModel> = startActivity
 
-    fun startAction() : LiveData<StartActionModel> = startAction
+    fun startAction(): LiveData<StartActionModel> = startAction
 }

@@ -1,9 +1,6 @@
 package com.innso.mobile.ui.itemViews;
 
 import android.content.Context;
-import androidx.databinding.DataBindingUtil;
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.widget.FrameLayout;
@@ -13,6 +10,10 @@ import com.innso.mobile.databinding.ItemGenericFinanceDetailBinding;
 import com.innso.mobile.ui.bindings.GeneralBindings;
 import com.innso.mobile.ui.interfaces.GenericItemView;
 import com.innso.mobile.ui.models.Bill;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.databinding.DataBindingUtil;
 
 public class ItemDetailBill extends FrameLayout implements GenericItemView<Bill> {
 

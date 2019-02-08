@@ -1,4 +1,4 @@
-package com.innso.mobile.viewModels
+package com.innso.mobile.viewModels.onBoarding
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -8,6 +8,7 @@ import com.innso.mobile.api.controllers.AppControllerApi
 import com.innso.mobile.api.models.app.GeneralInformation
 import com.innso.mobile.ui.activities.LoginActivity
 import com.innso.mobile.ui.activities.MainActivity
+import com.innso.mobile.viewModels.AndroidViewModel
 import com.innso.mobile.viewModels.models.StartActivityModel
 import javax.inject.Inject
 
@@ -29,9 +30,9 @@ class SplashViewModel : AndroidViewModel() {
 
     fun validateAuthentication() {
         showLoaders.postValue(true)
-        appControllerApi.checkVersion()
+        disposables.add(appControllerApi.checkVersion()
                 .doOnError { showLoaders.postValue(false) }
-                .subscribe({ this.validateVersion(it) }, { this.showServiceError(it) })
+                .subscribe({ this.validateVersion(it) }, { this.showServiceError(it) }))
     }
 
     private fun validateVersion(generalInformation: GeneralInformation) {

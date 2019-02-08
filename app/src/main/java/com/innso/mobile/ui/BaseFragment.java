@@ -3,16 +3,10 @@ package com.innso.mobile.ui;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
-import androidx.annotation.CallSuper;
-import androidx.annotation.ColorInt;
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import com.google.android.material.snackbar.Snackbar;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentTransaction;
 import android.util.Pair;
 import android.view.View;
 
+import com.google.android.material.snackbar.Snackbar;
 import com.innso.mobile.InnsoApplication;
 import com.innso.mobile.R;
 import com.innso.mobile.di.components.DaggerFragmentComponent;
@@ -20,25 +14,22 @@ import com.innso.mobile.di.components.FragmentComponent;
 import com.innso.mobile.ui.factories.SnackBarFactory;
 import com.innso.mobile.viewModels.models.StartActivityModel;
 
-import io.reactivex.disposables.CompositeDisposable;
+import androidx.annotation.CallSuper;
+import androidx.annotation.ColorInt;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 
 public class BaseFragment extends Fragment {
 
     protected ProgressDialog progressDialog;
 
-    protected CompositeDisposable disposable;
 
     @Override
     @CallSuper
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        disposable = new CompositeDisposable();
-    }
-
-    @Override
-    public void onPause() {
-        super.onPause();
-        disposable.clear();
     }
 
     private void initProgressDialog() {

@@ -5,7 +5,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProviders
 import com.innso.mobile.R
 import com.innso.mobile.databinding.ActivityLoginBinding
-import com.innso.mobile.ui.viewModels.LoginViewModel
+import com.innso.mobile.viewModels.onBoarding.LoginViewModel
 
 class LoginActivity : BaseActivity() {
 

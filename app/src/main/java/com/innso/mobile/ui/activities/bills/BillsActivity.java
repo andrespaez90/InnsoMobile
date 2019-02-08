@@ -1,17 +1,13 @@
 package com.innso.mobile.ui.activities.bills;
 
 import android.content.Intent;
-import androidx.databinding.DataBindingUtil;
 import android.os.Bundle;
-import com.google.android.material.snackbar.Snackbar;
-
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 
+import com.google.android.material.snackbar.Snackbar;
 import com.innso.mobile.R;
 import com.innso.mobile.api.models.finance.BillModel;
 import com.innso.mobile.databinding.ActivityBillsBinding;
@@ -26,6 +22,10 @@ import com.innso.mobile.ui.models.list.GenericCategoryItemAbstract;
 import com.innso.mobile.ui.viewModels.BillListViewModel;
 
 import java.util.List;
+
+import androidx.databinding.DataBindingUtil;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 public class BillsActivity extends BaseActivity {
 

@@ -1,4 +1,4 @@
-package com.innso.mobile.ui.viewModels
+package com.innso.mobile.viewModels.onBoarding
 
 import android.text.TextUtils
 import android.view.View
