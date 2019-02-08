@@ -107,7 +107,7 @@ public class BillsActivity extends BaseActivity {
 
     private void subscribe() {
         disposable.add(viewModel.observableSnackBar().subscribe(event -> showMessage(event.getTypeSnackBar(), binding.getRoot(), event.getMessage(), Snackbar.LENGTH_LONG)));
-        disposable.add(viewModel.observableStartActivity().subscribe(this::startActivity));
+        disposable.add(viewModel.startActivityEvent().subscribe(this::startActivity));
         disposable.add(viewModel.onBillsChange().subscribe(this::updateList));
     }
 

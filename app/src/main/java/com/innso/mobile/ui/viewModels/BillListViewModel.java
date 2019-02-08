@@ -5,6 +5,7 @@ import android.view.View;
 import com.innso.mobile.api.controllers.FinanceController;
 import com.innso.mobile.api.models.finance.BillModel;
 import com.innso.mobile.ui.activities.bills.AddBillActivity;
+import com.innso.mobile.viewModels.models.StartActivityModel;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -28,7 +29,7 @@ public class BillListViewModel extends BaseViewModel {
     }
 
     public void onClick(View view) {
-        startActivityEvent.onNext(AddBillActivity.class);
+        startActivityEvent.onNext(new StartActivityModel(AddBillActivity.class));
     }
 
     public void update(String yearSelected) {

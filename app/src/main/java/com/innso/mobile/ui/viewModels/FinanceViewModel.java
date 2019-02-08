@@ -10,6 +10,7 @@ import com.innso.mobile.api.models.finance.SummaryMonth;
 import com.innso.mobile.ui.activities.bills.BillsActivity;
 import com.innso.mobile.ui.activities.expenses.ExpensesActivity;
 import com.innso.mobile.utils.DateUtils;
+import com.innso.mobile.viewModels.models.StartActivityModel;
 
 import java.text.ParseException;
 import java.util.ArrayList;
@@ -105,11 +106,11 @@ public class FinanceViewModel extends BaseViewModel {
     }
 
     public void onExpensesClick(View view) {
-        startActivityEvent.onNext(ExpensesActivity.class);
+        startActivityEvent.onNext(new StartActivityModel(ExpensesActivity.class));
     }
 
     public void onRevenueClick(View view) {
-        startActivityEvent.onNext(BillsActivity.class);
+        startActivityEvent.onNext(new StartActivityModel(BillsActivity.class));
     }
 
     public Observable<List<Double>> onRevenueUpdated() {

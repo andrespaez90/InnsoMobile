@@ -11,7 +11,7 @@ import com.innso.mobile.ui.viewModels.LoginViewModel;
 import com.innso.mobile.ui.viewModels.NewCustomerViewModel;
 import com.innso.mobile.ui.viewModels.NewUserViewModel;
 import com.innso.mobile.ui.viewModels.ProfileViewModel;
-import com.innso.mobile.ui.viewModels.SplashViewModel;
+import com.innso.mobile.viewModels.SplashViewModel;
 import com.innso.mobile.ui.viewModels.UsersListViewModel;
 
 import dagger.Component;

@@ -11,7 +11,7 @@ import com.innso.mobile.api.controllers.CustomerController;
 import com.innso.mobile.api.controllers.FinanceController;
 import com.innso.mobile.api.models.cutomers.Customer;
 import com.innso.mobile.managers.FirebaseStorageManager;
-import com.innso.mobile.ui.TextWatcher.MoneyTextWatcher;
+import com.innso.mobile.ui.textWatcher.MoneyTextWatcher;
 import com.innso.mobile.ui.factories.SnackBarFactory;
 import com.innso.mobile.ui.models.DatePickerModel;
 import com.innso.mobile.utils.DateUtils;

@@ -3,7 +3,7 @@ package com.innso.mobile.ui.activities;
 import android.content.Intent;
 import androidx.databinding.DataBindingUtil;
 import android.os.Bundle;
-import androidx.core.content.ContextCompat;
+
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import android.view.View;
@@ -56,7 +56,7 @@ public class UsersActivity extends BaseActivity {
         super.onResume();
         disposable.add(viewModel.observableSnackBar().subscribe(event -> showMessage(event.getTypeSnackBar(), binding.getRoot(), event.getMessage())));
         disposable.add(viewModel.allUsers().subscribe(this::addUser));
-        disposable.add(viewModel.observableStartActivity().subscribe(activity -> startActivity(new Intent(this, activity))));
+        disposable.add(viewModel.startActivityEvent().subscribe(this::startActivity));
     }
 
     private void addUser(List<UserRequest> users) {

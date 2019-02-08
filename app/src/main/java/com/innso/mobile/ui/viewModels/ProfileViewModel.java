@@ -6,6 +6,7 @@ import android.view.View;
 import com.google.firebase.auth.FirebaseAuth;
 import com.innso.mobile.ui.activities.CreateUserActivity;
 import com.innso.mobile.ui.activities.UsersActivity;
+import com.innso.mobile.viewModels.models.StartActivityModel;
 
 import javax.inject.Inject;
 
@@ -26,11 +27,11 @@ public class ProfileViewModel extends BaseViewModel {
     }
 
     public void addUser(View view) {
-        startActivityEvent.onNext(UsersActivity.class);
+        startActivityEvent.onNext(new StartActivityModel(UsersActivity.class));
     }
 
     public void addCustomer(View view) {
-        startActivityEvent.onNext(CreateUserActivity.class);
+        startActivityEvent.onNext(new StartActivityModel(CreateUserActivity.class));
     }
 
     public void closeSession(View view) {

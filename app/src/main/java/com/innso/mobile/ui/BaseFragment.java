@@ -18,6 +18,7 @@ import com.innso.mobile.R;
 import com.innso.mobile.di.components.DaggerFragmentComponent;
 import com.innso.mobile.di.components.FragmentComponent;
 import com.innso.mobile.ui.factories.SnackBarFactory;
+import com.innso.mobile.viewModels.models.StartActivityModel;
 
 import io.reactivex.disposables.CompositeDisposable;
 
@@ -54,8 +55,12 @@ public class BaseFragment extends Fragment {
                 .build();
     }
 
-    public void startActivityFormEvent(Class<?> clazz){
-        startActivity(new Intent(getContext(), clazz));
+    protected void startActivity(StartActivityModel startActivityModel) {
+        Intent intent = new Intent(getActivity(), startActivityModel.getActivity());
+        if (startActivityModel.getBundle() != null) {
+            intent.putExtras(startActivityModel.getBundle());
+        }
+        startActivityForResult(intent, startActivityModel.getCode());
     }
 
     public void showProgressDialog(Pair<Boolean, Integer> progressData) {

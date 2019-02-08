@@ -45,7 +45,7 @@ public class CompanyFragment extends BaseFragment {
     }
 
     private void subscribe(){
-        disposable.add(viewModel.observableStartActivity().subscribe(this::startActivityFormEvent));
+        disposable.add(viewModel.startActivityEvent().subscribe(this::startActivity));
     }
 
     private void initView() {

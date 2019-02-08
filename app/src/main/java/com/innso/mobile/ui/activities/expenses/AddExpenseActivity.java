@@ -7,7 +7,7 @@ import androidx.appcompat.app.AlertDialog;
 
 import com.innso.mobile.R;
 import com.innso.mobile.databinding.ActivityAddExpenseBinding;
-import com.innso.mobile.ui.TextWatcher.MoneyTextWatcher;
+import com.innso.mobile.ui.textWatcher.MoneyTextWatcher;
 import com.innso.mobile.ui.activities.BaseActivity;
 import com.innso.mobile.ui.viewModels.AddExpenseViewModel;
 import com.innso.mobile.utils.CameraUtil;

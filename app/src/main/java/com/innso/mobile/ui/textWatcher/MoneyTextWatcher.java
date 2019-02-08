@@ -1,4 +1,4 @@
-package com.innso.mobile.ui.TextWatcher;
+package com.innso.mobile.ui.textWatcher;
 
 import androidx.annotation.NonNull;
 import android.text.Editable;

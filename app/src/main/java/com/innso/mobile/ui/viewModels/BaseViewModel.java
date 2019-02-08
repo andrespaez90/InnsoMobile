@@ -8,10 +8,13 @@ import android.util.Pair;
 import com.innso.mobile.InnsoApplication;
 import com.innso.mobile.di.components.DaggerViewModelComponent;
 import com.innso.mobile.di.components.ViewModelComponent;
+import com.innso.mobile.ui.dialogs.BasicDialog;
 import com.innso.mobile.ui.factories.SnackBarFactory;
 import com.innso.mobile.ui.models.DatePickerModel;
 import com.innso.mobile.ui.models.events.SnackBarEvent;
 import com.innso.mobile.utils.ErrorUtils;
+import com.innso.mobile.viewModels.models.StartActionModel;
+import com.innso.mobile.viewModels.models.StartActivityModel;
 
 import java.util.ArrayList;
 
@@ -23,11 +26,13 @@ import io.reactivex.subjects.PublishSubject;
 
 public class BaseViewModel {
 
-    private BehaviorSubject<Boolean> showLoading = BehaviorSubject.create();
+    protected final BehaviorSubject<Boolean> showLoading = BehaviorSubject.create();
 
-    private PublishSubject<Boolean> showKeyboard = PublishSubject.create();
+    protected final PublishSubject<Boolean> showKeyboard = PublishSubject.create();
 
-    private PublishSubject<SnackBarEvent> snackBarSubject = PublishSubject.create();
+    protected final PublishSubject<SnackBarEvent> snackBarSubject = PublishSubject.create();
+
+    protected final PublishSubject<BasicDialog> showDialog = PublishSubject.create();
 
     private BehaviorSubject<Pair<Boolean, Integer>> showProgressDialog = BehaviorSubject.createDefault(new Pair<>(false, 0));
 
@@ -35,7 +40,7 @@ public class BaseViewModel {
 
     PublishSubject<DatePickerModel> showDatePicker = PublishSubject.create();
 
-    PublishSubject<Class> startActivityEvent = PublishSubject.create();
+    protected final PublishSubject<StartActivityModel> startActivityEvent = PublishSubject.create();
 
     ArrayList<Disposable> disposables = new ArrayList<>();
 
@@ -152,7 +157,11 @@ public class BaseViewModel {
         return snackBarSubject.observeOn(AndroidSchedulers.mainThread());
     }
 
-    public Observable<Class> observableStartActivity() {
+    public Observable<BasicDialog> showDialogEvent() {
+        return showDialog.observeOn(AndroidSchedulers.mainThread());
+    }
+
+    public Observable<StartActivityModel> startActivityEvent() {
         return startActivityEvent.observeOn(AndroidSchedulers.mainThread());
     }
 

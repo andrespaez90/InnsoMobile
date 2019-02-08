@@ -9,7 +9,7 @@ import android.view.View;
 import com.innso.mobile.R;
 import com.innso.mobile.api.controllers.FinanceController;
 import com.innso.mobile.managers.FirebaseStorageManager;
-import com.innso.mobile.ui.TextWatcher.MoneyTextWatcher;
+import com.innso.mobile.ui.textWatcher.MoneyTextWatcher;
 import com.innso.mobile.ui.factories.SnackBarFactory;
 import com.innso.mobile.ui.models.DatePickerModel;
 import com.innso.mobile.utils.DateUtils;

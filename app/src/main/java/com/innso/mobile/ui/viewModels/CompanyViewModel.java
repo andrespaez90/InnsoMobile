@@ -8,6 +8,7 @@ import com.innso.mobile.ui.activities.NewCustomerActivity;
 import com.innso.mobile.ui.activities.UsersActivity;
 import com.innso.mobile.ui.activities.bills.BillsActivity;
 import com.innso.mobile.ui.activities.expenses.ExpensesActivity;
+import com.innso.mobile.viewModels.models.StartActivityModel;
 
 public class CompanyViewModel extends BaseViewModel {
 
@@ -17,19 +18,19 @@ public class CompanyViewModel extends BaseViewModel {
     }
 
     public void addUser(View view) {
-        startActivityEvent.onNext(UsersActivity.class);
+        startActivityEvent.onNext(new StartActivityModel(UsersActivity.class));
     }
 
     public void addCustomer(View view) {
-        startActivityEvent.onNext(NewCustomerActivity.class);
+        startActivityEvent.onNext(new StartActivityModel(NewCustomerActivity.class));
     }
 
     public void showBills(View view) {
-        startActivityEvent.onNext(BillsActivity.class);
+        startActivityEvent.onNext(new StartActivityModel(BillsActivity.class));
     }
 
     public void addExpense(View view) {
-        startActivityEvent.onNext(ExpensesActivity.class);
+        startActivityEvent.onNext(new StartActivityModel(ExpensesActivity.class));
     }
 
 }

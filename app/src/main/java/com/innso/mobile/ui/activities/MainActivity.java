@@ -66,7 +66,7 @@ public class MainActivity extends BaseActivity implements BottomNavigationView.O
                 financeViewModel.onTotalBanksUpdated().subscribe(value -> updateValue(binding.textViewBankSummaryValue, value)),
                 financeViewModel.onTotalCashUpdated().subscribe(value -> updateValue(binding.textViewSummaryCashValue, value)),
                 financeViewModel.observableShowLoading().subscribe(this::showLoaders),
-                financeViewModel.observableStartActivity().subscribe(this::startActivity));
+                financeViewModel.startActivityEvent().subscribe(this::startActivity));
     }
 
     private void updateValue(TextView view, Double value) {
