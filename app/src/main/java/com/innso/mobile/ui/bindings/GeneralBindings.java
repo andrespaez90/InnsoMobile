@@ -1,7 +1,6 @@
 package com.innso.mobile.ui.bindings;
 
 import android.content.Context;
-import androidx.databinding.BindingAdapter;
 import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
@@ -9,6 +8,8 @@ import com.innso.mobile.InnsoApplication;
 import com.innso.mobile.R;
 
 import java.io.File;
+
+import androidx.databinding.BindingAdapter;
 
 public class GeneralBindings {
 

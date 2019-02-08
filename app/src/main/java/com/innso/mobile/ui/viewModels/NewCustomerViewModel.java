@@ -1,7 +1,6 @@
 package com.innso.mobile.ui.viewModels;
 
 
-import androidx.databinding.ObservableField;
 import android.text.TextUtils;
 import android.view.View;
 
@@ -11,6 +10,7 @@ import com.innso.mobile.api.controllers.CustomerController;
 
 import javax.inject.Inject;
 
+import androidx.databinding.ObservableField;
 import io.reactivex.Observable;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.subjects.PublishSubject;

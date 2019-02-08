@@ -1,7 +1,5 @@
 package com.innso.mobile.ui.viewModels;
 
-import androidx.databinding.ObservableField;
-import androidx.annotation.NonNull;
 import android.view.View;
 
 import com.innso.mobile.api.controllers.FinanceController;
@@ -20,6 +18,8 @@ import java.util.Map;
 
 import javax.inject.Inject;
 
+import androidx.annotation.NonNull;
+import androidx.databinding.ObservableField;
 import io.reactivex.Observable;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.subjects.PublishSubject;

@@ -1,11 +1,6 @@
 package com.innso.mobile.ui.activities;
 
-import android.content.Intent;
-import androidx.databinding.DataBindingUtil;
 import android.os.Bundle;
-
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 import android.view.View;
 import android.view.ViewGroup;
 
@@ -20,6 +15,10 @@ import com.innso.mobile.ui.models.list.GenericItemAbstract;
 import com.innso.mobile.ui.viewModels.UsersListViewModel;
 
 import java.util.List;
+
+import androidx.databinding.DataBindingUtil;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 public class UsersActivity extends BaseActivity {
 

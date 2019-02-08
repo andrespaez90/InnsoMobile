@@ -1,19 +1,20 @@
 package com.innso.mobile.ui.activities.bills;
 
 import android.content.Intent;
-import androidx.databinding.DataBindingUtil;
 import android.os.Bundle;
-import androidx.appcompat.app.AlertDialog;
 
 import com.innso.mobile.R;
 import com.innso.mobile.databinding.ActivityAddBillBinding;
-import com.innso.mobile.ui.textWatcher.MoneyTextWatcher;
 import com.innso.mobile.ui.activities.BaseActivity;
+import com.innso.mobile.ui.textWatcher.MoneyTextWatcher;
 import com.innso.mobile.ui.viewModels.AddBillViewModel;
 import com.innso.mobile.utils.CameraUtil;
 import com.innso.mobile.utils.ErrorUtils;
 import com.innso.mobile.utils.FileUtil;
 import com.innso.mobile.utils.MoneyUtil;
+
+import androidx.appcompat.app.AlertDialog;
+import androidx.databinding.DataBindingUtil;
 
 public class AddBillActivity extends BaseActivity {
 

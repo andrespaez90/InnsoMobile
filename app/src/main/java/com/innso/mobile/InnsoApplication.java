@@ -2,10 +2,12 @@ package com.innso.mobile;
 
 import android.app.Application;
 
+import com.crashlytics.android.Crashlytics;
 import com.innso.mobile.di.components.AppComponent;
 import com.innso.mobile.di.components.DaggerAppComponent;
 import com.innso.mobile.di.modules.AppModule;
 import com.innso.mobile.utils.FileUtil;
+import io.fabric.sdk.android.Fabric;
 
 
 public class InnsoApplication extends Application {
@@ -17,6 +19,7 @@ public class InnsoApplication extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
+        Fabric.with(this, new Crashlytics());
         instance = this;
         updateDagger();
         initialize();

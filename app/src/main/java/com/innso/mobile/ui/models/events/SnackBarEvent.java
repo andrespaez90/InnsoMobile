@@ -5,7 +5,8 @@ import com.innso.mobile.ui.factories.SnackBarFactory;
 
 public class SnackBarEvent {
 
-    private @SnackBarFactory.SnackBarType String typeSnackBar;
+    private @SnackBarFactory.SnackBarType
+    String typeSnackBar;
     private String message;
     private int duration;
 
@@ -15,7 +16,8 @@ public class SnackBarEvent {
         this.duration = duration;
     }
 
-    public @SnackBarFactory.SnackBarType String getTypeSnackBar() {
+    public @SnackBarFactory.SnackBarType
+    String getTypeSnackBar() {
         return typeSnackBar;
     }
 

@@ -4,9 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
         <variable
             name="viewModel"
-            type="com.innso.mobile.ui.viewModels.CompanyViewModel"/>
+            type="com.innso.mobile.viewModels.company.CompanyViewModel" />
     </data>
 
     <ScrollView

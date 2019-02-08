@@ -23,7 +23,7 @@ import com.innso.mobile.ui.itemViews.ItemDetailExpense
 import com.innso.mobile.ui.models.Expense
 import com.innso.mobile.ui.models.list.GenericAdapterFactory
 import com.innso.mobile.ui.models.list.GenericCategoryItemAbstract
-import com.innso.mobile.ui.viewModels.ExpensesViewModel
+import com.innso.mobile.viewModels.company.ExpensesViewModel
 
 class ExpensesActivity : BaseActivity() {
 

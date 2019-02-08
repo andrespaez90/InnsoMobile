@@ -1,23 +1,14 @@
-package com.innso.mobile.ui.viewModels
+package com.innso.mobile.viewModels.company
 
 import android.view.View
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-
 import com.innso.mobile.api.controllers.FinanceController
 import com.innso.mobile.api.models.finance.ExpenseModel
-import com.innso.mobile.ui.activities.bills.AddBillActivity
 import com.innso.mobile.ui.activities.expenses.AddExpenseActivity
 import com.innso.mobile.viewModels.AndroidViewModel
 import com.innso.mobile.viewModels.models.StartActivityModel
-
-import java.util.ArrayList
-
 import javax.inject.Inject
-
-import io.reactivex.Observable
-import io.reactivex.android.schedulers.AndroidSchedulers
-import io.reactivex.subjects.BehaviorSubject
 
 class ExpensesViewModel : AndroidViewModel() {
 

@@ -1,15 +1,13 @@
 package com.innso.mobile.ui.views
 
+
 import android.content.Context
 import android.util.AttributeSet
 import android.view.View
 import android.widget.ProgressBar
 import android.widget.RelativeLayout
-
-
-import com.innso.mobile.R
-
 import androidx.core.content.ContextCompat
+import com.innso.mobile.R
 
 class LoadingView : RelativeLayout {
 
