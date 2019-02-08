@@ -45,7 +45,7 @@
                     android:text="@string/title.flow_accounting"
                     android:textSize="@dimen/font_xxxlarge" />
 
-                <android.support.v7.widget.CardView
+                <androidx.cardview.widget.CardView
                     android:id="@+id/layout_year_picker"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -98,9 +98,9 @@
 
                     </RelativeLayout>
 
-                </android.support.v7.widget.CardView>
+                </androidx.cardview.widget.CardView>
 
-                <android.support.v7.widget.CardView
+                <androidx.cardview.widget.CardView
                     android:id="@+id/textView_back_summary"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -159,10 +159,10 @@
 
                     </RelativeLayout>
 
-                </android.support.v7.widget.CardView>
+                </androidx.cardview.widget.CardView>
 
 
-                <android.support.v7.widget.CardView
+                <androidx.cardview.widget.CardView
                     android:id="@+id/textView_cash_summary"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -221,9 +221,9 @@
 
                     </RelativeLayout>
 
-                </android.support.v7.widget.CardView>
+                </androidx.cardview.widget.CardView>
 
-                <android.support.v7.widget.CardView
+                <androidx.cardview.widget.CardView
                     android:id="@+id/cardView_chart_container"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -237,9 +237,9 @@
                         android:layout_height="@dimen/size_chart"
                         android:padding="@dimen/spacing_standard" />
 
-                </android.support.v7.widget.CardView>
+                </androidx.cardview.widget.CardView>
 
-                <android.support.v7.widget.CardView
+                <androidx.cardview.widget.CardView
                     android:id="@+id/cardView_resume_sales"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -291,10 +291,10 @@
 
                     </LinearLayout>
 
-                </android.support.v7.widget.CardView>
+                </androidx.cardview.widget.CardView>
 
 
-                <android.support.v7.widget.CardView
+                <androidx.cardview.widget.CardView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/cardView_resume_sales"
@@ -322,7 +322,7 @@
 
                     </LinearLayout>
 
-                </android.support.v7.widget.CardView>
+                </androidx.cardview.widget.CardView>
 
             </RelativeLayout>
 
@@ -335,7 +335,7 @@
             android:layout_above="@+id/navigation_view"
             tools:visibility="gone" />
 
-        <android.support.design.widget.BottomNavigationView
+        <com.google.android.material.bottomnavigation.BottomNavigationView
             android:id="@+id/navigation_view"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

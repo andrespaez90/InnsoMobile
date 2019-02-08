@@ -6,7 +6,7 @@
 
         <variable
             name="viewModel"
-            type="com.innso.mobile.ui.viewModels.LoginViewModel" />
+            type="com.innso.mobile.viewModels.onBoarding.LoginViewModel" />
     </data>
 
     <RelativeLayout

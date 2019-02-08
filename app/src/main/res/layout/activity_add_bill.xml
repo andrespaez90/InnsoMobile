@@ -21,7 +21,7 @@
             android:layout_height="match_parent"
             android:layout_above="@+id/button_finalize">
 
-            <android.support.percent.PercentRelativeLayout
+            <androidx.percentlayout.widget.PercentRelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
@@ -199,7 +199,7 @@
                     android:contentDescription="@null"
                     app:load_image_file="@{viewModel.billImage}" />
 
-            </android.support.percent.PercentRelativeLayout>
+            </androidx.percentlayout.widget.PercentRelativeLayout>
 
         </ScrollView>
 

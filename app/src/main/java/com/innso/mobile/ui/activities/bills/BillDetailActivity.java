@@ -1,7 +1,6 @@
 package com.innso.mobile.ui.activities.bills;
 
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.widget.ImageView;
 import android.widget.TextView;
 

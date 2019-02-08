@@ -60,7 +60,7 @@
             android:screenOrientation="portrait" />
 
         <provider
-            android:name="android.support.v4.content.FileProvider"
+            android:name="androidx.core.content.FileProvider"
             android:authorities="${applicationId}.provider"
             android:exported="false"
             android:grantUriPermissions="true">
@@ -69,6 +69,10 @@
                 android:resource="@xml/provider_paths" />
         </provider>
 
+        <meta-data
+            android:name="io.fabric.ApiKey"
+            android:value="60c296b1834a7c2e31bf277e06414291e84ded47" />
     </application>
 
+    <uses-permission android:name="android.permission.INTERNET" />
 </manifest>

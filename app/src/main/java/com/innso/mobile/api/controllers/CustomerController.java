@@ -5,10 +5,8 @@ import com.innso.mobile.api.models.cutomers.Customer;
 import com.innso.mobile.api.services.CustomerApi;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import io.reactivex.Completable;
-import io.reactivex.Observable;
 import io.reactivex.Single;
 import io.reactivex.schedulers.Schedulers;
 

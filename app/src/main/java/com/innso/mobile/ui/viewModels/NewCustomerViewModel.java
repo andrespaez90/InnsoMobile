@@ -1,17 +1,16 @@
 package com.innso.mobile.ui.viewModels;
 
 
-import android.databinding.ObservableField;
 import android.text.TextUtils;
 import android.view.View;
 
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 import com.innso.mobile.R;
 import com.innso.mobile.api.controllers.CustomerController;
 
 import javax.inject.Inject;
 
+import androidx.databinding.ObservableField;
 import io.reactivex.Observable;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.subjects.PublishSubject;

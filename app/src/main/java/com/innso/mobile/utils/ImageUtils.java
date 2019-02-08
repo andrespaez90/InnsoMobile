@@ -4,11 +4,12 @@ import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.drawable.Drawable;
 import android.media.ExifInterface;
-import android.support.graphics.drawable.VectorDrawableCompat;
 
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
+
+import androidx.vectordrawable.graphics.drawable.VectorDrawableCompat;
 
 public class ImageUtils {
 

@@ -3,41 +3,33 @@ package com.innso.mobile.ui;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.CallSuper;
-import android.support.annotation.ColorInt;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.design.widget.Snackbar;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentTransaction;
 import android.util.Pair;
 import android.view.View;
 
+import com.google.android.material.snackbar.Snackbar;
 import com.innso.mobile.InnsoApplication;
 import com.innso.mobile.R;
 import com.innso.mobile.di.components.DaggerFragmentComponent;
 import com.innso.mobile.di.components.FragmentComponent;
 import com.innso.mobile.ui.factories.SnackBarFactory;
+import com.innso.mobile.viewModels.models.StartActivityModel;
 
-import io.reactivex.disposables.CompositeDisposable;
+import androidx.annotation.CallSuper;
+import androidx.annotation.ColorInt;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 
 public class BaseFragment extends Fragment {
 
     protected ProgressDialog progressDialog;
 
-    protected CompositeDisposable disposable;
 
     @Override
     @CallSuper
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        disposable = new CompositeDisposable();
-    }
-
-    @Override
-    public void onPause() {
-        super.onPause();
-        disposable.clear();
     }
 
     private void initProgressDialog() {
@@ -54,8 +46,12 @@ public class BaseFragment extends Fragment {
                 .build();
     }
 
-    public void startActivityFormEvent(Class<?> clazz){
-        startActivity(new Intent(getContext(), clazz));
+    protected void startActivity(StartActivityModel startActivityModel) {
+        Intent intent = new Intent(getActivity(), startActivityModel.getActivity());
+        if (startActivityModel.getBundle() != null) {
+            intent.putExtras(startActivityModel.getBundle());
+        }
+        startActivityForResult(intent, startActivityModel.getCode());
     }
 
     public void showProgressDialog(Pair<Boolean, Integer> progressData) {

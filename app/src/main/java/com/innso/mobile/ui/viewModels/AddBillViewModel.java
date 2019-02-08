@@ -1,19 +1,18 @@
 package com.innso.mobile.ui.viewModels;
 
-import android.databinding.ObservableField;
-import android.support.design.widget.Snackbar;
 import android.text.Editable;
 import android.text.TextUtils;
 import android.view.View;
 
+import com.google.android.material.snackbar.Snackbar;
 import com.innso.mobile.R;
 import com.innso.mobile.api.controllers.CustomerController;
 import com.innso.mobile.api.controllers.FinanceController;
 import com.innso.mobile.api.models.cutomers.Customer;
 import com.innso.mobile.managers.FirebaseStorageManager;
-import com.innso.mobile.ui.TextWatcher.MoneyTextWatcher;
 import com.innso.mobile.ui.factories.SnackBarFactory;
 import com.innso.mobile.ui.models.DatePickerModel;
+import com.innso.mobile.ui.textWatcher.MoneyTextWatcher;
 import com.innso.mobile.utils.DateUtils;
 import com.innso.mobile.utils.FileUtil;
 import com.innso.mobile.utils.ImageUtils;
@@ -25,6 +24,7 @@ import java.util.Locale;
 
 import javax.inject.Inject;
 
+import androidx.databinding.ObservableField;
 import io.reactivex.Observable;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.subjects.PublishSubject;

@@ -1,8 +1,8 @@
 package com.innso.mobile.managers.preferences;
 
-import android.support.annotation.NonNull;
-
 import java.security.InvalidParameterException;
+
+import androidx.annotation.NonNull;
 
 public class PreferencesKey {
 

@@ -3,12 +3,13 @@ package com.innso.mobile.ui.views;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.drawable.Drawable;
-import android.support.v7.content.res.AppCompatResources;
-import android.support.v7.widget.AppCompatTextView;
 import android.util.AttributeSet;
 
 import com.innso.mobile.R;
 import com.innso.mobile.utils.AndroidVersionUtil;
+
+import androidx.appcompat.content.res.AppCompatResources;
+import androidx.appcompat.widget.AppCompatTextView;
 
 public class VectorCompatTextView extends AppCompatTextView {
 

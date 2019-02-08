@@ -6,7 +6,7 @@
 
         <variable
             name="viewModel"
-            type="com.innso.mobile.ui.viewModels.SplashViewModel" />
+            type="com.innso.mobile.viewModels.onBoarding.SplashViewModel" />
     </data>
 
     <RelativeLayout

@@ -1,9 +1,6 @@
 package com.innso.mobile.ui.itemViews;
 
 import android.content.Context;
-import android.databinding.DataBindingUtil;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.widget.FrameLayout;
@@ -13,6 +10,10 @@ import com.innso.mobile.databinding.ItemGenericFinanceDetailBinding;
 import com.innso.mobile.ui.bindings.GeneralBindings;
 import com.innso.mobile.ui.interfaces.GenericItemView;
 import com.innso.mobile.ui.models.Expense;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.databinding.DataBindingUtil;
 
 public class ItemDetailExpense extends FrameLayout implements GenericItemView<Expense> {
 

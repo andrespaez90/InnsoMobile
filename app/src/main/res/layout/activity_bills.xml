@@ -39,14 +39,14 @@
             android:paddingLeft="@dimen/spacing_large"
             android:paddingRight="@dimen/spacing_large" />
 
-        <android.support.v4.widget.SwipeRefreshLayout
+        <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
             android:id="@+id/swipe_refresh"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_above="@id/button_add_bill"
             android:layout_below="@+id/textView_title">
 
-            <android.support.v7.widget.RecyclerView
+            <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recycler_bills"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -55,7 +55,7 @@
                 android:layout_marginEnd="@dimen/spacing_xlarge"
                 android:layout_marginRight="@dimen/spacing_xlarge" />
 
-        </android.support.v4.widget.SwipeRefreshLayout>
+        </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
         <Button
             android:id="@+id/button_add_bill"

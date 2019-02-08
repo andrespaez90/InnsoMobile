@@ -40,29 +40,29 @@ public class ScalingUtilities {
     public static int calculateSampleSize(int srcWidth, int srcHeight, int dstWidth, int dstHeight, ScalingUtilities.ScalingLogic scalingLogic) {
         float srcAspect;
         float dstAspect;
-        if(scalingLogic == ScalingUtilities.ScalingLogic.FIT) {
-            srcAspect = (float)srcWidth / (float)srcHeight;
-            dstAspect = (float)dstWidth / (float)dstHeight;
-            return srcAspect > dstAspect?srcWidth / dstWidth:srcHeight / dstHeight;
+        if (scalingLogic == ScalingUtilities.ScalingLogic.FIT) {
+            srcAspect = (float) srcWidth / (float) srcHeight;
+            dstAspect = (float) dstWidth / (float) dstHeight;
+            return srcAspect > dstAspect ? srcWidth / dstWidth : srcHeight / dstHeight;
         } else {
-            srcAspect = (float)srcWidth / (float)srcHeight;
-            dstAspect = (float)dstWidth / (float)dstHeight;
-            return srcAspect > dstAspect?srcHeight / dstHeight:srcWidth / dstWidth;
+            srcAspect = (float) srcWidth / (float) srcHeight;
+            dstAspect = (float) dstWidth / (float) dstHeight;
+            return srcAspect > dstAspect ? srcHeight / dstHeight : srcWidth / dstWidth;
         }
     }
 
     public static Rect calculateSrcRect(int srcWidth, int srcHeight, int dstWidth, int dstHeight, ScalingUtilities.ScalingLogic scalingLogic) {
-        if(scalingLogic == ScalingUtilities.ScalingLogic.CROP) {
-            float srcAspect = (float)srcWidth / (float)srcHeight;
-            float dstAspect = (float)dstWidth / (float)dstHeight;
+        if (scalingLogic == ScalingUtilities.ScalingLogic.CROP) {
+            float srcAspect = (float) srcWidth / (float) srcHeight;
+            float dstAspect = (float) dstWidth / (float) dstHeight;
             int srcRectHeight;
             int scrRectTop;
-            if(srcAspect > dstAspect) {
-                srcRectHeight = (int)((float)srcHeight * dstAspect);
+            if (srcAspect > dstAspect) {
+                srcRectHeight = (int) ((float) srcHeight * dstAspect);
                 scrRectTop = (srcWidth - srcRectHeight) / 2;
                 return new Rect(scrRectTop, 0, scrRectTop + srcRectHeight, srcHeight);
             } else {
-                srcRectHeight = (int)((float)srcWidth / dstAspect);
+                srcRectHeight = (int) ((float) srcWidth / dstAspect);
                 scrRectTop = (srcHeight - srcRectHeight) / 2;
                 return new Rect(0, scrRectTop, srcWidth, scrRectTop + srcRectHeight);
             }
@@ -72,10 +72,10 @@ public class ScalingUtilities {
     }
 
     public static Rect calculateDstRect(int srcWidth, int srcHeight, int dstWidth, int dstHeight, ScalingUtilities.ScalingLogic scalingLogic) {
-        if(scalingLogic == ScalingUtilities.ScalingLogic.FIT) {
-            float srcAspect = (float)srcWidth / (float)srcHeight;
-            float dstAspect = (float)dstWidth / (float)dstHeight;
-            return srcAspect > dstAspect?new Rect(0, 0, dstWidth, (int)((float)dstWidth / srcAspect)):new Rect(0, 0, (int)((float)dstHeight * srcAspect), dstHeight);
+        if (scalingLogic == ScalingUtilities.ScalingLogic.FIT) {
+            float srcAspect = (float) srcWidth / (float) srcHeight;
+            float dstAspect = (float) dstWidth / (float) dstHeight;
+            return srcAspect > dstAspect ? new Rect(0, 0, dstWidth, (int) ((float) dstWidth / srcAspect)) : new Rect(0, 0, (int) ((float) dstHeight * srcAspect), dstHeight);
         } else {
             return new Rect(0, 0, dstWidth, dstHeight);
         }

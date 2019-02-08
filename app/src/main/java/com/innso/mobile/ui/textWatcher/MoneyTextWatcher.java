@@ -1,12 +1,13 @@
-package com.innso.mobile.ui.TextWatcher;
+package com.innso.mobile.ui.textWatcher;
 
-import android.support.annotation.NonNull;
 import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.widget.EditText;
 
 import com.innso.mobile.utils.MoneyUtil;
+
+import androidx.annotation.NonNull;
 
 public class MoneyTextWatcher implements TextWatcher {
     private boolean mEditing;

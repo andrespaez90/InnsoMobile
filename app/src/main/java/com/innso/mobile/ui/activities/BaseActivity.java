@@ -3,33 +3,42 @@ package com.innso.mobile.ui.activities;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.CallSuper;
-import android.support.annotation.ColorInt;
-import android.support.annotation.NonNull;
-import android.support.annotation.StringRes;
-import android.support.design.widget.Snackbar;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
-import android.support.v7.app.ActionBar;
-import android.support.v7.app.AlertDialog;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.util.Pair;
 import android.view.View;
+import android.view.ViewGroup;
 
+import com.google.android.material.snackbar.Snackbar;
 import com.innso.mobile.InnsoApplication;
 import com.innso.mobile.R;
 import com.innso.mobile.di.components.ActivityComponent;
 import com.innso.mobile.di.components.DaggerActivityComponent;
 import com.innso.mobile.ui.BaseFragment;
+import com.innso.mobile.ui.dialogs.BasicDialog;
 import com.innso.mobile.ui.dialogs.DatePickerDialogFragment;
 import com.innso.mobile.ui.factories.SnackBarFactory;
 import com.innso.mobile.ui.models.DatePickerModel;
+import com.innso.mobile.ui.views.LoadingView;
 import com.innso.mobile.utils.FileUtil;
+import com.innso.mobile.viewModels.AndroidViewModel;
+import com.innso.mobile.viewModels.models.FinishActivityModel;
+import com.innso.mobile.viewModels.models.StartActionModel;
+import com.innso.mobile.viewModels.models.StartActivityModel;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import androidx.annotation.CallSuper;
+import androidx.annotation.ColorInt;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.annotation.StringRes;
+import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.core.app.ActivityOptionsCompat;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import io.reactivex.disposables.CompositeDisposable;
 import permissions.dispatcher.NeedsPermission;
 import permissions.dispatcher.RuntimePermissions;
@@ -49,7 +58,7 @@ public class BaseActivity extends AppCompatActivity {
 
     protected ProgressDialog progressDialog;
 
-    //protected Loading loadingBar;
+    protected LoadingView loadingView;
 
     private boolean paused;
 
@@ -110,8 +119,67 @@ public class BaseActivity extends AppCompatActivity {
         checkPendingView();
     }
 
-    protected void startActivity(Class clazz) {
-        startActivity(new Intent(this, clazz));
+    protected void subscribeViewModel(AndroidViewModel viewModel, View root) {
+        viewModel.loaderState().observe(this, this::showLoading);
+        viewModel.startActivity().observe(this, this::startActivity);
+        viewModel.closeView().observe(this, this::close);
+        viewModel.showDialog().observe(this, this::showDialog);
+        viewModel.snackBarMessage().observe(this, (event -> showMessage(event.getTypeSnackBar(), root, event.getMessage(), Snackbar.LENGTH_SHORT)));
+    }
+
+    public void showLoading(Boolean showing) {
+        initLoading();
+        if (showing) {
+            loadingView.showProgressBar();
+        } else {
+            loadingView.hideProgressBar();
+        }
+    }
+
+    private void initLoading() {
+        if (loadingView == null) {
+            loadingView = new LoadingView(this);
+            this.addContentView(loadingView, new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
+        }
+    }
+
+    protected final void startActivity(StartActivityModel startActivityModel) {
+        Intent intent = new Intent(getBaseContext(), startActivityModel.getActivity());
+        if (startActivityModel.getBundle() != null) {
+            intent.putExtras(startActivityModel.getBundle());
+        }
+        Bundle bundle = new Bundle();
+        ActivityOptionsCompat activityOptions = getSceneTransition(startActivityModel.getActivity());
+        if (activityOptions != null) {
+            bundle = activityOptions.toBundle();
+        }
+        startActivityForResult(intent, startActivityModel.getCode(), bundle);
+    }
+
+    @Nullable
+    protected ActivityOptionsCompat getSceneTransition(Class clazz) {
+        return null;
+    }
+
+    protected final void close(FinishActivityModel finishActivityModel) {
+        if (finishActivityModel.getIntent() != null) {
+            setResult(finishActivityModel.getCode(), finishActivityModel.getIntent());
+        } else {
+            setResult(finishActivityModel.getCode());
+        }
+        finish();
+    }
+
+    protected final void showDialog(BasicDialog dialog) {
+        dialog.show(getSupportFragmentManager(), dialog.getClass().getName());
+    }
+
+    protected final void startAction(StartActionModel startActionModel) {
+        Intent intent = new Intent(startActionModel.getAction());
+        if (startActionModel.getBundle() != null) {
+            intent.putExtras(startActionModel.getBundle());
+        }
+        startActivityForResult(intent, startActionModel.getCode());
     }
 
     protected boolean isLoading() {
@@ -235,9 +303,9 @@ public class BaseActivity extends AppCompatActivity {
     }
 
     //private void initLoading() {
-    //if (loadingBar == null) {
-    //   loadingBar = new Loading(this);
-    //     this.addContentView(loadingBar, new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
+    //if (loadingView == null) {
+    //   loadingView = new Loading(this);
+    //     this.addContentView(loadingView, new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
     //   }
     // }
 

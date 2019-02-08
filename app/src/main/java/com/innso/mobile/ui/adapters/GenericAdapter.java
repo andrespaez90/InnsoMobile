@@ -1,7 +1,6 @@
 package com.innso.mobile.ui.adapters;
 
 
-import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,6 +15,8 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
+
+import androidx.recyclerview.widget.RecyclerView;
 
 public class GenericAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
@@ -52,7 +53,7 @@ public class GenericAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
     }
 
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = (View)this.factory.onCreateViewHolder(parent, viewType);
+        View view = (View) this.factory.onCreateViewHolder(parent, viewType);
         return new RecyclerView.ViewHolder(view) {
             public String toString() {
                 return super.toString();
@@ -61,12 +62,12 @@ public class GenericAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
     }
 
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
-        GenericItemView genericItemView = (GenericItemView)holder.itemView;
+        GenericItemView genericItemView = (GenericItemView) holder.itemView;
         genericItemView.bind(this.getItem(position).getData());
     }
 
     protected GenericItem getItem(int position) {
-        return (GenericItem)this.items.get(position);
+        return (GenericItem) this.items.get(position);
     }
 
     public int getItemViewType(int position) {
@@ -74,7 +75,7 @@ public class GenericAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
     }
 
     public int getItemCount() {
-        return this.items != null?this.items.size():0;
+        return this.items != null ? this.items.size() : 0;
     }
 
     public void setCategoryEnable(boolean categoryEnable) {
@@ -84,11 +85,11 @@ public class GenericAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
 
     public void setItems(List<? extends GenericItem> items) {
         this.items = new ArrayList();
-        if(items != null) {
+        if (items != null) {
             int i = 0;
 
-            for(int size = items.size(); i < size; ++i) {
-                GenericItem genericItem = (GenericItem)items.get(i);
+            for (int size = items.size(); i < size; ++i) {
+                GenericItem genericItem = (GenericItem) items.get(i);
                 this.addNewItem(genericItem);
             }
         } else {
@@ -99,8 +100,8 @@ public class GenericAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
     }
 
     private void addNewItem(GenericItem genericItem) {
-        if(this.categoryEnable && genericItem instanceof GenericCategoryItem) {
-            GenericCategoryItem categoryItem = (GenericCategoryItem)genericItem;
+        if (this.categoryEnable && genericItem instanceof GenericCategoryItem) {
+            GenericCategoryItem categoryItem = (GenericCategoryItem) genericItem;
             this.addCategories(categoryItem);
         } else {
             this.items.add(genericItem);
@@ -109,9 +110,9 @@ public class GenericAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
     }
 
     private void addCategories(GenericCategoryItem item) {
-        String category = TextUtils.isEmpty(item.getCategoryName())?this.other:item.getCategoryName();
+        String category = TextUtils.isEmpty(item.getCategoryName()) ? this.other : item.getCategoryName();
         int categoryIndex = this.indexCategoryOf(category);
-        if(categoryIndex != -1) {
+        if (categoryIndex != -1) {
             this.items.add(categoryIndex + 1, item);
         } else {
             GenericCategoryItem newCategory = this.getCategoryItem(category);
@@ -129,11 +130,11 @@ public class GenericAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
     private int indexCategoryOf(String category) {
         int i = 0;
 
-        for(int size = this.items.size(); i < size; ++i) {
+        for (int size = this.items.size(); i < size; ++i) {
             GenericItem item = this.getItem(i);
-            if(item.getType() == 1004) {
-                GenericCategoryItem categoryItem = (GenericCategoryItem)item;
-                if(categoryItem.getData().equals(category)) {
+            if (item.getType() == 1004) {
+                GenericCategoryItem categoryItem = (GenericCategoryItem) item;
+                if (categoryItem.getData().equals(category)) {
                     return i;
                 }
             }
@@ -145,11 +146,11 @@ public class GenericAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
     private int getNewCategoryIndex(GenericCategoryItem newCategory) {
         int itemSize = this.items.size();
 
-        for(int i = 0; i < itemSize; ++i) {
+        for (int i = 0; i < itemSize; ++i) {
             GenericItem item = this.getItem(i);
-            if(item.getType() == 1004) {
-                GenericCategoryItem categoryItem = (GenericCategoryItem)item;
-                if(categoryItem.compareTo(newCategory) >= 0) {
+            if (item.getType() == 1004) {
+                GenericCategoryItem categoryItem = (GenericCategoryItem) item;
+                if (categoryItem.compareTo(newCategory) >= 0) {
                     return i;
                 }
             }
@@ -166,9 +167,9 @@ public class GenericAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
     private void removeCategories() {
         Iterator itemIterator = this.items.iterator();
 
-        while(itemIterator.hasNext()) {
-            GenericItem item = (GenericItem)itemIterator.next();
-            if(item.getType() == 1004) {
+        while (itemIterator.hasNext()) {
+            GenericItem item = (GenericItem) itemIterator.next();
+            if (item.getType() == 1004) {
                 itemIterator.remove();
             }
         }
@@ -177,7 +178,7 @@ public class GenericAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
 
     public void update(GenericItem item) {
         int index = this.items.indexOf(item);
-        if(index != -1) {
+        if (index != -1) {
             this.items.set(index, item);
             this.notifyItemChanged(index);
         }
@@ -186,7 +187,7 @@ public class GenericAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
 
     public void remove(GenericItem item) {
         int index = this.items.indexOf(item);
-        if(index != -1) {
+        if (index != -1) {
             this.items.remove(index);
             this.notifyItemRemoved(index);
             this.removeEmptyCategory(index);
@@ -195,18 +196,18 @@ public class GenericAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
     }
 
     private void removeEmptyCategory(int index) {
-        if(this.categoryEnable) {
+        if (this.categoryEnable) {
             GenericItem prevItem = null;
             GenericItem nextItem = null;
-            if(index < this.items.size()) {
-                nextItem = (GenericItem)this.items.get(index);
+            if (index < this.items.size()) {
+                nextItem = (GenericItem) this.items.get(index);
             }
 
-            if(index > 0) {
-                prevItem = (GenericItem)this.items.get(index - 1);
+            if (index > 0) {
+                prevItem = (GenericItem) this.items.get(index - 1);
             }
 
-            if(prevItem != null && prevItem instanceof CategoryItem && (nextItem == null || nextItem instanceof CategoryItem)) {
+            if (prevItem != null && prevItem instanceof CategoryItem && (nextItem == null || nextItem instanceof CategoryItem)) {
                 this.items.remove(index - 1);
                 this.notifyItemRemoved(index - 1);
             }
@@ -215,7 +216,7 @@ public class GenericAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
     }
 
     public void removeItemAtPosition(int position) {
-        if(position >= 0 && position < this.items.size()) {
+        if (position >= 0 && position < this.items.size()) {
             this.items.remove(position);
             this.notifyItemRemoved(position);
         }
@@ -223,8 +224,8 @@ public class GenericAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
     }
 
     public void removeItemsAtPosition(int position, int itemCount) {
-        if(position >= 0 && position < this.items.size()) {
-            for(int i = 0; i < itemCount; ++i) {
+        if (position >= 0 && position < this.items.size()) {
+            for (int i = 0; i < itemCount; ++i) {
                 this.items.remove(position);
             }
 
@@ -239,11 +240,11 @@ public class GenericAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
     }
 
     public void addItems(List<? extends GenericItem> items) {
-        if(items != null) {
+        if (items != null) {
             int i = 0;
 
-            for(int size = items.size(); i < size; ++i) {
-                this.addNewItem((GenericItem)items.get(i));
+            for (int size = items.size(); i < size; ++i) {
+                this.addNewItem((GenericItem) items.get(i));
             }
 
             this.notifyDataSetChanged();
@@ -252,16 +253,16 @@ public class GenericAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
     }
 
     public void addItems(int index, List<? extends GenericItem> itemsToAdd) {
-        if(itemsToAdd == null) {
+        if (itemsToAdd == null) {
             itemsToAdd = new ArrayList();
         }
 
-        this.items.addAll(index, (Collection)itemsToAdd);
+        this.items.addAll(index, (Collection) itemsToAdd);
         this.notifyItemInserted(index);
     }
 
     public void addItem(int index, GenericItem item) {
-        if(this.items == null) {
+        if (this.items == null) {
             this.items = new ArrayList();
         }
 
@@ -270,7 +271,7 @@ public class GenericAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
     }
 
     public void clearAll() {
-        if(this.items != null) {
+        if (this.items != null) {
             this.items.clear();
             this.notifyDataSetChanged();
         }
@@ -278,12 +279,12 @@ public class GenericAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
     }
 
     public void clear() {
-        if(this.items != null) {
+        if (this.items != null) {
             Iterator i = this.items.iterator();
 
-            while(i.hasNext()) {
-                GenericItem itemView = (GenericItem)i.next();
-                if(itemView.getType() != 1001 && itemView.getType() != 1003) {
+            while (i.hasNext()) {
+                GenericItem itemView = (GenericItem) i.next();
+                if (itemView.getType() != 1001 && itemView.getType() != 1003) {
                     i.remove();
                 }
             }
@@ -295,7 +296,7 @@ public class GenericAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
 
     public int getItemPosition(GenericItem item) {
         int itemPosition = -1;
-        if(this.items != null && !this.items.isEmpty()) {
+        if (this.items != null && !this.items.isEmpty()) {
             itemPosition = this.items.indexOf(item);
         }
 
@@ -304,7 +305,7 @@ public class GenericAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
 
     public GenericItem getItemAtPosition(int position) {
         GenericItem genericItem = null;
-        if(this.items != null && this.items.size() > position) {
+        if (this.items != null && this.items.size() > position) {
             genericItem = this.getItem(position);
         }
 
@@ -313,19 +314,19 @@ public class GenericAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
 
     public void notifyItemWithDataChanged(Object data) {
         GenericItem genericItem = this.getItemWithData(data);
-        if(genericItem != null) {
+        if (genericItem != null) {
             this.notifyItemChanged(this.getItemPosition(genericItem));
         }
 
     }
 
     public GenericItem getItemWithData(Object data) {
-        if(this.items != null) {
+        if (this.items != null) {
             Iterator i = this.items.iterator();
 
-            while(i.hasNext()) {
-                GenericItem itemView = (GenericItem)i.next();
-                if(itemView.getData() == data) {
+            while (i.hasNext()) {
+                GenericItem itemView = (GenericItem) i.next();
+                if (itemView.getData() == data) {
                     return itemView;
                 }
             }

@@ -4,9 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
         <variable
             name="viewModel"
-            type="com.innso.mobile.ui.viewModels.ProfileViewModel"/>
+            type="com.innso.mobile.viewModels.company.ProfileViewModel" />
     </data>
 
     <ScrollView
@@ -38,10 +39,11 @@
                 android:layout_toRightOf="@id/imageView_logo"
                 android:layout_alignBottom="@id/imageView_logo"
                 android:gravity="center_vertical"
+                app:user_info="@{viewModel.userInformation}"
                 tools:text="@string/company.name" />
 
 
-            <android.support.v7.widget.CardView
+            <androidx.cardview.widget.CardView
                 android:id="@+id/cardView_information_container"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -100,7 +102,7 @@
 
                 </LinearLayout>
 
-            </android.support.v7.widget.CardView>
+            </androidx.cardview.widget.CardView>
 
         </RelativeLayout>
 

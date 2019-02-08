@@ -5,6 +5,7 @@ import android.view.View;
 import com.innso.mobile.api.controllers.UserControllerApi;
 import com.innso.mobile.api.models.users.UserRequest;
 import com.innso.mobile.ui.activities.CreateUserActivity;
+import com.innso.mobile.viewModels.models.StartActivityModel;
 
 import java.util.List;
 
@@ -31,7 +32,7 @@ public class UsersListViewModel extends BaseViewModel {
     }
 
     public void onNewUserClick(View view) {
-        startActivityEvent.onNext(CreateUserActivity.class);
+        startActivityEvent.onNext(new StartActivityModel(CreateUserActivity.class));
     }
 
     public Observable<List<UserRequest>> allUsers() {

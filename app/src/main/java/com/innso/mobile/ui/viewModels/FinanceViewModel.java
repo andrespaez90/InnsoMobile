@@ -1,7 +1,5 @@
 package com.innso.mobile.ui.viewModels;
 
-import android.databinding.ObservableField;
-import android.support.annotation.NonNull;
 import android.view.View;
 
 import com.innso.mobile.api.controllers.FinanceController;
@@ -10,6 +8,7 @@ import com.innso.mobile.api.models.finance.SummaryMonth;
 import com.innso.mobile.ui.activities.bills.BillsActivity;
 import com.innso.mobile.ui.activities.expenses.ExpensesActivity;
 import com.innso.mobile.utils.DateUtils;
+import com.innso.mobile.viewModels.models.StartActivityModel;
 
 import java.text.ParseException;
 import java.util.ArrayList;
@@ -19,6 +18,8 @@ import java.util.Map;
 
 import javax.inject.Inject;
 
+import androidx.annotation.NonNull;
+import androidx.databinding.ObservableField;
 import io.reactivex.Observable;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.subjects.PublishSubject;
@@ -105,11 +106,11 @@ public class FinanceViewModel extends BaseViewModel {
     }
 
     public void onExpensesClick(View view) {
-        startActivityEvent.onNext(ExpensesActivity.class);
+        startActivityEvent.onNext(new StartActivityModel(ExpensesActivity.class));
     }
 
     public void onRevenueClick(View view) {
-        startActivityEvent.onNext(BillsActivity.class);
+        startActivityEvent.onNext(new StartActivityModel(BillsActivity.class));
     }
 
     public Observable<List<Double>> onRevenueUpdated() {

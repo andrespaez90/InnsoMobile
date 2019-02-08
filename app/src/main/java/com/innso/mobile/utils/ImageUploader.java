@@ -1,7 +1,6 @@
 package com.innso.mobile.utils;
 
 import android.net.Uri;
-import android.support.annotation.NonNull;
 import android.util.Log;
 
 import com.google.android.gms.tasks.OnFailureListener;
@@ -11,6 +10,7 @@ import com.google.firebase.storage.StorageMetadata;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
+import androidx.annotation.NonNull;
 import io.reactivex.Observable;
 import io.reactivex.ObservableEmitter;
 

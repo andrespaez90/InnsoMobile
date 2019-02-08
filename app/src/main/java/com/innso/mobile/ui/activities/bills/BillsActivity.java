@@ -1,17 +1,13 @@
 package com.innso.mobile.ui.activities.bills;
 
 import android.content.Intent;
-import android.databinding.DataBindingUtil;
 import android.os.Bundle;
-import android.support.design.widget.Snackbar;
-import android.support.v4.widget.SwipeRefreshLayout;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 
+import com.google.android.material.snackbar.Snackbar;
 import com.innso.mobile.R;
 import com.innso.mobile.api.models.finance.BillModel;
 import com.innso.mobile.databinding.ActivityBillsBinding;
@@ -26,6 +22,10 @@ import com.innso.mobile.ui.models.list.GenericCategoryItemAbstract;
 import com.innso.mobile.ui.viewModels.BillListViewModel;
 
 import java.util.List;
+
+import androidx.databinding.DataBindingUtil;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 public class BillsActivity extends BaseActivity {
 
@@ -107,7 +107,7 @@ public class BillsActivity extends BaseActivity {
 
     private void subscribe() {
         disposable.add(viewModel.observableSnackBar().subscribe(event -> showMessage(event.getTypeSnackBar(), binding.getRoot(), event.getMessage(), Snackbar.LENGTH_LONG)));
-        disposable.add(viewModel.observableStartActivity().subscribe(this::startActivity));
+        disposable.add(viewModel.startActivityEvent().subscribe(this::startActivity));
         disposable.add(viewModel.onBillsChange().subscribe(this::updateList));
     }
 
