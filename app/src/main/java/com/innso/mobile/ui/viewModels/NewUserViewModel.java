@@ -1,7 +1,7 @@
 package com.innso.mobile.ui.viewModels;
 
 
-import android.databinding.ObservableField;
+import androidx.databinding.ObservableField;
 import android.text.TextUtils;
 import android.view.View;
 

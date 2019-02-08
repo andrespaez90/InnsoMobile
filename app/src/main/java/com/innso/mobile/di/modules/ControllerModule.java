@@ -9,7 +9,6 @@ import com.innso.mobile.api.services.ApplicationApi;
 import com.innso.mobile.api.services.CustomerApi;
 import com.innso.mobile.api.services.FinanceApi;
 import com.innso.mobile.api.services.UserApi;
-import com.innso.mobile.managers.preferences.PrefsManager;
 
 import javax.inject.Singleton;
 

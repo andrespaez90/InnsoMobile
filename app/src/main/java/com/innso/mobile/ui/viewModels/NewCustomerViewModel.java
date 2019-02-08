@@ -1,12 +1,11 @@
 package com.innso.mobile.ui.viewModels;
 
 
-import android.databinding.ObservableField;
+import androidx.databinding.ObservableField;
 import android.text.TextUtils;
 import android.view.View;
 
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 import com.innso.mobile.R;
 import com.innso.mobile.api.controllers.CustomerController;
 

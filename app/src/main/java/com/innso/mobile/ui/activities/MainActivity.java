@@ -1,19 +1,15 @@
 package com.innso.mobile.ui.activities;
 
-import android.databinding.DataBindingUtil;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.design.widget.BottomNavigationView;
-import android.support.v4.content.ContextCompat;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.innso.mobile.R;
 import com.innso.mobile.databinding.ActivityMainBinding;
 import com.innso.mobile.ui.fragments.CompanyFragment;
 import com.innso.mobile.ui.fragments.ProfileFragment;
-import com.innso.mobile.ui.helpers.NavigationViewHelper;
 import com.innso.mobile.ui.itemViews.ItemDetailMonth;
 import com.innso.mobile.ui.models.ItemDetailModel;
 import com.innso.mobile.ui.viewModels.FinanceViewModel;
@@ -21,6 +17,10 @@ import com.innso.mobile.utils.DateUtils;
 import com.innso.mobile.utils.MoneyUtil;
 
 import java.util.List;
+
+import androidx.annotation.NonNull;
+import androidx.core.content.ContextCompat;
+import androidx.databinding.DataBindingUtil;
 
 public class MainActivity extends BaseActivity implements BottomNavigationView.OnNavigationItemSelectedListener {
 
@@ -44,7 +44,6 @@ public class MainActivity extends BaseActivity implements BottomNavigationView.O
     }
 
     private void initView() {
-        NavigationViewHelper.disableShiftMode(binding.navigationView);
         binding.loaderCash.getIndeterminateDrawable().setColorFilter(ContextCompat.getColor(getBaseContext(), R.color.colorPrimary), android.graphics.PorterDuff.Mode.MULTIPLY);
     }
 

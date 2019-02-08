@@ -1,10 +1,10 @@
 package com.innso.mobile.ui.itemViews;
 
 import android.content.Context;
-import android.databinding.DataBindingUtil;
+import androidx.databinding.DataBindingUtil;
 import android.graphics.Typeface;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import android.text.style.RelativeSizeSpan;
 import android.text.style.StyleSpan;
 import android.util.AttributeSet;
@@ -13,7 +13,6 @@ import android.widget.FrameLayout;
 
 import com.innso.mobile.R;
 import com.innso.mobile.api.models.users.UserRequest;
-import com.innso.mobile.databinding.ItemDetailMonthBinding;
 import com.innso.mobile.databinding.ItemDetailUserBinding;
 import com.innso.mobile.ui.interfaces.GenericItemView;
 import com.innso.mobile.utils.StringUtils;

@@ -7,7 +7,7 @@ import android.view.ViewGroup.LayoutParams;
 import com.innso.mobile.R;
 import com.innso.mobile.ui.interfaces.GenericItemView;
 
-public class DefaultCategory extends android.support.v7.widget.AppCompatTextView implements GenericItemView<String> {
+public class DefaultCategory extends androidx.appcompat.widget.AppCompatTextView implements GenericItemView<String> {
 
     private String category;
 

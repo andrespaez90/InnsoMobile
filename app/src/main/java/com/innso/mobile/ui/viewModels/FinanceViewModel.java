@@ -1,7 +1,7 @@
 package com.innso.mobile.ui.viewModels;
 
-import android.databinding.ObservableField;
-import android.support.annotation.NonNull;
+import androidx.databinding.ObservableField;
+import androidx.annotation.NonNull;
 import android.view.View;
 
 import com.innso.mobile.api.controllers.FinanceController;

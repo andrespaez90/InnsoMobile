@@ -2,12 +2,12 @@ package com.innso.mobile.ui.factories;
 
 
 import android.graphics.Color;
-import android.support.annotation.ColorInt;
-import android.support.annotation.NonNull;
-import android.support.annotation.StringDef;
-import android.support.annotation.StringRes;
-import android.support.design.widget.Snackbar;
-import android.support.v4.content.ContextCompat;
+import androidx.annotation.ColorInt;
+import androidx.annotation.NonNull;
+import androidx.annotation.StringDef;
+import androidx.annotation.StringRes;
+import com.google.android.material.snackbar.Snackbar;
+import androidx.core.content.ContextCompat;
 import android.text.TextUtils;
 import android.view.View;
 
@@ -15,7 +15,7 @@ import com.innso.mobile.ui.models.events.ColoredSnackbar;
 
 import java.lang.annotation.Retention;
 
-import static android.support.design.widget.Snackbar.LENGTH_INDEFINITE;
+import static com.google.android.material.snackbar.Snackbar.LENGTH_INDEFINITE;
 import static java.lang.annotation.RetentionPolicy.SOURCE;
 
 public class SnackBarFactory {

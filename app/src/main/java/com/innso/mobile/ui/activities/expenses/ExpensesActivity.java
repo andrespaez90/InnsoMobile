@@ -1,20 +1,18 @@
 package com.innso.mobile.ui.activities.expenses;
 
 import android.content.Intent;
-import android.databinding.DataBindingUtil;
+import androidx.databinding.DataBindingUtil;
 import android.os.Bundle;
-import android.support.design.widget.Snackbar;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
+import com.google.android.material.snackbar.Snackbar;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 
 import com.innso.mobile.R;
-import com.innso.mobile.api.models.finance.BillModel;
 import com.innso.mobile.api.models.finance.ExpenseModel;
-import com.innso.mobile.databinding.ActivityBillsBinding;
 import com.innso.mobile.databinding.ActivityExpensesBinding;
 import com.innso.mobile.ui.activities.BaseActivity;
 import com.innso.mobile.ui.activities.bills.BillDetailActivity;
@@ -23,11 +21,9 @@ import com.innso.mobile.ui.interfaces.GenericItemView;
 import com.innso.mobile.ui.itemViews.DefaultCategory;
 import com.innso.mobile.ui.itemViews.ItemDetailBill;
 import com.innso.mobile.ui.itemViews.ItemDetailExpense;
-import com.innso.mobile.ui.models.Bill;
 import com.innso.mobile.ui.models.Expense;
 import com.innso.mobile.ui.models.list.GenericAdapterFactory;
 import com.innso.mobile.ui.models.list.GenericCategoryItemAbstract;
-import com.innso.mobile.ui.viewModels.BillListViewModel;
 import com.innso.mobile.ui.viewModels.ExpensesViewModel;
 
 import java.util.List;

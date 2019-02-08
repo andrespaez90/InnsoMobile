@@ -1,6 +1,6 @@
 package com.innso.mobile.managers.preferences;
 
-import android.support.annotation.NonNull;
+import androidx.annotation.NonNull;
 
 import java.security.InvalidParameterException;
 

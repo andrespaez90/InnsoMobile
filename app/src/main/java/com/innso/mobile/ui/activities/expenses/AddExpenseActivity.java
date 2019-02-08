@@ -1,16 +1,14 @@
 package com.innso.mobile.ui.activities.expenses;
 
 import android.content.Intent;
-import android.databinding.DataBindingUtil;
+import androidx.databinding.DataBindingUtil;
 import android.os.Bundle;
-import android.support.v7.app.AlertDialog;
+import androidx.appcompat.app.AlertDialog;
 
 import com.innso.mobile.R;
-import com.innso.mobile.databinding.ActivityAddBillBinding;
 import com.innso.mobile.databinding.ActivityAddExpenseBinding;
 import com.innso.mobile.ui.TextWatcher.MoneyTextWatcher;
 import com.innso.mobile.ui.activities.BaseActivity;
-import com.innso.mobile.ui.viewModels.AddBillViewModel;
 import com.innso.mobile.ui.viewModels.AddExpenseViewModel;
 import com.innso.mobile.utils.CameraUtil;
 import com.innso.mobile.utils.ErrorUtils;

@@ -1,7 +1,7 @@
 package com.innso.mobile.ui.viewModels;
 
-import android.databinding.ObservableField;
-import android.support.design.widget.Snackbar;
+import androidx.databinding.ObservableField;
+import com.google.android.material.snackbar.Snackbar;
 import android.text.Editable;
 import android.text.TextUtils;
 import android.view.View;

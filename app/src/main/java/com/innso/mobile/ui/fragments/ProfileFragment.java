@@ -1,10 +1,10 @@
 package com.innso.mobile.ui.fragments;
 
 import android.content.Intent;
-import android.databinding.DataBindingUtil;
+import androidx.databinding.DataBindingUtil;
 import android.graphics.Typeface;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
+import androidx.annotation.Nullable;
 import android.text.style.RelativeSizeSpan;
 import android.text.style.StyleSpan;
 import android.view.LayoutInflater;
@@ -13,13 +13,10 @@ import android.view.ViewGroup;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.auth.UserProfileChangeRequest;
 import com.innso.mobile.R;
-import com.innso.mobile.databinding.FragmentCompanyBinding;
 import com.innso.mobile.databinding.FragmentProfileBinding;
 import com.innso.mobile.ui.BaseFragment;
 import com.innso.mobile.ui.activities.SplashActivity;
-import com.innso.mobile.ui.itemViews.ItemDetailMonth;
 import com.innso.mobile.ui.viewModels.ProfileViewModel;
 import com.innso.mobile.utils.StringUtils;
 

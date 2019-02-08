@@ -1,9 +1,9 @@
 package com.innso.mobile.ui.fragments;
 
-import android.databinding.DataBindingUtil;
+import androidx.databinding.DataBindingUtil;
 import android.graphics.Typeface;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
+import androidx.annotation.Nullable;
 import android.text.style.RelativeSizeSpan;
 import android.text.style.StyleSpan;
 import android.view.LayoutInflater;
@@ -13,7 +13,6 @@ import android.view.ViewGroup;
 import com.innso.mobile.R;
 import com.innso.mobile.databinding.FragmentCompanyBinding;
 import com.innso.mobile.ui.BaseFragment;
-import com.innso.mobile.ui.itemViews.ItemDetailMonth;
 import com.innso.mobile.ui.viewModels.CompanyViewModel;
 import com.innso.mobile.utils.StringUtils;
 
