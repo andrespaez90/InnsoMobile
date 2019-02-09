@@ -11,8 +11,9 @@ import com.innso.mobile.api.config.ApiConfig;
 import com.innso.mobile.api.config.AuthenticatorService;
 import com.innso.mobile.api.services.ApplicationApi;
 import com.innso.mobile.api.services.CustomerApi;
-import com.innso.mobile.api.services.FinanceApi;
-import com.innso.mobile.api.services.UserApi;
+import com.innso.mobile.api.services.FinanceServices;
+import com.innso.mobile.api.services.NewsServices;
+import com.innso.mobile.api.services.UserServices;
 import com.innso.mobile.managers.preferences.InnsoPreferences;
 import com.innso.mobile.managers.preferences.PrefsManager;
 
@@ -31,6 +32,10 @@ import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
 
+import static com.innso.mobile.api.config.ApiConfigKt.AUTHORIZATION;
+import static com.innso.mobile.api.config.ApiConfigKt.BEARER;
+import static com.innso.mobile.api.config.ApiConfigKt.PARAM_AUTHORIZATION;
+
 @Module
 public class ApiModule {
 
@@ -44,8 +49,8 @@ public class ApiModule {
 
     @Provides
     @Singleton
-    public UserApi userApi(@Named("firebase-functions") Retrofit retrofit) {
-        return retrofit.create(UserApi.class);
+    public UserServices userApi(@Named("firebase-functions") Retrofit retrofit) {
+        return retrofit.create(UserServices.class);
     }
 
     @Provides
@@ -56,14 +61,14 @@ public class ApiModule {
 
     @Provides
     @Singleton
-    public FinanceApi financeApi(Retrofit retrofit) {
-        return retrofit.create(FinanceApi.class);
+    public FinanceServices financeServices(Retrofit retrofit) {
+        return retrofit.create(FinanceServices.class);
     }
 
     @Provides
     @Singleton
-    public ApiConfig getApiConfig(Context context, PrefsManager prefsManager) {
-        return new ApiConfig(context, prefsManager);
+    public NewsServices newsServices(@Named("news") Retrofit retrofit) {
+        return retrofit.create(NewsServices.class);
     }
 
     @Provides
@@ -89,6 +94,15 @@ public class ApiModule {
         return getRetrofitBuilder(httpClient.build(), apiConfig.getFuntionsUrlBase(), gson).build();
     }
 
+    @Provides
+    @Singleton
+    @Named("news")
+    public Retrofit retrofitNews(ApiConfig apiConfig, Gson gson) {
+        OkHttpClient.Builder httpClient = getHttpClientBuilder(apiConfig)
+                .addInterceptor(provideNewsHeaderInterceptor(apiConfig));
+        return getRetrofitBuilder(httpClient.build(), apiConfig.getUrlNews(), gson).build();
+    }
+
     private OkHttpClient.Builder getHttpClientBuilder(ApiConfig apiConfig) {
 
         OkHttpClient.Builder clientBuilder = new OkHttpClient.Builder()
@@ -96,7 +110,7 @@ public class ApiModule {
                 .readTimeout(TIME_OUT, TimeUnit.SECONDS)
                 .writeTimeout(TIME_OUT, TimeUnit.SECONDS);
 
-        if (apiConfig.DEBUG) {
+        if (apiConfig.getDEBUG()) {
 
             HttpLoggingInterceptor logging = new HttpLoggingInterceptor();
 
@@ -116,6 +130,24 @@ public class ApiModule {
                 .addConverterFactory(GsonConverterFactory.create(gson));
     }
 
+
+    private Interceptor provideNewsHeaderInterceptor(ApiConfig apiConfig) {
+
+        return chain -> {
+            Request.Builder newBuilder;
+
+            newBuilder = getDefaultHeaders(chain, apiConfig);
+
+            return chain.proceed(newBuilder.build());
+        };
+    }
+
+    private Request.Builder getDefaultHeaders(Interceptor.Chain chain, ApiConfig apiConfig) {
+        return chain.request().newBuilder()
+                .header(AUTHORIZATION, BEARER + apiConfig.getNewsApiKey())
+                .method(chain.request().method(), chain.request().body());
+    }
+
     private Interceptor addFirebaseAuthentication(PrefsManager prefsManager) {
 
         return chain -> {
@@ -127,7 +159,7 @@ public class ApiModule {
             String token = prefsManager.getString(InnsoPreferences.ACCESS_TOKEN);
 
             if (!TextUtils.isEmpty(token)) {
-                newBuilder.url(chain.request().url().newBuilder().addQueryParameter(ApiConfig.PARAM_AUTHORIZATION, token)
+                newBuilder.url(chain.request().url().newBuilder().addQueryParameter(PARAM_AUTHORIZATION, token)
                         .build());
             }
 
@@ -148,7 +180,7 @@ public class ApiModule {
 
     private Request.Builder getDefaultHeaders(Interceptor.Chain chain, PrefsManager prefsManager) {
         return chain.request().newBuilder()
-                .header(ApiConfig.AUTHORIZATION, ApiConfig.BEARER + prefsManager.getString(InnsoPreferences.ACCESS_TOKEN))
+                .header(AUTHORIZATION, BEARER + prefsManager.getString(InnsoPreferences.ACCESS_TOKEN))
                 .method(chain.request().method(), chain.request().body());
     }
 

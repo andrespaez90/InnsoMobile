@@ -5,8 +5,8 @@ import com.innso.mobile.api.controllers.CustomerController;
 import com.innso.mobile.api.controllers.FinanceController;
 import com.innso.mobile.api.controllers.UserControllerApi;
 import com.innso.mobile.api.services.CustomerApi;
-import com.innso.mobile.api.services.FinanceApi;
-import com.innso.mobile.api.services.UserApi;
+import com.innso.mobile.api.services.FinanceServices;
+import com.innso.mobile.api.services.UserServices;
 
 import javax.inject.Singleton;
 
@@ -18,7 +18,7 @@ public class ControllerModule {
 
     @Provides
     @Singleton
-    UserControllerApi userApi(UserApi userApi) {
+    UserControllerApi userApi(UserServices userApi) {
         return new UserControllerApi(userApi);
     }
 
@@ -30,7 +30,7 @@ public class ControllerModule {
 
     @Provides
     @Singleton
-    FinanceController financeController(FinanceApi financeApi) {
+    FinanceController financeController(FinanceServices financeApi) {
         return new FinanceController(financeApi);
     }
 

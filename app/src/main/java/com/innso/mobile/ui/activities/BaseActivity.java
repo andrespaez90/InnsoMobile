@@ -302,13 +302,6 @@ public class BaseActivity extends AppCompatActivity {
         }
     }
 
-    //private void initLoading() {
-    //if (loadingView == null) {
-    //   loadingView = new Loading(this);
-    //     this.addContentView(loadingView, new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
-    //   }
-    // }
-
     public void showProgressDialog(@StringRes int message) {
         if (message != 0) {
             initProgressDialog();

@@ -2,7 +2,7 @@ package com.innso.mobile.api.controllers;
 
 
 import com.innso.mobile.api.models.users.UserRequest;
-import com.innso.mobile.api.services.UserApi;
+import com.innso.mobile.api.services.UserServices;
 
 import java.util.List;
 
@@ -12,9 +12,9 @@ import io.reactivex.schedulers.Schedulers;
 
 public class UserControllerApi {
 
-    private UserApi userApi;
+    private UserServices userApi;
 
-    public UserControllerApi(UserApi userApi) {
+    public UserControllerApi(UserServices userApi) {
         this.userApi = userApi;
     }
 

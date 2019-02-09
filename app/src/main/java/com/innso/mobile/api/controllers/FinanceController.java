@@ -3,7 +3,7 @@ package com.innso.mobile.api.controllers;
 import com.innso.mobile.api.models.finance.BillModel;
 import com.innso.mobile.api.models.finance.ExpenseModel;
 import com.innso.mobile.api.models.finance.FinanceYearSummary;
-import com.innso.mobile.api.services.FinanceApi;
+import com.innso.mobile.api.services.FinanceServices;
 import com.innso.mobile.utils.DateUtils;
 
 import java.text.SimpleDateFormat;
@@ -20,9 +20,9 @@ import io.reactivex.schedulers.Schedulers;
 
 public class FinanceController {
 
-    private FinanceApi financeApi;
+    private FinanceServices financeApi;
 
-    public FinanceController(FinanceApi financeApi) {
+    public FinanceController(FinanceServices financeApi) {
         this.financeApi = financeApi;
     }
 
