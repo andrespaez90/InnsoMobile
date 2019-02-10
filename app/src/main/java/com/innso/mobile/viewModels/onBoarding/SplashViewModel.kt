@@ -6,6 +6,7 @@ import com.google.firebase.auth.FirebaseAuth
 import com.innso.mobile.BuildConfig
 import com.innso.mobile.api.controllers.AppControllerApi
 import com.innso.mobile.api.models.app.GeneralInformation
+import com.innso.mobile.ui.activities.HomeActivity
 import com.innso.mobile.ui.activities.LoginActivity
 import com.innso.mobile.ui.activities.MainActivity
 import com.innso.mobile.viewModels.AndroidViewModel
@@ -41,7 +42,7 @@ class SplashViewModel : AndroidViewModel() {
             if (currentUser != null && !currentUser.isAnonymous) {
                 startActivity.postValue(StartActivityModel(MainActivity::class.java))
             } else {
-                startActivity.postValue(StartActivityModel(LoginActivity::class.java))
+                startActivity.postValue(StartActivityModel(HomeActivity::class.java))
             }
         } else {
             updateVersion.postValue(true)

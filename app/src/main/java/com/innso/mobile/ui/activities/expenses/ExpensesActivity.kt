@@ -61,10 +61,10 @@ class ExpensesActivity : BaseActivity() {
 
     private fun initSpinner() {
         val letra = arrayOf("2018", "2017", "2016")
-        binding!!.spinnerYears.adapter = ArrayAdapter(baseContext, R.layout.simple_spinner_item, letra)
-        binding!!.spinnerYears.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+        binding.spinnerYears.adapter = ArrayAdapter(baseContext, R.layout.simple_spinner_item, letra)
+        binding.spinnerYears.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(parent: AdapterView<*>, view: View, position: Int, id: Long) {
-                viewModel!!.update(binding!!.spinnerYears.selectedItem as String)
+                viewModel.update(binding.spinnerYears.selectedItem as String)
             }
 
             override fun onNothingSelected(parent: AdapterView<*>) {
@@ -87,7 +87,7 @@ class ExpensesActivity : BaseActivity() {
             }
         }, true)
 
-        val list = binding!!.recyclerBills
+        val list = binding.recyclerBills
         list.layoutManager = LinearLayoutManager(baseContext)
         list.adapter = listAdapter
     }
@@ -101,7 +101,7 @@ class ExpensesActivity : BaseActivity() {
     }
 
     private fun updateList(expenses: List<ExpenseModel>) {
-        binding!!.swipeRefresh.isRefreshing = false
+        binding.swipeRefresh.isRefreshing = false
         listAdapter!!.clearAll()
         var expense: Expense
         var i = 0

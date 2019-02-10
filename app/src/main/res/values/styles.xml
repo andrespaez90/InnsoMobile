@@ -1,13 +1,19 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+    <style name="AppTheme" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
-        <item name="android:windowContentTransitions">true</item>
+        <item name="android:windowContentTransitions" tools:targetApi="lollipop">true</item>
     </style>
 
+    <style name="AppTheme.NoActionBar" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:windowContentTransitions" tools:targetApi="lollipop">true</item>
+    </style>
 
     <style name="AppThemeFullScreen" parent="AppTheme">
         <item name="windowActionBar">false</item>
@@ -85,6 +91,10 @@
 
     <style name="TextSmall.Blue.Light" parent="TextSmall">
         <item name="android:textColor">@color/colorPrimary</item>
+    </style>
+
+    <style name="TextBig.White.Bold" parent="TextBig.White">
+        <item name="android:textStyle">bold</item>
     </style>
 
     <style name="TextNormal.White.Bold" parent="TextNormal.White">

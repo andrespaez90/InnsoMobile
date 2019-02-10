@@ -27,7 +27,8 @@
             android:layout_centerHorizontal="true"
             android:layout_margin="@dimen/spacing_xlarge"
             android:src="@drawable/innso_logo"
-            android:transitionName="@string/app_name" />
+            android:transitionName="@string/app_name"
+            tools:targetApi="lollipop" />
 
         <EditText
             android:id="@+id/editText_email"

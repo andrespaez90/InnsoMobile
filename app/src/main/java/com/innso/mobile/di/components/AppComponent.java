@@ -7,6 +7,7 @@ import com.innso.mobile.api.config.AuthenticatorService;
 import com.innso.mobile.api.controllers.AppControllerApi;
 import com.innso.mobile.api.controllers.CustomerController;
 import com.innso.mobile.api.controllers.FinanceController;
+import com.innso.mobile.api.controllers.NewsControllerApi;
 import com.innso.mobile.api.controllers.UserControllerApi;
 import com.innso.mobile.di.modules.ApiModule;
 import com.innso.mobile.di.modules.AppModule;
@@ -55,4 +56,6 @@ public interface AppComponent {
     CustomerController customerController();
 
     FinanceController financeController();
+
+    NewsControllerApi newsController();
 }

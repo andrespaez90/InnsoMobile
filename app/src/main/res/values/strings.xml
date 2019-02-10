@@ -77,4 +77,8 @@
     <string name="format_value">Valor: %1$s</string>
     <string name="format_taxes">IVA: %1$s</string>
     <string name="format_total">Total: %1$s</string>
+    <string name="title_activity_home">HomeActivity</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
 </resources>

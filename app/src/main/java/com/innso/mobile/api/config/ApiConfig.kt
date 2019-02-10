@@ -2,9 +2,11 @@ package com.innso.mobile.api.config
 
 
 import android.content.Context
+import com.innso.mobile.BuildConfig
 import com.innso.mobile.R
 import javax.inject.Inject
 import javax.inject.Singleton
+
 
 const val BEARER = "Bearer "
 const val AUTHORIZATION = "authorization"
@@ -21,5 +23,5 @@ class ApiConfig @Inject constructor(private val context: Context) {
 
     fun getUrlNews(): String = context.getString(R.string.api_news)
 
-    fun getNewsApiKey(): String = "eccc3a53641e4e3998abe04658150c03"
+    fun getNewsApiKey(): String = BuildConfig.newsApi
 }
