@@ -12,5 +12,5 @@ class GenericNews(articles: Articles) {
 
     val sourceName: String = articles.source.name ?: ""
 
-
+    val linkNews: String = articles.link ?: ""
 }

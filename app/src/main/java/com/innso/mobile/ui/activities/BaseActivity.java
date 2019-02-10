@@ -122,6 +122,7 @@ public class BaseActivity extends AppCompatActivity {
     protected void subscribeViewModel(AndroidViewModel viewModel, View root) {
         viewModel.loaderState().observe(this, this::showLoading);
         viewModel.startActivity().observe(this, this::startActivity);
+        viewModel.startAction().observe(this, this::startAction);
         viewModel.closeView().observe(this, this::close);
         viewModel.showDialog().observe(this, this::showDialog);
         viewModel.snackBarMessage().observe(this, (event -> showMessage(event.getTypeSnackBar(), root, event.getMessage(), Snackbar.LENGTH_SHORT)));
@@ -176,6 +177,9 @@ public class BaseActivity extends AppCompatActivity {
 
     protected final void startAction(StartActionModel startActionModel) {
         Intent intent = new Intent(startActionModel.getAction());
+        if (startActionModel.getUri() != null) {
+            intent.setData(startActionModel.getUri());
+        }
         if (startActionModel.getBundle() != null) {
             intent.putExtras(startActionModel.getBundle());
         }

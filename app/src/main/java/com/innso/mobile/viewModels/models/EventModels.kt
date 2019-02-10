@@ -1,6 +1,7 @@
 package com.innso.mobile.viewModels.models
 
 import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.view.View
 import androidx.annotation.StringRes
@@ -35,7 +36,7 @@ class FinishActivityModel(val code: Int) {
 }
 
 
-class StartActionModel(val action: String, val bundle: Bundle? = null) {
+class StartActionModel(val action: String, val bundle: Bundle? = null, val uri: Uri? = null) {
 
     var code: Int = 0
 

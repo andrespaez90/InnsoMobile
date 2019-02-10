@@ -53,7 +53,9 @@ class NewsFragment : BaseFragment() {
     private val listAdapter: GenericAdapter by lazy {
         GenericAdapter(object : GenericAdapterFactory() {
             override fun onCreateViewHolder(viewGroup: ViewGroup, viewType: Int): GenericItemView<*> {
-                return ItemGenericNews(viewGroup.context)
+                val item = ItemGenericNews(viewGroup.context)
+                item.setOnClickListener { viewModel.openLink( (((it as ItemGenericNews).data) as GenericNews).linkNews) }
+                return item
             }
         })
     }

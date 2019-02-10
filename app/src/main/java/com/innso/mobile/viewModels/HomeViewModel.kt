@@ -1,9 +1,12 @@
 package com.innso.mobile.viewModels
 
+import android.content.Intent
+import android.net.Uri
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.innso.mobile.api.controllers.NewsControllerApi
 import com.innso.mobile.ui.models.news.GenericNews
+import com.innso.mobile.viewModels.models.StartActionModel
 import javax.inject.Inject
 
 class HomeViewModel : AndroidViewModel() {
@@ -19,6 +22,14 @@ class HomeViewModel : AndroidViewModel() {
                 .subscribe({ topLines.postValue(it) }, this::showServiceError))
     }
 
+
+    /**
+     * Functions
+     */
+
+    fun openLink(link: String) {
+        startAction.postValue(StartActionModel(Intent.ACTION_VIEW, null, Uri.parse(link)))
+    }
 
     /**
      * Live Data
