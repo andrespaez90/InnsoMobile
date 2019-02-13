@@ -146,6 +146,7 @@ public class BaseActivity extends AppCompatActivity {
 
     protected final void startActivity(StartActivityModel startActivityModel) {
         Intent intent = new Intent(getBaseContext(), startActivityModel.getActivity());
+        intent.setFlags(startActivityModel.getFlags());
         if (startActivityModel.getBundle() != null) {
             intent.putExtras(startActivityModel.getBundle());
         }

@@ -13,6 +13,7 @@ import com.innso.mobile.viewModels.onBoarding.SplashViewModel;
 import androidx.appcompat.app.AlertDialog;
 import androidx.core.app.ActivityOptionsCompat;
 import androidx.databinding.DataBindingUtil;
+import androidx.lifecycle.ViewModelProviders;
 
 public class SplashActivity extends BaseActivity {
 
@@ -26,25 +27,25 @@ public class SplashActivity extends BaseActivity {
         FirebaseMessaging.getInstance().subscribeToTopic("News");
         getComponent().inject(this);
         binding = DataBindingUtil.setContentView(this, R.layout.activity_splash);
-        this.splashViewModel = new SplashViewModel();
+        initViewModel();
         binding.setViewModel(splashViewModel);
+        binding.setLifecycleOwner(this);
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-        subscribe();
         splashViewModel.validateAuthentication();
     }
 
-    private void subscribe() {
-        splashViewModel.startActivity().observe(this, this::startActivity);
-        splashViewModel.snackBarMessage().observe(this, event -> showError(binding.getRoot(), event.getMessage()));
+    private void initViewModel() {
+        splashViewModel = ViewModelProviders.of(this).get(SplashViewModel.class);
+        subscribeViewModel(splashViewModel, binding.getRoot());
         splashViewModel.updateVersionEvent().observe(this, this::showForceUpdateDialog);
-        splashViewModel.showLoader().observe(this, this::showLoaders);
     }
 
-    private void showLoaders(Boolean show) {
+    @Override
+    public void showLoading(Boolean show) {
         if (show) {
             binding.progressbar.setVisibility(View.VISIBLE);
             binding.textViewSplashText.setVisibility(View.VISIBLE);

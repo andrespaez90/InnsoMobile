@@ -48,8 +48,8 @@ class LoginViewModel : AndroidViewModel() {
     private fun validateLogin(authResultTask: Task<AuthResult>) {
         hideLoading()
         if (authResultTask.isSuccessful) {
-            firebaseAuth.currentUser!!.getToken(true)
-                    .addOnCompleteListener { this.validateToken(it) }
+            firebaseAuth.currentUser?.getIdToken(true)
+                    ?.addOnCompleteListener { this.validateToken(it) }
 
         } else {
             val exception = authResultTask.exception
@@ -59,7 +59,7 @@ class LoginViewModel : AndroidViewModel() {
 
     private fun validateToken(tokenResultTask: Task<GetTokenResult>) {
         if (tokenResultTask.isSuccessful) {
-            prefsManager.set(InnsoPreferences.ACCESS_TOKEN, tokenResultTask.result.token)
+            prefsManager.set(InnsoPreferences.ACCESS_TOKEN, tokenResultTask.result?.token)
             startActivity.postValue(StartActivityModel(MainActivity::class.java))
         }
     }

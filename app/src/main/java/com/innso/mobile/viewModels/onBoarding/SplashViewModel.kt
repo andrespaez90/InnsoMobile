@@ -1,5 +1,7 @@
 package com.innso.mobile.viewModels.onBoarding
 
+import android.app.Activity
+import android.content.Intent
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.google.firebase.auth.FirebaseAuth
@@ -7,17 +9,15 @@ import com.innso.mobile.BuildConfig
 import com.innso.mobile.api.controllers.AppControllerApi
 import com.innso.mobile.api.models.app.GeneralInformation
 import com.innso.mobile.ui.activities.HomeActivity
-import com.innso.mobile.ui.activities.LoginActivity
 import com.innso.mobile.ui.activities.MainActivity
 import com.innso.mobile.viewModels.AndroidViewModel
+import com.innso.mobile.viewModels.models.FinishActivityModel
 import com.innso.mobile.viewModels.models.StartActivityModel
 import javax.inject.Inject
 
 class SplashViewModel : AndroidViewModel() {
 
     private val updateVersion = MutableLiveData<Boolean>()
-
-    private val showLoaders = MutableLiveData<Boolean>()
 
     @Inject
     lateinit var appControllerApi: AppControllerApi
@@ -30,9 +30,9 @@ class SplashViewModel : AndroidViewModel() {
     }
 
     fun validateAuthentication() {
-        showLoaders.postValue(true)
         disposables.add(appControllerApi.checkVersion()
-                .doOnError { showLoaders.postValue(false) }
+                .doOnSubscribe { showLoading() }
+                .doFinally { hideLoading() }
                 .subscribe({ this.validateVersion(it) }, { this.showServiceError(it) }))
     }
 
@@ -44,6 +44,7 @@ class SplashViewModel : AndroidViewModel() {
             } else {
                 startActivity.postValue(StartActivityModel(HomeActivity::class.java))
             }
+            closeView.postValue(FinishActivityModel(Activity.RESULT_OK))
         } else {
             updateVersion.postValue(true)
         }
@@ -51,5 +52,4 @@ class SplashViewModel : AndroidViewModel() {
 
     fun updateVersionEvent(): LiveData<Boolean> = updateVersion
 
-    fun showLoader(): LiveData<Boolean> = showLoaders
 }

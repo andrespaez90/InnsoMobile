@@ -5,6 +5,7 @@ import android.util.Log;
 
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.storage.OnProgressListener;
 import com.google.firebase.storage.StorageMetadata;
 import com.google.firebase.storage.StorageReference;
@@ -44,9 +45,11 @@ public class ImageUploader implements OnFailureListener, OnSuccessListener<Uploa
     @Override
     public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
         if (!subscriber.isDisposed()) {
-            Uri downloadUrl = taskSnapshot.getDownloadUrl();
-            subscriber.onNext(downloadUrl.toString());
-            subscriber.onComplete();
+            Task<Uri> uri  = taskSnapshot.getStorage().getDownloadUrl();
+            uri.addOnCompleteListener( l -> {
+                subscriber.onNext(uri.getResult().toString());
+                subscriber.onComplete();
+            });
         }
     }
 
