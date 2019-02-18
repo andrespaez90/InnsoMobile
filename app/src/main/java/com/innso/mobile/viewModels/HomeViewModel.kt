@@ -18,14 +18,18 @@ class HomeViewModel : AndroidViewModel() {
 
     init {
         getComponent().inject(this)
-        disposables.add(newsController.getTopLines().map { it.mapTo(ArrayList()) { GenericNews(it) } }
-                .subscribe({ topLines.postValue(it) }, this::showServiceError))
+        loadNews()
     }
 
 
     /**
      * Functions
      */
+
+    fun loadNews() {
+        disposables.add(newsController.getTopLines().map { it.mapTo(ArrayList()) { GenericNews(it) } }
+                .subscribe({ topLines.postValue(it) }, this::showServiceError))
+    }
 
     fun openLink(link: String) {
         startAction.postValue(StartActionModel(Intent.ACTION_VIEW, null, Uri.parse(link)))

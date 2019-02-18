@@ -29,11 +29,12 @@ class NewsFragment : BaseFragment() {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_news, container, false)
         initViewModel()
+        initListeners()
         initRecyclerView()
         return binding.root
     }
 
-    fun initViewModel() {
+    private fun initViewModel() {
         binding.lifecycleOwner = this
         viewModel = ViewModelProviders.of(requireActivity()).get(HomeViewModel::class.java)
         viewModel.topLinesChange().observe(this, Observer { updateView(it) })
@@ -42,6 +43,10 @@ class NewsFragment : BaseFragment() {
     private fun updateView(news: List<GenericNews>) {
         listAdapter.clear()
         news.forEach { listAdapter.addItem(GenericItemAbstract(it)) }
+    }
+
+    private fun initListeners(){
+        binding.textViewTitle.setOnClickListener { viewModel.loadNews() }
     }
 
     private fun initRecyclerView() {

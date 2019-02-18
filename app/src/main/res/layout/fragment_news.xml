@@ -28,14 +28,18 @@
 
             <androidx.appcompat.widget.Toolbar
                 android:layout_width="match_parent"
-                android:layout_height="?attr/actionBarSize">
+                android:layout_height="?attr/actionBarSize"
+                android:paddingLeft="@dimen/spacing_large"
+                android:paddingRight="@dimen/spacing_large">
 
-                <TextView
+                <com.innso.mobile.ui.views.VectorCompatTextView
+                    android:id="@+id/textView_title"
                     style="@style/TextHuge.Black.Bold"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
                     android:gravity="center_vertical"
-                    android:text="Principales Noticias" />
+                    android:text="Principales Noticias"
+                    app:drawableRightCompat="@drawable/ic_reload" />
 
             </androidx.appcompat.widget.Toolbar>
 

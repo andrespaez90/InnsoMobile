@@ -1,7 +1,6 @@
 package com.innso.mobile.viewModels.onBoarding
 
 import android.app.Activity
-import android.content.Intent
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.google.firebase.auth.FirebaseAuth
