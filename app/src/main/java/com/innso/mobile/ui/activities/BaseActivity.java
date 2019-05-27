@@ -125,6 +125,7 @@ public class BaseActivity extends AppCompatActivity {
         viewModel.startAction().observe(this, this::startAction);
         viewModel.closeView().observe(this, this::close);
         viewModel.showDialog().observe(this, this::showDialog);
+        viewModel.startIntent().observe(this, this::startActivity);
         viewModel.snackBarMessage().observe(this, (event -> showMessage(event.getTypeSnackBar(), root, event.getMessage(), Snackbar.LENGTH_SHORT)));
     }
 

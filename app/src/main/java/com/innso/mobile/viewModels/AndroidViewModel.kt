@@ -1,6 +1,7 @@
 package com.innso.mobile.viewModels
 
 import android.app.Activity
+import android.content.Intent
 import android.os.Bundle
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -34,9 +35,11 @@ open class AndroidViewModel : ViewModel() {
 
     internal val dialog = ActiveMutableLiveData<BasicDialog<*>>()
 
-    internal val startActivity = ActiveMutableLiveData<StartActivityModel>()
+    protected val startActivity = ActiveMutableLiveData<StartActivityModel>()
 
     protected val startAction = ActiveMutableLiveData<StartActionModel>()
+
+    protected val startIntent = ActiveMutableLiveData<Intent>()
 
     private val children = ArrayList<BaseViewModel>()
 
@@ -102,6 +105,15 @@ open class AndroidViewModel : ViewModel() {
                 childViewModel.showDialogEvent().subscribe { dialog.setValue(it) })
     }
 
+    fun shareText(text: String) {
+        val sendIntent: Intent = Intent().apply {
+            action = Intent.ACTION_SEND
+            putExtra(Intent.EXTRA_TEXT, text)
+            type = "text/plain"
+        }
+        startIntent.postValue(sendIntent)
+    }
+
     open fun onSaveInstanceState(): Bundle {
         return Bundle()
     }
@@ -125,4 +137,6 @@ open class AndroidViewModel : ViewModel() {
     fun startActivity(): LiveData<StartActivityModel> = startActivity
 
     fun startAction(): LiveData<StartActionModel> = startAction
+
+    fun startIntent(): LiveData<Intent> = startIntent
 }

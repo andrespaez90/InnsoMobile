@@ -21,6 +21,7 @@ import java.util.List;
 import androidx.annotation.NonNull;
 import androidx.core.content.ContextCompat;
 import androidx.databinding.DataBindingUtil;
+import androidx.lifecycle.ViewModelProviders;
 
 public class MainActivity extends BaseActivity implements BottomNavigationView.OnNavigationItemSelectedListener {
 
@@ -36,11 +37,27 @@ public class MainActivity extends BaseActivity implements BottomNavigationView.O
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main);
-        financeViewModel = new FinanceViewModel();
-        financeViewModel.getSummary();
+        initViewModel();
         initView();
         initListeners();
         binding.setViewModel(financeViewModel);
+    }
+
+    private void initViewModel() {
+        financeViewModel = ViewModelProviders.of(this).get(FinanceViewModel.class);
+        financeViewModel.getSummary();
+        subscribeViewModel(financeViewModel, binding.getRoot());
+        subscribeEvents();
+    }
+
+    private void subscribeEvents() {
+        financeViewModel.onRevenueUpdated().observe(this, this::updateRevenueInformation);
+        financeViewModel.onExpensesUpdated().observe(this, this::updateExpenseInformation);
+        financeViewModel.onTotalMonthUpdated().observe(this, this::updateTotalValueMonth);
+        financeViewModel.onTotalRevenueUpdated().observe(this, this::updateRevenueValue);
+        financeViewModel.onTotalExpenditureUpdated().observe(this, this::updateExpenditureValue);
+        financeViewModel.onTotalBanksUpdated().observe(this, value -> updateValue(binding.textViewBankSummaryValue, value));
+        financeViewModel.onTotalCashUpdated().observe(this, value -> updateValue(binding.textViewSummaryCashValue, value));
     }
 
     private void initView() {
@@ -49,24 +66,6 @@ public class MainActivity extends BaseActivity implements BottomNavigationView.O
 
     private void initListeners() {
         binding.navigationView.setOnNavigationItemSelectedListener(this);
-    }
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-        subscribe();
-    }
-
-    private void subscribe() {
-        disposable.addAll(financeViewModel.onRevenueUpdated().subscribe(this::updateRevenueInformation),
-                financeViewModel.onExpensesUpdated().subscribe(this::updateExpenseInformation),
-                financeViewModel.onTotalMonthUpdated().subscribe(this::updateTotalValueMonth),
-                financeViewModel.onTotalRevenueUpdated().subscribe(this::updateRevenueValue),
-                financeViewModel.onTotalExpenditureUpdated().subscribe(this::updateExpenditureValue),
-                financeViewModel.onTotalBanksUpdated().subscribe(value -> updateValue(binding.textViewBankSummaryValue, value)),
-                financeViewModel.onTotalCashUpdated().subscribe(value -> updateValue(binding.textViewSummaryCashValue, value)),
-                financeViewModel.observableShowLoading().subscribe(this::showLoaders),
-                financeViewModel.startActivityEvent().subscribe(this::startActivity));
     }
 
     private void updateValue(TextView view, Double value) {

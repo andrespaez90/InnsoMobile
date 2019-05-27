@@ -25,6 +25,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <activity
             android:name=".ui.activities.CreateUserActivity"
             android:screenOrientation="portrait" />
@@ -62,9 +63,14 @@
         <activity
             android:name=".ui.activities.expenses.AddExpenseActivity"
             android:screenOrientation="portrait" />
+
         <activity
             android:name=".ui.activities.expenses.ExpensesActivity"
             android:screenOrientation="portrait" />
+
+        <activity android:name=".ui.activities.base.WebViewActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar"/>
 
         <provider
             android:name="androidx.core.content.FileProvider"

@@ -45,7 +45,7 @@ class NewsFragment : BaseFragment() {
         news.forEach { listAdapter.addItem(GenericItemAbstract(it)) }
     }
 
-    private fun initListeners(){
+    private fun initListeners() {
         binding.textViewTitle.setOnClickListener { viewModel.loadNews() }
     }
 
@@ -59,9 +59,19 @@ class NewsFragment : BaseFragment() {
         GenericAdapter(object : GenericAdapterFactory() {
             override fun onCreateViewHolder(viewGroup: ViewGroup, viewType: Int): GenericItemView<*> {
                 val item = ItemGenericNews(viewGroup.context)
-                item.setOnClickListener { viewModel.openLink( (((it as ItemGenericNews).data) as GenericNews).linkNews) }
+                item.setOnClickListener { view -> onClickNews(item, view) }
                 return item
             }
         })
     }
+
+    private fun onClickNews(news: ItemGenericNews, view: View) {
+        val info: GenericNews = news.data as GenericNews
+        if (view.id == R.id.imageView_share) {
+            viewModel.shareText("Revisa esta noticia: " + info.title + " en :" + info.linkNews)
+        } else {
+            viewModel.openLink(info.linkNews)
+        }
+    }
+
 }

@@ -38,4 +38,9 @@ class ItemGenericNews : FrameLayout, GenericItemView<GenericNews> {
     override fun getData(): GenericNews? {
         return news
     }
+
+    override fun setOnClickListener(listener: OnClickListener?) {
+        binding.imageViewNewsCover.setOnClickListener(listener)
+        binding.imageViewShare.setOnClickListener(listener)
+    }
 }

@@ -34,6 +34,7 @@
     <string name="copy.expenses">Gastos</string>
     <string name="copy.add_expense">Agregar Gasto</string>
     <string name="copy.new_bill">Agregar Factura</string>
+    <string name="common_text_share">Compoartit</string>
 
     <string name="copy.day">Día</string>
     <string name="copy.month">Mes</string>

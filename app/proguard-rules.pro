@@ -12,18 +12,36 @@
 # If your project uses WebView with JS, uncomment the following
 # and specify the fully qualified class name to the JavaScript interface
 # class:
-#-keepclassmembers class fqcn.of.javascript.interface.for.webview {
-#   public *;
-#}
--keepattributes Signature
--keepattributes *Annotation*
-
+-ignorewarnings
+-optimizationpasses 5
+-dontusemixedcaseclassnames
+-dontskipnonpubliclibraryclasses
+-dontpreverify
+-verbose
+-keepclassmembers class fqcn.of.javascript.interface.for.webview {
+   public *;
+}
 -keep public class * implements com.bumptech.glide.module.GlideModule
 -keep public class * extends com.bumptech.glide.module.AppGlideModule
--keep public enum com.bumptech.glide.load.resource.bitmap.ImageHeaderParser$** {
+-keep public enum com.bumptech.glide.load.ImageHeaderParser$** {
   **[] $VALUES;
   public *;
 }
 
+-dontwarn com.squareup.okhttp.**
+-dontwarn javax.annotation.**
+-dontwarn okio.**
+
+# Retrofit rules
+# Platform calls Class.forName on types which do not exist on Android to determine platform.
+-dontnote retrofit2.Platform
+# Platform used when running on RoboVM on iOS. Will not be used at runtime.
+-dontnote retrofit2.Platform$IOS$MainThreadExecutor
+# Platform used when running on Java 8 VMs. Will not be used at runtime.
+-dontwarn retrofit2.Platform$Java8
+
+-keep class android.support.design.internal.BottomNavigationItemView{ *; }
+-keep class android.support.design.internal.BottomNavigationMenuView{ *; }
+
 # for DexGuard only
--keepresourcexmlelements manifest/application/meta-data@value=GlideModule
+##-keepresourcexmlelements manifest/application/meta-data@value=GlideModule

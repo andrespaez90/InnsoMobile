@@ -4,6 +4,7 @@ import android.content.Context
 import android.widget.ImageView
 import androidx.databinding.BindingAdapter
 import com.bumptech.glide.Glide
+import com.bumptech.glide.request.RequestOptions
 import com.innso.mobile.InnsoApplication
 import com.innso.mobile.R
 
@@ -13,10 +14,13 @@ object NewaBindings {
     @BindingAdapter("load_image", "source_name")
     fun loadCoverNews(imageView: ImageView, imagePath: String, sourceName: String? = null) {
         val context = InnsoApplication.get().applicationContext
-        Glide.with(context)
-                .load(imagePath)
-                .asBitmap()
+
+        val options: RequestOptions = RequestOptions()
                 .placeholder(getPlaceHolder(imageView.context, sourceName))
+
+        Glide.with(context).asBitmap()
+                .load(imagePath)
+                .apply(options)
                 .into(imageView)
     }
 

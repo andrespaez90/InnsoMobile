@@ -1,12 +1,13 @@
 package com.innso.mobile.viewModels
 
-import android.content.Intent
-import android.net.Uri
+import android.os.Bundle
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.innso.mobile.api.controllers.NewsControllerApi
+import com.innso.mobile.ui.activities.base.WEB_VIEW_URL_PARAM
+import com.innso.mobile.ui.activities.base.WebViewActivity
 import com.innso.mobile.ui.models.news.GenericNews
-import com.innso.mobile.viewModels.models.StartActionModel
+import com.innso.mobile.viewModels.models.StartActivityModel
 import javax.inject.Inject
 
 class HomeViewModel : AndroidViewModel() {
@@ -32,7 +33,9 @@ class HomeViewModel : AndroidViewModel() {
     }
 
     fun openLink(link: String) {
-        startAction.postValue(StartActionModel(Intent.ACTION_VIEW, null, Uri.parse(link)))
+        val extras = Bundle()
+        extras.putString(WEB_VIEW_URL_PARAM, link)
+        startActivity.postValue(StartActivityModel(WebViewActivity::class.java, extras))
     }
 
     /**

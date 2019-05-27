@@ -72,8 +72,4 @@ public class SplashActivity extends BaseActivity {
                     .show();
         }
     }
-
-    protected ActivityOptionsCompat getSceneTransition(Class clazz) {
-        return ActivityOptionsCompat.makeSceneTransitionAnimation(this, binding.imageViewLogo, getString(R.string.app_name));
-    }
 }
